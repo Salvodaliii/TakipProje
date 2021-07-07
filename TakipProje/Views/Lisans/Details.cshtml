@@ -1,99 +1,112 @@
 ﻿@model TakipProje.Models.Lisans
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Lisans Ayrıntı";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Lisans Bilgileri Ayrıntılar</h2>
 
 <div>
-    <h4>Lisans</h4>
+    <h4>Ayrıntılar</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ProgramAdi)
+
+            <span>Program Adı</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ProgramAdi)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.Adet)
+            <span>Adet</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Adet)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.FirmaAdi)
+            <span>Firma Adı</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.FirmaAdi)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.SabitTelefon)
+            <span>Sabit Telefon</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SabitTelefon)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.Gsm)
+            <span>GSM</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Gsm)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.Mail)
+            <span>Mail</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Mail)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.AlimTarihi)
+            <span>Alım Tarihi</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.AlimTarihi)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.BitisTarihi)
+            <span>Bitiş Tarihi</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.BitisTarihi)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.YenilemeTarihi)
+            <span>Yenileme Tarihi</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.YenilemeTarihi)
         </dd>
-
+        <br>
         <dt>
-            @Html.DisplayNameFor(model => model.AlisFiyati)
+            <span>Alış Fiyatı</span>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.AlisFiyati)
         </dd>
-
+        <br>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <span id="btn_duzenle">@Html.ActionLink("Düzenle", "Edit", new { id = Model.ID })</span>
+
+    <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
 </p>
+
+@*<style>
+    #btn_duzenle{
+        text-decoration:none;
+        border:solid black 1px;
+        border-radius:4px;
+        background-color:#2E59D9;
+        color:white;
+    }
+
+</style>*@

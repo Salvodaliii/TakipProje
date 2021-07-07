@@ -56,9 +56,9 @@
                 @item.YenilemeTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
