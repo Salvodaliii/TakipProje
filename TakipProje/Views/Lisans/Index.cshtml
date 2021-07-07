@@ -8,7 +8,7 @@
 <h2>Lisans Takip Kayıt İşlemleri</h2>
 
 <br>
-    <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'" >Yeni Kayıt Oluştur</button>
+<button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'">Yeni Kayıt Oluştur</button>
 <br>
 <br>
 <table class="table">
@@ -34,32 +34,33 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProgramAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SabitTelefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @item.AlimTarihi.ToString("yyyy.MM.dd")
-        </td>
-        <td>
-            @item.BitisTarihi.ToString("yyyy.MM.dd")
-        </td>
-        <td>
-            @item.YenilemeTarihi.ToString("yyyy.MM.dd")
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SabitTelefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @item.AlimTarihi.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @item.BitisTarihi.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @item.YenilemeTarihi.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

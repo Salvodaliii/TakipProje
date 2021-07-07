@@ -8,115 +8,115 @@
 <h2>Lisans Kayıt İşlemi</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Lisans Kayıt Bilgileri</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <p>Program Adı</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProgramAdi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProgramAdi, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Adet</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Adet, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Adet, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Firma Adı</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FirmaAdi, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Sabit Telefon</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SabitTelefon, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>GSM</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Mail</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
-            @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Alım Tarihi</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AlimTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-            @Html.ValidationMessageFor(model => model.AlimTarihi, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Bitiş Tarihi</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-            @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Yenileme Tarihi</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-            @Html.ValidationMessageFor(model => model.YenilemeTarihi, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <p>Alış Fiyatı</p>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AlisFiyati, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AlisFiyati, "", new { @class = "text-danger" })
-        </div>
-        <br>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Kayıt Oluştur" class="btn btn-success" />
-            <div id="btn_geridon">
-
-                <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
-
+        <div class="form-group">
+            <p>Program Adı</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProgramAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProgramAdi, "", new { @class = "text-danger" })
             </div>
+            <br>
         </div>
-        
-    </div>
+
+        <div class="form-group">
+            <p>Adet</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adet, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Adet, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Firma Adı</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirmaAdi, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Sabit Telefon</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SabitTelefon, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>GSM</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Mail</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Alım Tarihi</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlimTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.AlimTarihi, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Bitiş Tarihi</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Yenileme Tarihi</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.YenilemeTarihi, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <p>Alış Fiyatı</p>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AlisFiyati, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AlisFiyati, "", new { @class = "text-danger" })
+            </div>
+            <br>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kayıt Oluştur" class="btn btn-success" />
+                <div id="btn_geridon">
+
+                    <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 }
 
@@ -128,14 +128,12 @@
 
 
 <style>
-    p{
-        margin-left:13px;
-        color:black;
+    p {
+        margin-left: 13px;
+        color: black;
     }
 
-    #btn_geridon{
-        float:right;
+    #btn_geridon {
+        float: right;
     }
-
-
 </style>
