@@ -10,7 +10,7 @@
 <center><h2>Lisans Takip Kayıt İşlemleri</h2></center>
 
 <br>
-<button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'">Yeni Kayıt Oluştur</button>
+<button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
 <br>
 <br>
 <table class="table">
@@ -58,7 +58,7 @@
                 @item.YenilemeTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID } , new { @class = "btn_duzenle" }) |
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID } , new { @class = "btn_duzenle" }) |
                 @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
                 @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
             </td>
@@ -68,37 +68,63 @@
 </table>
 
 <style>
-         .btn_duzenle , .btn_ayrintilar{
-        background-color: #4E73DF;
-        font-size:15px;
-        padding: 5px;
+
+    .btn_duzenle {
+        font-weight:inherit;
+        letter-spacing:0.7px;
+        transition: 900ms;
+        background-color: rgba(28,200,138,1);
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
         border-radius: 5px;
         color: white;
         text-decoration: none;
-        }
-
+    }
+    .btn_ayrintilar {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: #4E73DF;
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
     .btn_sil {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
         background-color: #DC3545;
         font-size: 15px;
-        padding: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
         border-radius: 5px;
         color: white;
         text-decoration: none;
     }
 
-        .btn_duzenle:hover {
+    .btn_duzenle:hover {
+        text-decoration: none;
+        background-color: rgba(22,160,110,1);
+        color: black;
+    }
+    .btn_ayrintilar:hover {
         text-decoration: none;
         background-color: #2F5AD9;
-        color: white;
-        }
-        .btn_ayrintilar:hover {
-         text-decoration: none;
-         background-color: #2F5AD9;
-         color: white;
-        }
+        color: black;
+    }
     .btn_sil:hover {
         text-decoration: none;
         background-color: #C82333;
-        color: white;
+        color: black;
     }
 </style>

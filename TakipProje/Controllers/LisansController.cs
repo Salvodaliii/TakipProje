@@ -84,7 +84,7 @@ namespace TakipProje.Controllers
             {
                 db.Entry(lisans).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit");
             }
             return View(lisans);
         }
