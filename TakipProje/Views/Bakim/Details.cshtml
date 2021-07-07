@@ -1,18 +1,20 @@
 ﻿@model TakipProje.Models.Bakim
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Bakım Ayrıntı";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<br>
+<br>
+<center><h2>Bakım Bilgileri Ayrıntılar</h2></center>
 
 <div>
-    <h4>Bakim</h4>
+    <h4>Bakım Ayrıntıları</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.BakimAdi)
+            <span class="details_title">Bakım Adı</span>
         </dt>
 
         <dd>
@@ -20,7 +22,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BakimTarihi)
+            <span class="details_title">Bakım Tarihi</span>
         </dt>
 
         <dd>
@@ -28,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BakimYapanPersonel)
+            <span class="details_title">Bakım Yapan Personel</span>
         </dt>
 
         <dd>
@@ -36,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Periyot)
+            <span class="details_title">Periyot</span>
         </dt>
 
         <dd>
@@ -45,7 +47,49 @@
 
     </dl>
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
+
+<div class="col-sm-offset-1 col-md-10">
+    <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
+
+
+    <div id="btn_geridon">
+        <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
+    </div>
+</div>
+
+<style>
+    .details_title {
+        color: black;
+        font-weight: bolder;
+    }
+
+    #btn_geridon {
+        float: right;
+    }
+
+    .btn_duzenle_txt {
+        transition: 900ms;
+        background-color: #FFC107;
+        font-size: 15px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        background-color: rgba(28,200,138,1);
+    }
+
+        .btn_duzenle_txt:hover {
+            text-decoration: none;
+            background-color: rgba(22,160,110,1);
+            color: white;
+        }
+</style>

@@ -1,52 +1,122 @@
 ﻿@model IEnumerable<TakipProje.Models.Bakim>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Bakım Takibi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<br>
+<br>
+<center><h2>Bakım Takip Kayıt İşlemleri</h2></center>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br>
+<button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
+<br>
+<br>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.BakimAdi)
+            <span>Bakım Adı</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BakimTarihi)
+            <span>Bakım Tarihi</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BakimYapanPersonel)
+            <span>Bakım Yapan Personel</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Periyot)
+            <span>Periyot</span>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BakimAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BakimTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BakimYapanPersonel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Periyot)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakimAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakimTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakimYapanPersonel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Periyot)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
+                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<style>
+
+    .btn_duzenle {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: rgba(28,200,138,1);
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_ayrintilar {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: #4E73DF;
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_sil {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: #DC3545;
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_duzenle:hover {
+        text-decoration: none;
+        background-color: rgba(22,160,110,1);
+        color: black;
+    }
+
+    .btn_ayrintilar:hover {
+        text-decoration: none;
+        background-color: #2F5AD9;
+        color: black;
+    }
+
+    .btn_sil:hover {
+        text-decoration: none;
+        background-color: #C82333;
+        color: black;
+    }
+</style>
