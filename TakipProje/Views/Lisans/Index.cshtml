@@ -1,0 +1,71 @@
+﻿@model IEnumerable<TakipProje.Models.Lisans>
+ 
+
+
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramAdi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirmaAdi)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Gsm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mail)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.BitisTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YenilemeTarihi)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProgramAdi)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.FirmaAdi)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Gsm)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Mail)
+    </td>
+
+
+
+
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
+}
+
+</table>
