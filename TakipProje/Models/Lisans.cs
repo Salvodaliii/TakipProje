@@ -21,9 +21,9 @@ namespace TakipProje.Models
         public string SabitTelefon { get; set; }
         public string Gsm { get; set; }
         public string Mail { get; set; }
-        public Nullable<System.DateTime> AlimTarihi { get; set; }
-        public Nullable<System.DateTime> BitisTarihi { get; set; }
-        public Nullable<System.DateTime> YenilemeTarihi { get; set; }
+        public System.DateTime AlimTarihi { get; set; }
+        public System.DateTime BitisTarihi { get; set; }
+        public System.DateTime YenilemeTarihi { get; set; }
         public Nullable<decimal> AlisFiyati { get; set; }
     }
 }

@@ -48,8 +48,6 @@ namespace TakipProje.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ProgramAdi,Adet,FirmaAdi,SabitTelefon,Gsm,Mail,AlimTarihi,BitisTarihi,YenilemeTarihi,AlisFiyati")] Lisans lisans)
         {
-            
-
             if (ModelState.IsValid)
             {
                 db.Lisans.Add(lisans);

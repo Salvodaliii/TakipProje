@@ -134,40 +134,40 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bakim.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbConnect.Context.cs">
+    <Compile Include="Models\Db.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbConnect.Context.tt</DependentUpon>
+      <DependentUpon>Db.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbConnect.cs">
+    <Compile Include="Models\Db.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\dbConnect.Designer.cs">
+    <Compile Include="Models\Db.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>dbConnect.edmx</DependentUpon>
+      <DependentUpon>Db.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Lisans.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Servis.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Yedekleme.cs">
-      <DependentUpon>dbConnect.tt</DependentUpon>
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1898,19 +1898,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\dbConnect.Context.tt">
+    <Content Include="Models\Db.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbConnect.edmx</DependentUpon>
-      <LastGenOutput>dbConnect.Context.cs</LastGenOutput>
+      <DependentUpon>Db.edmx</DependentUpon>
+      <LastGenOutput>Db.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\dbConnect.tt">
+    <Content Include="Models\Db.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>dbConnect.edmx</DependentUpon>
-      <LastGenOutput>dbConnect.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\takipDb.mdf" />
-    <Content Include="Models\takipDb_log.ldf">
-      <DependentUpon>takipDb.mdf</DependentUpon>
+      <DependentUpon>Db.edmx</DependentUpon>
+      <LastGenOutput>Db.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2100,12 +2096,12 @@
     <Content Include="Content\assets\xchart\README.md" />
     <Content Include="Content\css\bootstrap-theme.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
-    <EntityDeploy Include="Models\dbConnect.edmx">
+    <EntityDeploy Include="Models\Db.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>dbConnect.Designer.cs</LastGenOutput>
+      <LastGenOutput>Db.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\dbConnect.edmx.diagram">
-      <DependentUpon>dbConnect.edmx</DependentUpon>
+    <Content Include="Models\Db.edmx.diagram">
+      <DependentUpon>Db.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

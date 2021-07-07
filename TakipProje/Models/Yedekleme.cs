@@ -15,7 +15,6 @@ namespace TakipProje.Models
     public partial class Yedekleme
     {
         public int ID { get; set; }
-        public string YedeklemeTipiPlatformu { get; set; }
         public string YedeklemePeriyodu { get; set; }
         public string YedeklemePlaniAdi { get; set; }
         public string Durum { get; set; }

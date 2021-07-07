@@ -1,9 +1,6 @@
 ﻿@model IEnumerable<TakipProje.Models.Lisans>
- 
-
 
 @{
-
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,56 +13,52 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProgramAdi)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.FirmaAdi)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.Gsm)
+            <span>Program Adı</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mail)
-        </th>
-
-        <th>
-            @Html.DisplayNameFor(model => model.BitisTarihi)
+            <span>Sabit Telefon</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.YenilemeTarihi)
+            <span>Mail</span>
         </th>
-
+        <th>
+            <span>Alım Tarihi</span>
+        </th>
+        <th>
+            <span>Bitiş Tarihi</span>
+        </th>
+        <th>
+            <span>Yenileme Tarihi</span>
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProgramAdi)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.FirmaAdi)
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.Gsm)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Mail)
-    </td>
-
-
-
-
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-    </td>
-</tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgramAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SabitTelefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mail)
+        </td>
+        <td>
+            @item.AlimTarihi.ToString("yyyy.MM.dd")
+        </td>
+        <td>
+            @item.BitisTarihi.ToString("yyyy.MM.dd")
+        </td>
+        <td>
+            @item.YenilemeTarihi.ToString("yyyy.MM.dd")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
 }
 
 </table>

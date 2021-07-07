@@ -15,11 +15,11 @@ namespace TakipProje.Models
     public partial class Servis
     {
         public int ID { get; set; }
-        public string isAdi { get; set; }
+        public string İsAdi { get; set; }
         public string BakimPeriyodu { get; set; }
         public string FirmaAdi { get; set; }
         public string SabitTelefon { get; set; }
-        public string DestekPersonelAdSoyadi { get; set; }
+        public string DestekPersonelAdSoyad { get; set; }
         public string Gsm { get; set; }
         public string Mail { get; set; }
         public Nullable<System.DateTime> BaslangicTarihi { get; set; }
