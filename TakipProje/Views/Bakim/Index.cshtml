@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TakipProje.Models.Bakim>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BakimAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BakimTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BakimYapanPersonel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Periyot)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BakimAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BakimTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BakimYapanPersonel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periyot)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

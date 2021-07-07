@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BakimController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4011,6 +4012,11 @@
     <Content Include="Views\Lisans\Details.cshtml" />
     <Content Include="Views\Lisans\Edit.cshtml" />
     <Content Include="Views\Lisans\Index.cshtml" />
+    <Content Include="Views\Bakim\Create.cshtml" />
+    <Content Include="Views\Bakim\Delete.cshtml" />
+    <Content Include="Views\Bakim\Details.cshtml" />
+    <Content Include="Views\Bakim\Edit.cshtml" />
+    <Content Include="Views\Bakim\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
