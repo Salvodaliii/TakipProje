@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TakipProje.Models.Yedekleme>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.YedeklemePeriyodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YedeklemePlaniAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Durum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaslangicTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SonYedeklemeTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KontrolEdenPersonel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SonKontrolTarihi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.YedeklemePeriyodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YedeklemePlaniAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Durum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BaslangicTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SonYedeklemeTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KontrolEdenPersonel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SonKontrolTarihi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
