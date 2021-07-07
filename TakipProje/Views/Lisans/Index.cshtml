@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Lisans Takip Kayıt İşlemleri</h2>
+<br>
+<br>
+<center><h2>Lisans Takip Kayıt İşlemleri</h2></center>
 
 <br>
 <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'">Yeni Kayıt Oluştur</button>
@@ -56,11 +58,47 @@
                 @item.YenilemeTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.ID } , new { @class = "btn_duzenle" }) |
+                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
             </td>
         </tr>
     }
 
 </table>
+
+<style>
+         .btn_duzenle , .btn_ayrintilar{
+        background-color: #4E73DF;
+        font-size:15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        }
+
+    .btn_sil {
+        background-color: #DC3545;
+        font-size: 15px;
+        padding: 5px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+        .btn_duzenle:hover {
+        text-decoration: none;
+        background-color: #2F5AD9;
+        color: white;
+        }
+        .btn_ayrintilar:hover {
+         text-decoration: none;
+         background-color: #2F5AD9;
+         color: white;
+        }
+    .btn_sil:hover {
+        text-decoration: none;
+        background-color: #C82333;
+        color: white;
+    }
+</style>
