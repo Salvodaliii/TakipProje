@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace WebApplication1.Controllers
 {
+
     public class HomeController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
