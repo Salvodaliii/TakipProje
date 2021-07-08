@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TakipProje.Models;
+using System.Data.SqlClient;
 
 namespace TakipProje.Controllers
 {
@@ -15,8 +17,10 @@ namespace TakipProje.Controllers
         private takipDbEntities db = new takipDbEntities();
 
         // GET: Lisans
+
         public ActionResult Index()
         {
+            LisansIdCount();
             return View(db.Lisans.ToList());
         }
 
@@ -125,5 +129,13 @@ namespace TakipProje.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void LisansIdCount()
+        {
+            ViewBag.displayclient = db.Lisans.ToList();
+            ViewBag.Count = db.Lisans.Count();
+        }
+
     }
+
 }

@@ -5,126 +5,140 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br>
-<br>
-<center><h2>Lisans Takip Kayıt İşlemleri</h2></center>
+
+        <br>
+        <br>
+        <center><h2>Lisans Takip Kayıt İşlemleri</h2></center>
+
+        <br>
+        <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
+        <br>
+        <br>
+        <table class="table">
+            <tr>
+                <th>
+                    <span>Program Adı</span>
+                </th>
+                <th>
+                    <span>Sabit Telefon</span>
+                </th>
+                <th>
+                    <span>Mail</span>
+                </th>
+                <th>
+                    <span>Alım Tarihi</span>
+                </th>
+                <th>
+                    <span>Bitiş Tarihi</span>
+                </th>
+                <th>
+                    <span>Yenileme Tarihi</span>
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SabitTelefon)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mail)
+                    </td>
+                    <td>
+                        @item.AlimTarihi.ToString("yyyy.MM.dd")
+                    </td>
+                    <td>
+                        @item.BitisTarihi.ToString("yyyy.MM.dd")
+                    </td>
+                    <td>
+                        @item.YenilemeTarihi.ToString("yyyy.MM.dd")
+                    </td>
+                    <td>
+                        @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
+                        @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                        @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
 
 <br>
-<button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
 <br>
 <br>
-<table class="table">
-    <tr>
-        <th>
-            <span>Program Adı</span>
-        </th>
-        <th>
-            <span>Sabit Telefon</span>
-        </th>
-        <th>
-            <span>Mail</span>
-        </th>
-        <th>
-            <span>Alım Tarihi</span>
-        </th>
-        <th>
-            <span>Bitiş Tarihi</span>
-        </th>
-        <th>
-            <span>Yenileme Tarihi</span>
-        </th>
-        <th></th>
-    </tr>
+<br>
+<label style="font-size:60px;">TOPLAM ID SAYISI : @ViewBag.Count</label>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SabitTelefon)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Mail)
-            </td>
-            <td>
-                @item.AlimTarihi.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @item.BitisTarihi.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @item.YenilemeTarihi.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID } , new { @class = "btn_duzenle" }) |
-                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
-            </td>
-        </tr>
-    }
 
-</table>
 
-<style>
+        <style>
 
-    .btn_duzenle {
-        font-weight:inherit;
-        letter-spacing:0.7px;
-        transition: 900ms;
-        background-color: rgba(28,200,138,1);
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
-    .btn_ayrintilar {
-        font-weight: inherit;
-        letter-spacing: 0.7px;
-        transition: 900ms;
-        background-color: #4E73DF;
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
-    .btn_sil {
-        font-weight: inherit;
-        letter-spacing: 0.7px;
-        transition: 900ms;
-        background-color: #DC3545;
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
+            .btn_duzenle {
+                font-weight: inherit;
+                letter-spacing: 0.7px;
+                transition: 900ms;
+                background-color: rgba(28,200,138,1);
+                font-size: 15px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 13px;
+                padding-right: 13px;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+            }
 
-    .btn_duzenle:hover {
-        text-decoration: none;
-        background-color: rgba(22,160,110,1);
-        color: black;
-    }
-    .btn_ayrintilar:hover {
-        text-decoration: none;
-        background-color: #2F5AD9;
-        color: black;
-    }
-    .btn_sil:hover {
-        text-decoration: none;
-        background-color: #C82333;
-        color: black;
-    }
-</style>
+            .btn_ayrintilar {
+                font-weight: inherit;
+                letter-spacing: 0.7px;
+                transition: 900ms;
+                background-color: #4E73DF;
+                font-size: 15px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 13px;
+                padding-right: 13px;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn_sil {
+                font-weight: inherit;
+                letter-spacing: 0.7px;
+                transition: 900ms;
+                background-color: #DC3545;
+                font-size: 15px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 13px;
+                padding-right: 13px;
+                border-radius: 5px;
+                color: white;
+                text-decoration: none;
+            }
+
+            .btn_duzenle:hover {
+                text-decoration: none;
+                background-color: rgba(22,160,110,1);
+                color: black;
+            }
+
+            .btn_ayrintilar:hover {
+                text-decoration: none;
+                background-color: #2F5AD9;
+                color: black;
+            }
+
+            .btn_sil:hover {
+                text-decoration: none;
+                background-color: #C82333;
+                color: black;
+            }
+        </style>
