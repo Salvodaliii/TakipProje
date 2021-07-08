@@ -1,70 +1,62 @@
 ﻿@model IEnumerable<TakipProje.Models.Yedekleme>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Yedekleme Takibi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<br>
+<br>
+<center><h2>Yedekleme Takip Kayıt İşlemleri</h2></center>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br>
+<button type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
+<br>
+<br>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.YedeklemePeriyodu)
+            <span>Yedekleme Plan Adı</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.YedeklemePlaniAdi)
+            <span>Durum</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Durum)
+            <span>Başlangıç Tarihi</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BaslangicTarihi)
+            <span>Son Yedekleme Tarihi</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SonYedeklemeTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KontrolEdenPersonel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SonKontrolTarihi)
+            <span>Son Kontrol Tarihi</span>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.YedeklemePeriyodu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YedeklemePlaniAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Durum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BaslangicTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SonYedeklemeTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KontrolEdenPersonel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SonKontrolTarihi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.YedeklemePlaniAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaslangicTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SonYedeklemeTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SonKontrolTarihi)
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
+                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
+            </td>
+        </tr>
+    }
 
 </table>

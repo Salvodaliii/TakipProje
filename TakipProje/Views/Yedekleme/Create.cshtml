@@ -1,17 +1,19 @@
 ﻿@model TakipProje.Models.Yedekleme
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Yedekleme Kayıt";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<br>
+<br>
+<center><h2>Yedekleme Kayıt İşlemi</h2></center>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Yedekleme</h4>
         <hr />
