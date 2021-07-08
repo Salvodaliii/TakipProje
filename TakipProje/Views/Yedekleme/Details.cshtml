@@ -1,18 +1,19 @@
 ﻿@model TakipProje.Models.Yedekleme
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Yedekleme Ayrıntı";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
+<br>
+<br>
+<center><h2>Yedekleme Bilgileri Ayrıntılar</h2></center>
 
 <div>
-    <h4>Yedekleme</h4>
+    <h4>Yedekleme Ayrıntıları</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.YedeklemePeriyodu)
+            <span class="details_title">Yedekleme Periyodu</span>
         </dt>
 
         <dd>
@@ -20,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.YedeklemePlaniAdi)
+            <span class="details_title">Yedekleme Plan Adı</span>
         </dt>
 
         <dd>
@@ -28,7 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Durum)
+            <span class="details_title">Durum</span>
         </dt>
 
         <dd>
@@ -36,7 +37,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BaslangicTarihi)
+            <span class="details_title">Başlangıç Tarihi</span>
         </dt>
 
         <dd>
@@ -44,7 +45,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SonYedeklemeTarihi)
+            <span class="details_title">Son Yedekleme Tarihi</span>
         </dt>
 
         <dd>
@@ -52,7 +53,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KontrolEdenPersonel)
+            <span class="details_title">Kontrol Eden Personel</span>
         </dt>
 
         <dd>
@@ -60,7 +61,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SonKontrolTarihi)
+            <span class="details_title">Son Kontrol Tarihi</span>
         </dt>
 
         <dd>
@@ -70,6 +71,12 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
+    <div class="col-sm-offset-1 col-md-10">
+        <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
+
+
+        <div id="btn_geridon">
+            <button type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
+        </div>
+    </div>
 </p>
