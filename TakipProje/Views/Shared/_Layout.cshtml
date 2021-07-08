@@ -12,7 +12,7 @@
     @Scripts.Render("~/bundles/modernizr")
 
 
-<title>@ViewBag.Title</title>
+    <title>@ViewBag.Title</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/Content/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -21,6 +21,16 @@
 
     <!-- Custom styles for this template-->
     <link href="~/Content/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <style>
+        #logo {
+           width:100%; 
+           border-radius:50%;
+           background-color:white;
+           border:solid white 3px;
+           border-radius:50%;
+        }
+    </style>
 
 </head>
 
@@ -34,19 +44,22 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/Home/Index">
-                <div class="sidebar-brand-icon"  >
-                    <img src="~/Content/img/logo.png" style="width:55%; background-color:black" />
+                <div class="sidebar-brand-icon">
+                    <br><br><br><br><br>
+                    <img id="logo" src="~/Content/img/logo.png" />
                 </div>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            @*<hr class="sidebar-divider my-0">*@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/Home/Index">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <br><br><br><br><br>
+                    <i class="fas fa-fw fa-home"></i>
                     <span>Anasayfa</span>
+
                 </a>
             </li>
 
