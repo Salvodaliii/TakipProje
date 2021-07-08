@@ -43,13 +43,13 @@
                 @Html.DisplayFor(modelItem => item.Durum)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BaslangicTarihi)
+                @item.BaslangicTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SonYedeklemeTarihi)
+                @item.SonYedeklemeTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SonKontrolTarihi)
+                @item.SonKontrolTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
                 @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
