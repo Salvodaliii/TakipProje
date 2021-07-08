@@ -16,7 +16,7 @@ namespace TakipProje.Models
     {
         public int ID { get; set; }
         public string BakimAdi { get; set; }
-        public Nullable<System.DateTime> BakimTarihi { get; set; }
+        public System.DateTime BakimTarihi { get; set; }
         public string BakimYapanPersonel { get; set; }
         public string Periyot { get; set; }
     }
