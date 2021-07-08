@@ -43,7 +43,7 @@ namespace WebApplication1.Controllers
         public void BakimIdCount()
         {
             ViewBag.displayclient = db.Bakim.ToList();
-            ViewBag.Count = db.Bakim.Count();
+            int x = db.Bakim.Count();
         }
 
     }
