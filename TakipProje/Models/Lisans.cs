@@ -11,26 +11,15 @@ namespace TakipProje.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Lisans
     {
         public int ID { get; set; }
         public string ProgramAdi { get; set; }
         public Nullable<int> Adet { get; set; }
         public string FirmaAdi { get; set; }
-
-
-
-        [StringLength(11, ErrorMessage = "Lütfen Geçerli Bir Sabit Telefon Numarasý Giriniz !")]
-        [MinLength(11, ErrorMessage = "Lütfen Geçerli Bir Sabit Telefon Numarasý Giriniz !")]
         public string SabitTelefon { get; set; }
-
-        [StringLength(11, ErrorMessage = "Lütfen Geçerli Bir Cep Telefon Numarasý Giriniz !")]
-        [MinLength(11, ErrorMessage = "Lütfen Geçerli Bir Cep Telefon Numarasý Giriniz !")]
         public string Gsm { get; set; }
-
-
         public string Mail { get; set; }
         public System.DateTime AlimTarihi { get; set; }
         public System.DateTime BitisTarihi { get; set; }

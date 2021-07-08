@@ -1,88 +1,140 @@
 ﻿@model IEnumerable<TakipProje.Models.Servis>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Servis Takibi";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<br>
+<br>
+<center><h2>Servis Takip Kayıt İşlemleri</h2></center>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br>
+<button type="button" class="btn btn-primary" onClick="location.href='/Servis/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
+<br>
+<br>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.İsAdi)
+            <span>İş Adı</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.BakimPeriyodu)
+            <span>Bakım Periyodu</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirmaAdi)
+            <span>Firma Adı</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SabitTelefon)
+            <span>Destek Personeli</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DestekPersonelAdSoyad)
+            <span>GSM</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gsm)
+            <span>Başlangıç Tarihi</span>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Mail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BaslangicTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BitisTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BakimveAciklamalar)
+            <span>Bitiş Tarihi</span>
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.İsAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BakimPeriyodu)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirmaAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SabitTelefon)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DestekPersonelAdSoyad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gsm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BaslangicTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BitisTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BakimveAciklamalar)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.İsAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BakimPeriyodu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirmaAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DestekPersonelAdSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gsm)
+            </td>
+            <td>
+                @item.BaslangicTarihi.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @item.BitisTarihi.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
+                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<style>
+
+    .btn_duzenle {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: rgba(28,200,138,1);
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_ayrintilar {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: #4E73DF;
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_sil {
+        font-weight: inherit;
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        background-color: #DC3545;
+        font-size: 15px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 13px;
+        padding-right: 13px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .btn_duzenle:hover {
+        text-decoration: none;
+        background-color: rgba(22,160,110,1);
+        color: black;
+    }
+
+    .btn_ayrintilar:hover {
+        text-decoration: none;
+        background-color: #2F5AD9;
+        color: black;
+    }
+
+    .btn_sil:hover {
+        text-decoration: none;
+        background-color: #C82333;
+        color: black;
+    }
+</style>

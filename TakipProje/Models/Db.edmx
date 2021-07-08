@@ -151,8 +151,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
-          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="BakimveAciklamalar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">

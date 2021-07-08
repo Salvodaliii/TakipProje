@@ -22,8 +22,8 @@ namespace TakipProje.Models
         public string DestekPersonelAdSoyad { get; set; }
         public string Gsm { get; set; }
         public string Mail { get; set; }
-        public Nullable<System.DateTime> BaslangicTarihi { get; set; }
-        public Nullable<System.DateTime> BitisTarihi { get; set; }
+        public System.DateTime BaslangicTarihi { get; set; }
+        public System.DateTime BitisTarihi { get; set; }
         public string BakimveAciklamalar { get; set; }
     }
 }
