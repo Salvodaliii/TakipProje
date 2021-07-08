@@ -17,6 +17,7 @@ namespace TakipProje.Controllers
         // GET: Bakim
         public ActionResult Index()
         {
+            BakimIdCount();
             return View(db.Bakim.ToList());
         }
 
@@ -122,6 +123,12 @@ namespace TakipProje.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public void BakimIdCount()
+        {
+            ViewBag.displayclient = db.Bakim.ToList();
+            ViewBag.Count = db.Bakim.Count();
         }
     }
 }
