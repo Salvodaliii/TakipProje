@@ -17,8 +17,37 @@ namespace TakipProje.Controllers
         // GET: Yedekleme
         public ActionResult Index()
         {
+            LisansIdCount();
+            BakimIdCount();
+            YedeklemeIdCount();
+            ServisIdCount();
             return View(db.Yedekleme.ToList());
         }
+
+        public void LisansIdCount()
+        {
+            ViewBag.displayclient = db.Lisans.ToList();
+            ViewBag.LisansKayitSayisi = db.Lisans.Count();
+        }
+
+        public void BakimIdCount()
+        {
+            ViewBag.displayclient = db.Bakim.ToList();
+            ViewBag.BakimKayitSayisi = db.Bakim.Count();
+        }
+
+        public void ServisIdCount()
+        {
+            ViewBag.displayclient = db.Servis.ToList();
+            ViewBag.ServisKayitSayisi = db.Servis.Count();
+        }
+
+        public void YedeklemeIdCount()
+        {
+            ViewBag.displayclient = db.Yedekleme.ToList();
+            ViewBag.YedeklemeKayitSayisi = db.Yedekleme.Count();
+        }
+
 
         // GET: Yedekleme/Details/5
         public ActionResult Details(int? id)

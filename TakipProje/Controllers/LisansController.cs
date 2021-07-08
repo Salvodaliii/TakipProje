@@ -21,6 +21,9 @@ namespace TakipProje.Controllers
         public ActionResult Index()
         {
             LisansIdCount();
+            BakimIdCount();
+            YedeklemeIdCount();
+            ServisIdCount();
             return View(db.Lisans.ToList());
         }
 
@@ -133,9 +136,27 @@ namespace TakipProje.Controllers
         public void LisansIdCount()
         {
             ViewBag.displayclient = db.Lisans.ToList();
-            ViewBag.Count = db.Lisans.Count();
-
+            ViewBag.LisansKayitSayisi = db.Lisans.Count();
         }
+
+        public void BakimIdCount()
+        {
+            ViewBag.displayclient = db.Bakim.ToList();
+            ViewBag.BakimKayitSayisi = db.Bakim.Count();
+        }
+
+        public void ServisIdCount()
+        {
+            ViewBag.displayclient = db.Servis.ToList();
+            ViewBag.ServisKayitSayisi = db.Servis.Count();
+        }
+
+        public void YedeklemeIdCount()
+        {
+            ViewBag.displayclient = db.Yedekleme.ToList();
+            ViewBag.YedeklemeKayitSayisi = db.Yedekleme.Count();
+        }
+
 
     }
 

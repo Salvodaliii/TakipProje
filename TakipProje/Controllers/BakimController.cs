@@ -17,8 +17,36 @@ namespace TakipProje.Controllers
         // GET: Bakim
         public ActionResult Index()
         {
+            LisansIdCount();
             BakimIdCount();
+            YedeklemeIdCount();
+            ServisIdCount();
             return View(db.Bakim.ToList());
+        }
+
+
+        public void LisansIdCount()
+        {
+            ViewBag.displayclient = db.Lisans.ToList();
+            ViewBag.LisansKayitSayisi = db.Lisans.Count();
+        }
+
+        public void BakimIdCount()
+        {
+            ViewBag.displayclient = db.Bakim.ToList();
+            ViewBag.BakimKayitSayisi = db.Bakim.Count();
+        }
+
+        public void ServisIdCount()
+        {
+            ViewBag.displayclient = db.Servis.ToList();
+            ViewBag.ServisKayitSayisi = db.Servis.Count();
+        }
+
+        public void YedeklemeIdCount()
+        {
+            ViewBag.displayclient = db.Yedekleme.ToList();
+            ViewBag.YedeklemeKayitSayisi = db.Yedekleme.Count();
         }
 
         // GET: Bakim/Details/5
@@ -125,10 +153,6 @@ namespace TakipProje.Controllers
             base.Dispose(disposing);
         }
 
-        public void BakimIdCount()
-        {
-            ViewBag.displayclient = db.Bakim.ToList();
-            ViewBag.Count = db.Bakim.Count();
-        }
+        
     }
 }
