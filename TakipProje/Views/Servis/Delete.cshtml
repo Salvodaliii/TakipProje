@@ -1,19 +1,22 @@
 ﻿@model TakipProje.Models.Servis
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Servis Sil";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<br>
+<br>
+<center><h2>Servis Silme İşlemi</h2></center>
+<br>
+<center><h3 style="color:red;background-color:rgba(1,1,1,0.1);">Uyarı ! : Bu Servis Kaydını Silmek İstediğinize Emin Misiniz ?</h3></center>
 <div>
-    <h4>Servis</h4>
+    <br>
+    <h4>Servis Bilgileri</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.İsAdi)
+            <span class="delete_title">İş Adı</span>
         </dt>
 
         <dd>
@@ -21,7 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BakimPeriyodu)
+            <span class="delete_title">Bakım Periyodu</span>
         </dt>
 
         <dd>
@@ -29,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FirmaAdi)
+            <span class="delete_title">Firma Adı</span>
         </dt>
 
         <dd>
@@ -37,7 +40,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SabitTelefon)
+            <span class="delete_title">Sabit Telefon</span>
         </dt>
 
         <dd>
@@ -45,7 +48,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DestekPersonelAdSoyad)
+            <span class="delete_title">Destek Personeli</span>
         </dt>
 
         <dd>
@@ -53,7 +56,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Gsm)
+            <span class="delete_title">GSM</span>
         </dt>
 
         <dd>
@@ -61,7 +64,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mail)
+            <span class="delete_title">Mail</span>
         </dt>
 
         <dd>
@@ -69,7 +72,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BaslangicTarihi)
+            <span class="delete_title">Başlangıç Tarihi</span>
         </dt>
 
         <dd>
@@ -77,7 +80,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BitisTarihi)
+            <span class="delete_title">Bitiş Tarihi</span>
         </dt>
 
         <dd>
@@ -85,7 +88,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BakimveAciklamalar)
+            <span class="delete_title">Bakım ve Açıklamalar</span>
         </dt>
 
         <dd>
@@ -94,12 +97,30 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        <div id="btn_geridon">
+
+            <button type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
+
         </div>
+    </div>
+</div>
     }
 </div>
+
+<style>
+    .delete_title {
+        color: black;
+        font-weight: bolder;
+    }
+
+    #btn_geridon {
+        float: right;
+    }
+</style>

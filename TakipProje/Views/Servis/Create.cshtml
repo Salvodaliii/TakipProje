@@ -68,7 +68,7 @@
     <div class="form-group">
         <span class="create_titles">Mail</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" , @type="email" } })
             @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -76,7 +76,7 @@
     <div class="form-group">
         <span class="create_titles">Başlangıç Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
             @Html.ValidationMessageFor(model => model.BaslangicTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -84,7 +84,7 @@
     <div class="form-group">
         <span class="create_titles">Bitiş Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
             @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -99,16 +99,32 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Kayıt Oluştur" class="btn btn-success" />
+            <div id="btn_geridon">
+
+                <button type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
+
+            </div>
         </div>
+
     </div>
 </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+<style>
+    .create_titles {
+        margin-left: 13px;
+        color: black;
+        font-weight: bolder;
+    }
+
+    #btn_geridon {
+        float: right;
+    }
+</style>
