@@ -3536,6 +3536,7 @@
     <Content Include="Content\css\table-responsive.css" />
     <Content Include="Content\css\tasks.css" />
     <Content Include="Content\css\yamm.css" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\js\additional-methods.min.js" />
     <Content Include="Content\js\advanced-form-components.js" />
     <Content Include="Content\js\all-chartjs.js" />
