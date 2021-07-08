@@ -1,90 +1,94 @@
 ﻿@model TakipProje.Models.Yedekleme
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Yedekleme Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<br>
+<br>
+<center><h2>Yedekleme Güncelleme İşlemi</h2></center>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Yedekleme</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.YedeklemePeriyodu, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YedeklemePeriyodu, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YedeklemePeriyodu, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-horizontal">
+    <h4>Yedekleme Bilgileri</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.YedeklemePlaniAdi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.YedeklemePlaniAdi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.YedeklemePlaniAdi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Yedekleme Periyodu</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.YedeklemePeriyodu, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.YedeklemePeriyodu, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Durum, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Durum, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Durum, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Yedekleme Plan Adı</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.YedeklemePlaniAdi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.YedeklemePlaniAdi, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.BaslangicTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.BaslangicTarihi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Durum</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Durum, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Durum, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SonYedeklemeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SonYedeklemeTarihi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SonYedeklemeTarihi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Başlangıç Tarihi</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.BaslangicTarihi, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.KontrolEdenPersonel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KontrolEdenPersonel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KontrolEdenPersonel, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Son Yedekleme Tarihi</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.SonYedeklemeTarihi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.SonYedeklemeTarihi, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.SonKontrolTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SonKontrolTarihi, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SonKontrolTarihi, "", new { @class = "text-danger" })
-            </div>
-        </div>
+<div class="form-group">
+    <span class="create_titles">Kontrol Eden Personel</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.KontrolEdenPersonel, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.KontrolEdenPersonel, "", new { @class = "text-danger" })
+    </div>
+</div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+<div class="form-group">
+    <span class="create_titles">Son Kullanma Tarihi</span>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.SonKontrolTarihi, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.SonKontrolTarihi, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Güncelle" class="btn btn-success" />
+        <div id="btn_geridon">
+
+            <button type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
+
         </div>
     </div>
+</div>
+</div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
