@@ -37,7 +37,7 @@
                 @Html.DisplayFor(modelItem => item.BakimAdi)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BakimTarihi)
+                @item.BakimTarihi.ToString("yyyy.MM.dd")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BakimYapanPersonel)
@@ -54,69 +54,3 @@
     }
 
 </table>
-
-<style>
-
-    .btn_duzenle {
-        font-weight: inherit;
-        letter-spacing: 0.7px;
-        transition: 900ms;
-        background-color: rgba(28,200,138,1);
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
-
-    .btn_ayrintilar {
-        font-weight: inherit;
-        letter-spacing: 0.7px;
-        transition: 900ms;
-        background-color: #4E73DF;
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
-
-    .btn_sil {
-        font-weight: inherit;
-        letter-spacing: 0.7px;
-        transition: 900ms;
-        background-color: #DC3545;
-        font-size: 15px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        padding-left: 13px;
-        padding-right: 13px;
-        border-radius: 5px;
-        color: white;
-        text-decoration: none;
-    }
-
-    .btn_duzenle:hover {
-        text-decoration: none;
-        background-color: rgba(22,160,110,1);
-        color: black;
-    }
-
-    .btn_ayrintilar:hover {
-        text-decoration: none;
-        background-color: #2F5AD9;
-        color: black;
-    }
-
-    .btn_sil:hover {
-        text-decoration: none;
-        background-color: #C82333;
-        color: black;
-    }
-</style>

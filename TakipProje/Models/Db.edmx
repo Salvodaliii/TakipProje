@@ -119,7 +119,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BakimAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BakimTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BakimTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="BakimYapanPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Periyot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -173,10 +173,10 @@
           <Property Name="YedeklemePeriyodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="YedeklemePlaniAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
-          <Property Name="SonYedeklemeTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="SonYedeklemeTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="KontrolEdenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SonKontrolTarihi" Type="DateTime" Precision="0" />
+          <Property Name="SonKontrolTarihi" Type="DateTime" Precision="0" Nullable="false" />
         </EntityType>
         <EntityContainer Name="takipDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bakim" EntityType="Self.Bakim" />
