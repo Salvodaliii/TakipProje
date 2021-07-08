@@ -134,6 +134,7 @@ namespace TakipProje.Controllers
         {
             ViewBag.displayclient = db.Lisans.ToList();
             ViewBag.Count = db.Lisans.Count();
+
         }
 
     }
