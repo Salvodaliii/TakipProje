@@ -31,7 +31,6 @@ namespace TakipProje.Models
         public virtual DbSet<BakimAciklama> BakimAciklama { get; set; }
         public virtual DbSet<Kullanicilar> Kullanicilar { get; set; }
         public virtual DbSet<Lisans> Lisans { get; set; }
-        public virtual DbSet<LisansDetay> LisansDetay { get; set; }
         public virtual DbSet<Servis> Servis { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Yedekleme> Yedekleme { get; set; }

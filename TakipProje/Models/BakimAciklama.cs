@@ -17,7 +17,7 @@ namespace TakipProje.Models
         public int ID { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
         public int BakimID { get; set; }
-        public Nullable<int> KullaniciID { get; set; }
+        public int KullaniciID { get; set; }
         public string Aciklama { get; set; }
     
         public virtual Bakim Bakim { get; set; }

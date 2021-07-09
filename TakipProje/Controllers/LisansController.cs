@@ -53,31 +53,19 @@ namespace TakipProje.Controllers
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProgramAdi,Adet,FirmaAdi,SabitTelefon,Gsm,Mail,AlimTarihi,BitisTarihi,YenilemeTarihi,AlisFiyati")] Lisans lisans, LisansDetay detay)
+        public ActionResult Create([Bind(Include = "ID,ProgramAdi,Adet,FirmaAdi,SabitTelefon,Gsm,Mail,AlimTarihi,BitisTarihi,YenilemeTarihi,AlisFiyati")] Lisans lisans)
         {
             
             if (ModelState.IsValid)
             {
                 lisans.YenilemeTarihi = lisans.AlimTarihi;
-
-                LisansDetay Ldetay = new LisansDetay();
-                Ldetay.ProgramAd = lisans.ProgramAdi;
-                Ldetay.ProgramTarih = lisans.AlimTarihi;
-                Ldetay.ProgramFiyat = lisans.AlisFiyati;
-
-                db.LisansDetay.Add(Ldetay);
                 db.Lisans.Add(lisans);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            
             return View(lisans);
         }
-
-        //
-
-        //
 
         // GET: Lisans/Edit/5
         public ActionResult Edit(int? id)

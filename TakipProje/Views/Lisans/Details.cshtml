@@ -89,7 +89,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AlisFiyati) ₺
+            @Html.DisplayFor(model => model.AlisFiyati)
         </dd>
         <br>
     </dl>
@@ -99,11 +99,7 @@
 
 
     <div class="col-sm-offset-1 col-md-10">
-        <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
-
-        <div id="btn_gecmis">
-            <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geçmiş Fiyatlar</button>
-        </div>
+        <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID } , new { @class="btn_duzenle_txt"})</span>
 
 
         <div id="btn_geridon">
@@ -117,11 +113,6 @@
         color:black;
         font-weight:bolder;
     }
-
-    #btn_gecmis{
-        float:left;
-    }
-
     #btn_geridon {
         float: right;
     }
