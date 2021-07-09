@@ -131,6 +131,7 @@
     <Compile Include="Controllers\BakimController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
+    <Compile Include="Controllers\LisansDetayController.cs" />
     <Compile Include="Controllers\ServisController.cs" />
     <Compile Include="Controllers\YedeklemeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4040,6 +4041,11 @@
     <Content Include="Views\Yedekleme\Edit.cshtml" />
     <Content Include="Views\Yedekleme\Index.cshtml" />
     <Content Include="Views\Shared\BakimAciklama.cshtml" />
+    <Content Include="Views\LisansDetay\Create.cshtml" />
+    <Content Include="Views\LisansDetay\Delete.cshtml" />
+    <Content Include="Views\LisansDetay\Details.cshtml" />
+    <Content Include="Views\LisansDetay\Edit.cshtml" />
+    <Content Include="Views\LisansDetay\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

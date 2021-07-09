@@ -55,7 +55,6 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LisansID" Type="int" Nullable="false" />
           <Property Name="ProgramAd" Type="nvarchar" MaxLength="50" />
           <Property Name="ProgramTarih" Type="date" Nullable="false" />
           <Property Name="ProgramFiyat" Type="money" />
@@ -122,18 +121,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LisansDetay_Lisans">
-          <End Role="Lisans" Type="Self.Lisans" Multiplicity="1" />
-          <End Role="LisansDetay" Type="Self.LisansDetay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lisans">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="LisansDetay">
-              <PropertyRef Name="LisansID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -181,10 +168,6 @@
           <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LisansDetay_Lisans" Association="Self.FK_LisansDetay_Lisans">
-            <End Role="Lisans" EntitySet="Lisans" />
-            <End Role="LisansDetay" EntitySet="LisansDetay" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -240,18 +223,15 @@
           <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="YenilemeTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="AlisFiyati" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="LisansDetay" Relationship="Self.FK_LisansDetay_Lisans" FromRole="Lisans" ToRole="LisansDetay" />
         </EntityType>
         <EntityType Name="LisansDetay">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LisansID" Type="Int32" Nullable="false" />
           <Property Name="ProgramAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProgramTarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProgramFiyat" Type="Decimal" Precision="19" Scale="4" />
-          <NavigationProperty Name="Lisans" Relationship="Self.FK_LisansDetay_Lisans" FromRole="LisansDetay" ToRole="Lisans" />
         </EntityType>
         <EntityType Name="Servis">
           <Key>
@@ -315,18 +295,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LisansDetay_Lisans">
-          <End Role="Lisans" Type="Self.Lisans" Multiplicity="1" />
-          <End Role="LisansDetay" Type="Self.LisansDetay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lisans">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="LisansDetay">
-              <PropertyRef Name="LisansID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="takipDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bakim" EntityType="Self.Bakim" />
           <EntitySet Name="BakimAciklama" EntityType="Self.BakimAciklama" />
@@ -343,10 +311,6 @@
           <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LisansDetay_Lisans" Association="Self.FK_LisansDetay_Lisans">
-            <End Role="Lisans" EntitySet="Lisans" />
-            <End Role="LisansDetay" EntitySet="LisansDetay" />
           </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -449,7 +413,6 @@
             <EntityTypeMapping TypeName="takipDbModel.LisansDetay">
               <MappingFragment StoreEntitySet="LisansDetay">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LisansID" ColumnName="LisansID" />
                 <ScalarProperty Name="ProgramAd" ColumnName="ProgramAd" />
                 <ScalarProperty Name="ProgramTarih" ColumnName="ProgramTarih" />
                 <ScalarProperty Name="ProgramFiyat" ColumnName="ProgramFiyat" />

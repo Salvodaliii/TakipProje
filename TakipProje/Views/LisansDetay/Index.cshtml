@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TakipProje.Models.LisansDetay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Index", "LisansDetay", FormMethod.Get))
+{
+    <p>
+        Aranacak Program: @Html.TextBox("p")
+        <input type="submit" value="Ara" />
+    </p>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramTarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProgramFiyat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramFiyat)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

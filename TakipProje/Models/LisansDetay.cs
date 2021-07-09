@@ -15,11 +15,8 @@ namespace TakipProje.Models
     public partial class LisansDetay
     {
         public int ID { get; set; }
-        public int LisansID { get; set; }
         public string ProgramAd { get; set; }
         public System.DateTime ProgramTarih { get; set; }
         public Nullable<decimal> ProgramFiyat { get; set; }
-    
-        public virtual Lisans Lisans { get; set; }
     }
 }
