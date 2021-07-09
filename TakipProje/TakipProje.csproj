@@ -139,6 +139,9 @@
     <Compile Include="Models\Bakim.cs">
       <DependentUpon>Db.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BakimAciklama.cs">
+      <DependentUpon>Db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Db.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -153,6 +156,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Db.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kullanicilar.cs">
+      <DependentUpon>Db.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lisans.cs">
       <DependentUpon>Db.tt</DependentUpon>

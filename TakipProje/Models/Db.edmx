@@ -15,6 +15,25 @@
           <Property Name="BakimYapanPersonel" Type="nvarchar" MaxLength="50" />
           <Property Name="Periyot" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="BakimAciklama">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="BakimID" Type="int" Nullable="false" />
+          <Property Name="KullaniciID" Type="int" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Lisans">
           <Key>
             <PropertyRef Name="ID" />
@@ -69,6 +88,30 @@
           <Property Name="SonYedeklemeTarihi" Type="date" Nullable="false" />
           <Property Name="KontrolEdenPersonel" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_BakimAciklama_Bakim">
+          <End Role="Bakim" Type="Self.Bakim" Multiplicity="1" />
+          <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BakimAciklama_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -102,10 +145,20 @@
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="takipDbModelStoreContainer">
           <EntitySet Name="Bakim" EntityType="Self.Bakim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BakimAciklama" EntityType="Self.BakimAciklama" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lisans" EntityType="Self.Lisans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servis" EntityType="Self.Servis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BakimAciklama_Bakim" Association="Self.FK_BakimAciklama_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -120,6 +173,7 @@
           <Property Name="BakimTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="BakimYapanPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Periyot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BakimAciklamas" Relationship="takipDbModel.FK_BakimAciklama_Bakim" FromRole="Bakim" ToRole="BakimAciklama" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -211,6 +265,16 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="BakimAciklamas" EntityType="takipDbModel.BakimAciklama" />
+          <EntitySet Name="Kullanicilars" EntityType="takipDbModel.Kullanicilar" />
+          <AssociationSet Name="FK_BakimAciklama_Bakim" Association="takipDbModel.FK_BakimAciklama_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklamas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="takipDbModel.FK_BakimAciklama_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklamas" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -223,6 +287,52 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="BakimAciklama">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="BakimID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bakim" Relationship="takipDbModel.FK_BakimAciklama_Bakim" FromRole="BakimAciklama" ToRole="Bakim" />
+          <NavigationProperty Name="Kullanicilar" Relationship="takipDbModel.FK_BakimAciklama_Kullanicilar" FromRole="BakimAciklama" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BakimAciklamas" Relationship="takipDbModel.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
+        </EntityType>
+        <Association Name="FK_BakimAciklama_Bakim">
+          <End Type="takipDbModel.Bakim" Role="Bakim" Multiplicity="1" />
+          <End Type="takipDbModel.BakimAciklama" Role="BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BakimAciklama_Kullanicilar">
+          <End Type="takipDbModel.Kullanicilar" Role="Kullanicilar" Multiplicity="1" />
+          <End Type="takipDbModel.BakimAciklama" Role="BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -322,6 +432,27 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="takipDbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="takipDbModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="BakimAciklamas">
+            <EntityTypeMapping TypeName="takipDbModel.BakimAciklama">
+              <MappingFragment StoreEntitySet="BakimAciklama">
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="BakimID" ColumnName="BakimID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilars">
+            <EntityTypeMapping TypeName="takipDbModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

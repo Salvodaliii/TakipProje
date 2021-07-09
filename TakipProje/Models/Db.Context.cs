@@ -32,6 +32,8 @@ namespace TakipProje.Models
         public virtual DbSet<Servis> Servis { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Yedekleme> Yedekleme { get; set; }
+        public virtual DbSet<BakimAciklama> BakimAciklamas { get; set; }
+        public virtual DbSet<Kullanicilar> Kullanicilars { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

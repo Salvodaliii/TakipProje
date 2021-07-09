@@ -12,19 +12,18 @@ namespace TakipProje.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bakim
+    public partial class Kullanicilar
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Bakim()
+        public Kullanicilar()
         {
             this.BakimAciklamas = new HashSet<BakimAciklama>();
         }
     
         public int ID { get; set; }
-        public string BakimAdi { get; set; }
-        public System.DateTime BakimTarihi { get; set; }
-        public string BakimYapanPersonel { get; set; }
-        public string Periyot { get; set; }
+        public string KullaniciAdi { get; set; }
+        public string Sifre { get; set; }
+        public string Yetki { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BakimAciklama> BakimAciklamas { get; set; }
