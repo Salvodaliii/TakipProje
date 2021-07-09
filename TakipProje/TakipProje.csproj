@@ -4036,6 +4036,7 @@
     <Content Include="Views\Yedekleme\Details.cshtml" />
     <Content Include="Views\Yedekleme\Edit.cshtml" />
     <Content Include="Views\Yedekleme\Index.cshtml" />
+    <Content Include="Views\Shared\BakimAciklama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
