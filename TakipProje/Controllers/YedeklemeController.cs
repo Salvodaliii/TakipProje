@@ -75,7 +75,7 @@ namespace TakipProje.Controllers
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,YedeklemePeriyodu,YedeklemePlaniAdi,Durum,BaslangicTarihi,SonYedeklemeTarihi,KontrolEdenPersonel,SonKontrolTarihi")] Yedekleme yedekleme)
+        public ActionResult Create([Bind(Include = "ID,YedeklemePeriyodu,YedeklemePlaniAdi,Durum,OlusturmaTarihi,SonYedeklemeTarihi,KontrolEdenPersonel")] Yedekleme yedekleme)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace TakipProje.Controllers
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,YedeklemePeriyodu,YedeklemePlaniAdi,Durum,BaslangicTarihi,SonYedeklemeTarihi,KontrolEdenPersonel,SonKontrolTarihi")] Yedekleme yedekleme)
+        public ActionResult Edit([Bind(Include = "ID,YedeklemePeriyodu,YedeklemePlaniAdi,Durum,OlusturmaTarihi,SonYedeklemeTarihi,KontrolEdenPersonel")] Yedekleme yedekleme)
         {
             if (ModelState.IsValid)
             {

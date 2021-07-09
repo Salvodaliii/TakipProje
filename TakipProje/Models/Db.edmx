@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bakim">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BakimAdi" Type="nvarchar(max)" />
-          <Property Name="BakimTarihi" Type="date" />
+          <Property Name="BakimTarihi" Type="date" Nullable="false" />
           <Property Name="BakimYapanPersonel" Type="nvarchar" MaxLength="50" />
           <Property Name="Periyot" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -26,9 +26,9 @@
           <Property Name="SabitTelefon" Type="nvarchar" MaxLength="11" />
           <Property Name="Gsm" Type="nvarchar" MaxLength="11" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="AlimTarihi" Type="date" />
-          <Property Name="BitisTarihi" Type="date" />
-          <Property Name="YenilemeTarihi" Type="date" />
+          <Property Name="AlimTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="YenilemeTarihi" Type="date" Nullable="false" />
           <Property Name="AlisFiyati" Type="money" />
         </EntityType>
         <EntityType Name="Servis">
@@ -43,8 +43,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="Gsm" Type="nvarchar" MaxLength="11" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaslangicTarihi" Type="date" />
-          <Property Name="BitisTarihi" Type="date" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
           <Property Name="BakimveAciklamalar" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -65,10 +65,9 @@
           <Property Name="YedeklemePeriyodu" Type="nvarchar" MaxLength="50" />
           <Property Name="YedeklemePlaniAdi" Type="nvarchar" MaxLength="50" />
           <Property Name="Durum" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaslangicTarihi" Type="date" />
-          <Property Name="SonYedeklemeTarihi" Type="date" />
+          <Property Name="OlusturmaTarihi" Type="date" Nullable="false" />
+          <Property Name="SonYedeklemeTarihi" Type="date" Nullable="false" />
           <Property Name="KontrolEdenPersonel" Type="nvarchar" MaxLength="50" />
-          <Property Name="SonKontrolTarihi" Type="date" />
         </EntityType>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -108,8 +107,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="takipDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -173,10 +171,9 @@
           <Property Name="YedeklemePeriyodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="YedeklemePlaniAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="SonYedeklemeTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="KontrolEdenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SonKontrolTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityContainer Name="takipDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bakim" EntityType="Self.Bakim" />
@@ -291,14 +288,13 @@
           <EntitySetMapping Name="Yedekleme">
             <EntityTypeMapping TypeName="takipDbModel.Yedekleme">
               <MappingFragment StoreEntitySet="Yedekleme">
+                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="YedeklemePeriyodu" ColumnName="YedeklemePeriyodu" />
                 <ScalarProperty Name="YedeklemePlaniAdi" ColumnName="YedeklemePlaniAdi" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
-                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
                 <ScalarProperty Name="SonYedeklemeTarihi" ColumnName="SonYedeklemeTarihi" />
                 <ScalarProperty Name="KontrolEdenPersonel" ColumnName="KontrolEdenPersonel" />
-                <ScalarProperty Name="SonKontrolTarihi" ColumnName="SonKontrolTarihi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -340,7 +336,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

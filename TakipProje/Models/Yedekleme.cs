@@ -18,9 +18,8 @@ namespace TakipProje.Models
         public string YedeklemePeriyodu { get; set; }
         public string YedeklemePlaniAdi { get; set; }
         public string Durum { get; set; }
-        public System.DateTime BaslangicTarihi { get; set; }
         public System.DateTime SonYedeklemeTarihi { get; set; }
         public string KontrolEdenPersonel { get; set; }
-        public System.DateTime SonKontrolTarihi { get; set; }
+        public System.DateTime OlusturmaTarihi { get; set; }
     }
 }
