@@ -59,6 +59,12 @@ namespace TakipProje.Controllers
             if (ModelState.IsValid)
             {
                 lisans.YenilemeTarihi = lisans.AlimTarihi;
+                LisansDetay lisansDetay = new LisansDetay();
+                lisansDetay.ProgramAd = lisans.ProgramAdi;
+                lisansDetay.ProgramTarih = lisans.AlimTarihi;
+                lisansDetay.ProgramFiyat = lisans.AlisFiyati;
+                db.LisansDetay.Add(lisansDetay);
+
                 db.Lisans.Add(lisans);
                 db.SaveChanges();
                 return RedirectToAction("Index");
