@@ -12,15 +12,14 @@ namespace TakipProje.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class BakimAciklama
+    public partial class LisansDetay
     {
         public int ID { get; set; }
-        public Nullable<System.DateTime> Tarih { get; set; }
-        public int BakimID { get; set; }
-        public Nullable<int> KullaniciID { get; set; }
-        public string Aciklama { get; set; }
+        public int LisansID { get; set; }
+        public string ProgramAd { get; set; }
+        public System.DateTime ProgramTarih { get; set; }
+        public Nullable<decimal> ProgramFiyat { get; set; }
     
-        public virtual Bakim Bakim { get; set; }
-        public virtual Kullanicilar Kullanicilar { get; set; }
+        public virtual Lisans Lisans { get; set; }
     }
 }

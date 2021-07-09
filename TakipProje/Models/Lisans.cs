@@ -14,6 +14,12 @@ namespace TakipProje.Models
     
     public partial class Lisans
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Lisans()
+        {
+            this.LisansDetay = new HashSet<LisansDetay>();
+        }
+    
         public int ID { get; set; }
         public string ProgramAdi { get; set; }
         public Nullable<int> Adet { get; set; }
@@ -25,5 +31,8 @@ namespace TakipProje.Models
         public System.DateTime BitisTarihi { get; set; }
         public System.DateTime YenilemeTarihi { get; set; }
         public Nullable<decimal> AlisFiyati { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LisansDetay> LisansDetay { get; set; }
     }
 }
