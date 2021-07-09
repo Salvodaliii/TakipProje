@@ -17,7 +17,7 @@ namespace TakipProje.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kullanicilar()
         {
-            this.BakimAciklamas = new HashSet<BakimAciklama>();
+            this.BakimAciklama = new HashSet<BakimAciklama>();
         }
     
         public int ID { get; set; }
@@ -26,6 +26,6 @@ namespace TakipProje.Models
         public string Yetki { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BakimAciklama> BakimAciklamas { get; set; }
+        public virtual ICollection<BakimAciklama> BakimAciklama { get; set; }
     }
 }

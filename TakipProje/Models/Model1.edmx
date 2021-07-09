@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bakim">
           <Key>
             <PropertyRef Name="ID" />
@@ -29,10 +29,10 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Yetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Yetki" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -62,8 +62,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="Gsm" Type="nvarchar" MaxLength="11" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
-          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="date" />
+          <Property Name="BitisTarihi" Type="date" />
           <Property Name="BakimveAciklamalar" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -160,7 +160,8 @@
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="takipDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -170,10 +171,32 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BakimAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BakimTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="BakimTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="BakimYapanPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Periyot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BakimAciklamas" Relationship="takipDbModel.FK_BakimAciklama_Bakim" FromRole="Bakim" ToRole="BakimAciklama" />
+          <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Bakim" FromRole="Bakim" ToRole="BakimAciklama" />
+        </EntityType>
+        <EntityType Name="BakimAciklama">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="BakimID" Type="Int32" Nullable="false" />
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Bakim" Relationship="Self.FK_BakimAciklama_Bakim" FromRole="BakimAciklama" ToRole="Bakim" />
+          <NavigationProperty Name="Kullanicilar" Relationship="Self.FK_BakimAciklama_Kullanicilar" FromRole="BakimAciklama" ToRole="Kullanicilar" />
+        </EntityType>
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -186,9 +209,9 @@
           <Property Name="SabitTelefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AlimTarihi" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="BitisTarihi" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="YenilemeTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="AlimTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="YenilemeTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="AlisFiyati" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Servis">
@@ -203,8 +226,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="BitisTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
           <Property Name="BakimveAciklamalar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -225,16 +248,50 @@
           <Property Name="YedeklemePeriyodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="YedeklemePlaniAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SonYedeklemeTarihi" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="KontrolEdenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SonYedeklemeTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="KontrolEdenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_BakimAciklama_Bakim">
+          <End Role="Bakim" Type="Self.Bakim" Multiplicity="1" />
+          <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BakimAciklama_Kullanicilar">
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
+          <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanicilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="KullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="takipDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bakim" EntityType="Self.Bakim" />
+          <EntitySet Name="BakimAciklama" EntityType="Self.BakimAciklama" />
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
           <EntitySet Name="Lisans" EntityType="Self.Lisans" />
           <EntitySet Name="Servis" EntityType="Self.Servis" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" />
+          <AssociationSet Name="FK_BakimAciklama_Bakim" Association="Self.FK_BakimAciklama_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -265,16 +322,6 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="BakimAciklamas" EntityType="takipDbModel.BakimAciklama" />
-          <EntitySet Name="Kullanicilars" EntityType="takipDbModel.Kullanicilar" />
-          <AssociationSet Name="FK_BakimAciklama_Bakim" Association="takipDbModel.FK_BakimAciklama_Bakim">
-            <End Role="Bakim" EntitySet="Bakim" />
-            <End Role="BakimAciklama" EntitySet="BakimAciklamas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="takipDbModel.FK_BakimAciklama_Kullanicilar">
-            <End Role="Kullanicilar" EntitySet="Kullanicilars" />
-            <End Role="BakimAciklama" EntitySet="BakimAciklamas" />
-          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -287,52 +334,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="BakimAciklama">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tarih" Type="DateTime" Precision="0" />
-          <Property Name="BakimID" Type="Int32" Nullable="false" />
-          <Property Name="KullaniciID" Type="Int32" Nullable="false" />
-          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Bakim" Relationship="takipDbModel.FK_BakimAciklama_Bakim" FromRole="BakimAciklama" ToRole="Bakim" />
-          <NavigationProperty Name="Kullanicilar" Relationship="takipDbModel.FK_BakimAciklama_Kullanicilar" FromRole="BakimAciklama" ToRole="Kullanicilar" />
-        </EntityType>
-        <EntityType Name="Kullanicilar">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Yetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="BakimAciklamas" Relationship="takipDbModel.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
-        </EntityType>
-        <Association Name="FK_BakimAciklama_Bakim">
-          <End Type="takipDbModel.Bakim" Role="Bakim" Multiplicity="1" />
-          <End Type="takipDbModel.BakimAciklama" Role="BakimAciklama" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Bakim">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BakimAciklama">
-              <PropertyRef Name="BakimID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_BakimAciklama_Kullanicilar">
-          <End Type="takipDbModel.Kullanicilar" Role="Kullanicilar" Multiplicity="1" />
-          <End Type="takipDbModel.BakimAciklama" Role="BakimAciklama" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kullanicilar">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="BakimAciklama">
-              <PropertyRef Name="KullaniciID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -347,6 +348,27 @@
                 <ScalarProperty Name="BakimTarihi" ColumnName="BakimTarihi" />
                 <ScalarProperty Name="BakimYapanPersonel" ColumnName="BakimYapanPersonel" />
                 <ScalarProperty Name="Periyot" ColumnName="Periyot" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BakimAciklama">
+            <EntityTypeMapping TypeName="takipDbModel.BakimAciklama">
+              <MappingFragment StoreEntitySet="BakimAciklama">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="BakimID" ColumnName="BakimID" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanicilar">
+            <EntityTypeMapping TypeName="takipDbModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -398,11 +420,11 @@
           <EntitySetMapping Name="Yedekleme">
             <EntityTypeMapping TypeName="takipDbModel.Yedekleme">
               <MappingFragment StoreEntitySet="Yedekleme">
-                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="YedeklemePeriyodu" ColumnName="YedeklemePeriyodu" />
                 <ScalarProperty Name="YedeklemePlaniAdi" ColumnName="YedeklemePlaniAdi" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="OlusturmaTarihi" ColumnName="OlusturmaTarihi" />
                 <ScalarProperty Name="SonYedeklemeTarihi" ColumnName="SonYedeklemeTarihi" />
                 <ScalarProperty Name="KontrolEdenPersonel" ColumnName="KontrolEdenPersonel" />
               </MappingFragment>
@@ -432,27 +454,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="takipDbModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="takipDbModel.Store.sp_upgraddiagrams" />
-          <EntitySetMapping Name="BakimAciklamas">
-            <EntityTypeMapping TypeName="takipDbModel.BakimAciklama">
-              <MappingFragment StoreEntitySet="BakimAciklama">
-                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
-                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
-                <ScalarProperty Name="BakimID" ColumnName="BakimID" />
-                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Kullanicilars">
-            <EntityTypeMapping TypeName="takipDbModel.Kullanicilar">
-              <MappingFragment StoreEntitySet="Kullanicilar">
-                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
-                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
-                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -467,7 +468,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
