@@ -4041,10 +4041,6 @@
     <Content Include="Views\Yedekleme\Edit.cshtml" />
     <Content Include="Views\Yedekleme\Index.cshtml" />
     <Content Include="Views\Shared\BakimAciklama.cshtml" />
-    <Content Include="Views\LisansDetay\Create.cshtml" />
-    <Content Include="Views\LisansDetay\Delete.cshtml" />
-    <Content Include="Views\LisansDetay\Details.cshtml" />
-    <Content Include="Views\LisansDetay\Edit.cshtml" />
     <Content Include="Views\LisansDetay\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

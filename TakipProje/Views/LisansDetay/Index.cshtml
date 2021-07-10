@@ -16,19 +16,22 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProgramAd)
+            <p>
+                Program Adı
+            </p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProgramTarih)
+            <p>
+                Alış Tarihi
+            </p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProgramFiyat)
+            <p>
+                Alış Fiyatı
+            </p>
         </th>
         <th></th>
     </tr>
@@ -40,16 +43,12 @@
                 @Html.DisplayFor(modelItem => item.ProgramAd)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProgramTarih)
+                @item.ProgramTarih.ToString("yyyy.MM.dd")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProgramFiyat)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
+        
         </tr>
     }
 
