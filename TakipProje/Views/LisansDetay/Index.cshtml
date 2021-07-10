@@ -1,55 +1,101 @@
 ﻿@model IEnumerable<TakipProje.Models.LisansDetay>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lisans Detaylar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br>
+<br>
+<center><h2>Lisans Geçmiş Fiyat Kayıtları</h2></center>
+<br>
+<br>
 
-@using (Html.BeginForm("Index", "LisansDetay", FormMethod.Get))
+
+    @using (Html.BeginForm("Index", "LisansDetay", FormMethod.Get))
 {
-    <p>
-        Aranacak Program: @Html.TextBox("p")
-        <input type="submit" value="Ara" />
-    </p>
+    <div class="ldetay_search">
+        <span id="ldetay_text">Aranacak Program Adı :</span> 
+
+        @Html.TextBox("p" ,null, new { @class= "ldetay_textbox" , @placeholder="Ara.."})
+
+        <input id="btn_search" class="btn-warning" type="submit" value="Ara" />
+    </div>
+    <br />
 }
-
-<h2>Index</h2>
-
 <table class="table">
     <tr>
         <th>
-            <p>
+            <span class="ldetay_title">
                 Program Adı
-            </p>
+            </span>
         </th>
         <th>
-            <p>
+            <span class="ldetay_title" >
                 Alış Tarihi
-            </p>
+            </span>
         </th>
         <th>
-            <p>
+            <span class="ldetay_title">
                 Alış Fiyatı
-            </p>
+            </span>
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramAd)
-            </td>
-            <td>
-                @item.ProgramTarih.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramFiyat)
-            </td>
-        
-        </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgramAd)
+        </td>
+        <td>
+            @item.ProgramTarih.ToString("yyyy.MM.dd")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProgramFiyat) ₺
+        </td>
+
+    </tr>
     }
 
 </table>
+
+
+<style>
+
+    .ldetay_textbox{
+        width:30%;
+    }
+
+    .ldetay_title {
+        color: black;
+        font-weight: bolder;
+    }
+
+    .ldetay_search {
+        background-color: #4A6FDC;
+        padding: 10px;
+        border: solid #FFC300 3px;
+        border-radius: 3px;
+        color: white;
+    }
+
+    #btn_search {
+        letter-spacing: 0.7px;
+        transition: 900ms;
+        border:solid black 1px;
+        border-radius:2px;
+        padding:1px;
+        margin-left:10px;
+        width:10%;
+    }
+        #btn_search:hover{
+            letter-spacing:4px;
+        }
+        #ldetay_text {
+            letter-spacing: 0.9px;
+            font-size: 16px;
+            padding-right: 5px;
+        }
+</style>
