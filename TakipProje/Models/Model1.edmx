@@ -30,9 +30,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sifre" Type="nvarchar" MaxLength="50" />
-          <Property Name="Yetki" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -59,6 +58,15 @@
           <Property Name="ProgramTarih" Type="date" Nullable="false" />
           <Property Name="ProgramFiyat" Type="money" />
         </EntityType>
+        <EntityType Name="Notlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="BakimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Mail" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Servis">
           <Key>
             <PropertyRef Name="ID" />
@@ -71,8 +79,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="Gsm" Type="nvarchar" MaxLength="11" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
-          <Property Name="BitisTarihi" Type="date" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="date" />
+          <Property Name="BitisTarihi" Type="date" />
           <Property Name="BakimveAciklamalar" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -110,14 +118,26 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_BakimAciklama_Kullanicilar">
-          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
           <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kullanicilar">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BakimAciklama">
-              <PropertyRef Name="KullaniciID" />
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notlar_Bakim">
+          <End Role="Bakim" Type="Self.Bakim" Multiplicity="1" />
+          <End Role="Notlar" Type="Self.Notlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notlar">
+              <PropertyRef Name="BakimID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,6 +178,7 @@
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lisans" EntityType="Self.Lisans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LisansDetay" EntityType="Self.LisansDetay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notlar" EntityType="Self.Notlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servis" EntityType="Self.Servis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" Schema="dbo" store:Type="Tables" />
@@ -168,6 +189,10 @@
           <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notlar_Bakim" Association="Self.FK_Notlar_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="Notlar" EntitySet="Notlar" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -185,6 +210,7 @@
           <Property Name="BakimYapanPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Periyot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Bakim" FromRole="Bakim" ToRole="BakimAciklama" />
+          <NavigationProperty Name="Notlar" Relationship="Self.FK_Notlar_Bakim" FromRole="Bakim" ToRole="Notlar" />
         </EntityType>
         <EntityType Name="BakimAciklama">
           <Key>
@@ -203,9 +229,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
         </EntityType>
         <EntityType Name="Lisans">
@@ -233,6 +258,16 @@
           <Property Name="ProgramTarih" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ProgramFiyat" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
+        <EntityType Name="Notlar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="BakimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bakim" Relationship="Self.FK_Notlar_Bakim" FromRole="Notlar" ToRole="Bakim" />
+        </EntityType>
         <EntityType Name="Servis">
           <Key>
             <PropertyRef Name="ID" />
@@ -245,8 +280,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="BitisTarihi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
           <Property Name="BakimveAciklamalar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -283,15 +318,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notlar_Bakim">
+          <End Role="Bakim" Type="Self.Bakim" Multiplicity="1" />
+          <End Role="Notlar" Type="Self.Notlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notlar">
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BakimAciklama_Kullanicilar">
-          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
           <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Kullanicilar">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="BakimAciklama">
-              <PropertyRef Name="KullaniciID" />
+              <PropertyRef Name="BakimID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -301,12 +348,17 @@
           <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" />
           <EntitySet Name="Lisans" EntityType="Self.Lisans" />
           <EntitySet Name="LisansDetay" EntityType="Self.LisansDetay" />
+          <EntitySet Name="Notlar" EntityType="Self.Notlar" />
           <EntitySet Name="Servis" EntityType="Self.Servis" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" />
           <AssociationSet Name="FK_BakimAciklama_Bakim" Association="Self.FK_BakimAciklama_Bakim">
             <End Role="Bakim" EntitySet="Bakim" />
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notlar_Bakim" Association="Self.FK_Notlar_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="Notlar" EntitySet="Notlar" />
           </AssociationSet>
           <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
@@ -386,9 +438,8 @@
             <EntityTypeMapping TypeName="takipDbModel.Kullanicilar">
               <MappingFragment StoreEntitySet="Kullanicilar">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
-                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
-                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="KullaniciMail" ColumnName="KullaniciMail" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -416,6 +467,16 @@
                 <ScalarProperty Name="ProgramAd" ColumnName="ProgramAd" />
                 <ScalarProperty Name="ProgramTarih" ColumnName="ProgramTarih" />
                 <ScalarProperty Name="ProgramFiyat" ColumnName="ProgramFiyat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notlar">
+            <EntityTypeMapping TypeName="takipDbModel.Notlar">
+              <MappingFragment StoreEntitySet="Notlar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="BakimID" ColumnName="BakimID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

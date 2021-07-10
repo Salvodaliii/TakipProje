@@ -18,6 +18,7 @@ namespace TakipProje.Models
         public Bakim()
         {
             this.BakimAciklama = new HashSet<BakimAciklama>();
+            this.Notlar = new HashSet<Notlar>();
         }
     
         public int ID { get; set; }
@@ -28,5 +29,7 @@ namespace TakipProje.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BakimAciklama> BakimAciklama { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notlar> Notlar { get; set; }
     }
 }

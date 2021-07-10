@@ -12,18 +12,13 @@ namespace TakipProje.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Servis
+    public partial class Notlar
     {
         public int ID { get; set; }
-        public string İsAdi { get; set; }
-        public string BakimPeriyodu { get; set; }
-        public string FirmaAdi { get; set; }
-        public string SabitTelefon { get; set; }
-        public string DestekPersonelAdSoyad { get; set; }
-        public string Gsm { get; set; }
+        public int BakimID { get; set; }
+        public string KullaniciAdi { get; set; }
         public string Mail { get; set; }
-        public Nullable<System.DateTime> BaslangicTarihi { get; set; }
-        public Nullable<System.DateTime> BitisTarihi { get; set; }
-        public string BakimveAciklamalar { get; set; }
+    
+        public virtual Bakim Bakim { get; set; }
     }
 }
