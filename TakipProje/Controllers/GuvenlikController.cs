@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -19,6 +20,7 @@ namespace TakipProje.Controllers
             return View();
         }
 
+        
         [HttpPost]
         public ActionResult GirisYap(Kullanicilar t)
         {
@@ -30,8 +32,17 @@ namespace TakipProje.Controllers
             }
             else
             {
+                ModelState.AddModelError(nameof(Kullanicilar.KullaniciMail), "Kullanıcı Maili Yada Şifre Hatalı !");
                 return View();
             }
         }
+        
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("GirisYap","Guvenlik");
+        }
     }
+
+   
 }

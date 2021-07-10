@@ -4060,6 +4060,7 @@
     <Content Include="web\fonts\fontawesome-webfont.woff2" />
     <Content Include="web\fonts\FontAwesome.otf" />
     <Content Include="Views\Guvenlik\GirisYap.cshtml" />
+    <Content Include="Views\Guvenlik\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

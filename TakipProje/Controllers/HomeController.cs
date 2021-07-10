@@ -8,12 +8,10 @@ using System.Data.SqlClient;
 
 namespace WebApplication1.Controllers
 {
-
+    [Authorize]
     public class HomeController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
-
-        [Authorize]
 
         public ActionResult Index()
         {

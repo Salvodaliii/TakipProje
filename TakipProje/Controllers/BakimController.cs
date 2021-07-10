@@ -10,9 +10,11 @@ using TakipProje.Models;
 
 namespace TakipProje.Controllers
 {
+    [Authorize]
     public class BakimController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
+
 
         // GET: Bakim
         public ActionResult Index()

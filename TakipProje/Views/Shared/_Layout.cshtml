@@ -179,6 +179,22 @@
                 letter-spacing: 1px;
                 width: 90%;
             }
+
+        #btn_logout{
+            text-decoration:none;
+            color:black;
+            font-size:17px;
+            background:orange;
+            letter-spacing:0.5px;
+            transition:900ms;
+            padding:2px;
+            text-align:center;
+            border:solid 1.5px black;
+        }
+        #btn_logout:hover{
+            background:darkorange;
+            letter-spacing:1px;
+        }
     </style>
 
 </head>
@@ -200,6 +216,18 @@
                     <img id="logo" src="~/Content/img/logo.png" />
                 </div>
             </a>
+            <br />
+            <br />
+            <br />
+            <a id="btn_logout" href="~/Guvenlik/Logout">Çıkış Yap</a>
+
+            @*<input type="button" class="btn btn-warning" value="Çıkış Yap" onclick=" gonder_giris()">
+
+            <script>
+                function gonder_giris() {
+                    location.href = "/Guvenlik/GirisYap";
+                }
+            </script>*@
 
             <!-- Divider -->
             @*<hr class="sidebar-divider my-0">*@

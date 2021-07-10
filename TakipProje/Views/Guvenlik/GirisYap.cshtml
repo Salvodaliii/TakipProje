@@ -93,6 +93,10 @@
             #instagram:hover {
                 font-size: 45px;
             }
+
+        .giris_hatasi{
+            color:red;
+        }
     </style>
 
 
@@ -116,17 +120,26 @@
                 <div class="w3_info">
                     <h2>Hesabınıza Giriş Yapın</h2>
                     <p>Kullanıcı Bilgilerinizi Giriniz</p>
-                    <form action="#" method="post">
+
+                    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post))
+                    {
+
                         <label>Kullanıcı Mail Adresi</label>
                         <div class="input-group">
                             <span class="fa fa-envelope" aria-hidden="true"></span>
                             <input type="email" placeholder="Mail" required="" name="KullaniciMail">
                         </div>
+                        <br />
                         <label>Kullanıcı Şifresi</label>
                         <div class="input-group">
                             <span class="fa fa-lock" aria-hidden="true"></span>
                             <input type="Password" placeholder="Şifre" required="" name="KullaniciSifre">
                         </div>
+                        <br />
+                        <div class="giris_hatasi">
+                            @Html.ValidationMessageFor(m => m.KullaniciMail)
+                        </div>
+                        <br />
                         <br />
                         <button class="btn btn-danger btn-block" type="submit">Giriş Yap</button>
                         <br />
@@ -144,7 +157,7 @@
                         </center>
 
                         <br />
-                    </form>
+                    }
                 </div>
             </div>
             <!-- //main content -->
