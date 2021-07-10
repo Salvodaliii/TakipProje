@@ -1,4 +1,4 @@
-﻿@model TakipProje.Models.BakimAyrinti
+﻿@model TakipProje.Models.BakimAyrintilar
 
 @{
 
@@ -7,11 +7,12 @@
 
 @foreach (var x in Model.bakim)
 {
-    foreach (var y in Model.bakimNot.Where(z => z.BakimID == x.ID))
+    foreach (var y in Model.bakimAciklama.Where(z => z.BakimID == x.ID))
     {
 
+
         <div class="jumbotron mt-3" style="margin-left:75px">
-            <h3 style="color:#0094ff">@y.Kullanicilar.KullaniciAdi</h3>
+            <h3 style="color:#0094ff">@y.KullaniciID</h3>
             <h5 class="lead">
                 @y.Aciklama
             </h5>

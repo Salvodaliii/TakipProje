@@ -16,6 +16,17 @@ namespace TakipProje.Controllers
         private takipDbEntities db = new takipDbEntities();
 
 
+        BakimAyrintilar ba = new BakimAyrintilar();
+        BakimAciklama baciklama = new BakimAciklama();
+        public ActionResult BakimDetay()
+        {
+            ba.bakim = db.Bakim.OrderByDescending(x => x.ID)/*.Where(x => x.ID == baciklama.BakimID)*/.ToList();
+           ba.bakimAciklama = db.BakimAciklama.OrderByDescending(x => x.ID)/*.Where(x => x.ID == baciklama.BakimID)*/.ToList();
+            return PartialView(ba);
+        }
+
+
+
         // GET: Bakim
         public ActionResult Index()
         {

@@ -47,24 +47,6 @@ namespace WebApplication1.Controllers
             ViewBag.YedeklemeKayitSayisi = db.Yedekleme.Count();
         }
 
-
-
-
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public void LisansIdCount()
         {
             ViewBag.displayclient = db.Lisans.ToList();

@@ -47,14 +47,9 @@
 
     </dl>
 </div>
-@*<p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>*@
 
 
-@Html.Partial("BakimAciklama", Model.ID)
-
+@Html.Action("BakimDetay", "Bakim")
 
 
 <div class="col-sm-offset-1 col-md-10">

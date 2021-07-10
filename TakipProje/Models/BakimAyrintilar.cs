@@ -5,9 +5,9 @@ using System.Web;
 
 namespace TakipProje.Models
 {
-    public class BakimAyrinti
+    public class BakimAyrintilar
     {
         public IEnumerable<Bakim> bakim { get; set; }
-        public IEnumerable<BakimAciklama> bakimNot { get; set; }
+        public IEnumerable<BakimAciklama> bakimAciklama { get; set; }
     }
 }
