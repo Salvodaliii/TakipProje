@@ -13,6 +13,8 @@ namespace WebApplication1.Controllers
     {
         private takipDbEntities db = new takipDbEntities();
 
+        [Authorize]
+
         public ActionResult Index()
         {
             LisanssIdCount();
