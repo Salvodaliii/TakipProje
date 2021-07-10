@@ -10,9 +10,11 @@ using TakipProje.Models;
 
 namespace TakipProje.Controllers
 {
+    [Authorize]
     public class LisansDetayController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
+
 
         // GET: LisansDetay
         public ActionResult Index(string p)

@@ -10,9 +10,11 @@ using TakipProje.Models;
 
 namespace TakipProje.Controllers
 {
+    [Authorize]
     public class ServisController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
+
 
         // GET: Servis
         public ActionResult Index()

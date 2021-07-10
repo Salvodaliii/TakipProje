@@ -10,10 +10,10 @@ using TakipProje.Models;
 
 namespace TakipProje.Controllers
 {
+    [Authorize]
     public class YedeklemeController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
-
         // GET: Yedekleme
         public ActionResult Index()
         {
