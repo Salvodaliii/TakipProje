@@ -99,62 +99,65 @@
 <button type="button" class="btn btn-primary" onClick="location.href='/Servis/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
 <br>
 <br>
-<table class="table">
-    <tr>
-        <th>
-            <span>İş Adı</span>
-        </th>
-        <th>
-            <span>Bakım Periyodu</span>
-        </th>
-        <th>
-            <span>Firma Adı</span>
-        </th>
-        <th>
-            <span>Destek Personeli</span>
-        </th>
-        <th>
-            <span>GSM</span>
-        </th>
-        <th>
-            <span>Başlangıç Tarihi</span>
-        </th>
-        <th>
-            <span>Bitiş Tarihi</span>
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="servis" class="table table-striped table-bordered dt-responsive nowrap">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.İsAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BakimPeriyodu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirmaAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DestekPersonelAdSoyad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gsm)
-            </td>
-            <td>
-                @item.BaslangicTarihi.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @item.BitisTarihi.ToString("yyyy.MM.dd")
-            </td>
-            <td>
-                @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
-                @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
-            </td>
+            <th>
+                <span>İş Adı</span>
+            </th>
+            <th>
+                <span>Bakım Periyodu</span>
+            </th>
+            <th>
+                <span>Firma Adı</span>
+            </th>
+            <th>
+                <span>Destek Personeli</span>
+            </th>
+            <th>
+                <span>GSM</span>
+            </th>
+            <th>
+                <span>Başlangıç Tarihi</span>
+            </th>
+            <th>
+                <span>Bitiş Tarihi</span>
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.İsAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BakimPeriyodu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirmaAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DestekPersonelAdSoyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gsm)
+                </td>
+                <td>
+                    @item.BaslangicTarihi.ToString("yyyy.MM.dd")
+                </td>
+                <td>
+                    @item.BitisTarihi.ToString("yyyy.MM.dd")
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
+                    @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn_sil" })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
