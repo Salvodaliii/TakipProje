@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bakim">
           <Key>
             <PropertyRef Name="ID" />
@@ -13,7 +13,7 @@
           <Property Name="BakimAdi" Type="nvarchar(max)" />
           <Property Name="BakimTarihi" Type="date" Nullable="false" />
           <Property Name="BakimYapanPersonel" Type="nvarchar" MaxLength="50" />
-          <Property Name="Periyot" Type="varchar" MaxLength="50" />
+          <Property Name="Periyot" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="BakimAciklama">
           <Key>
@@ -195,7 +195,8 @@
             <End Role="Notlar" EntitySet="Notlar" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="takipDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -207,7 +208,7 @@
           <Property Name="BakimAdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BakimTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="BakimYapanPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Periyot" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Periyot" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Bakim" FromRole="Bakim" ToRole="BakimAciklama" />
           <NavigationProperty Name="Notlar" Relationship="Self.FK_Notlar_Bakim" FromRole="Bakim" ToRole="Notlar" />
         </EntityType>
@@ -279,8 +280,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
-          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" Nullable="false" />
           <Property Name="BakimveAciklamalar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">

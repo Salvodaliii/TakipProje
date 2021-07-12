@@ -133,7 +133,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
     <Compile Include="Controllers\LisansDetayController.cs" />
-    <Compile Include="Controllers\LoadItem.cs" />
     <Compile Include="Controllers\ServisController.cs" />
     <Compile Include="Controllers\YedeklemeController.cs" />
     <Compile Include="Global.asax.cs">
