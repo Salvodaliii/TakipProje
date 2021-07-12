@@ -15,14 +15,25 @@ namespace TakipProje.Controllers
     {
         private takipDbEntities db = new takipDbEntities();
 
-
-        BakimAyrintilar ba = new BakimAyrintilar();
-        BakimAciklama baciklama = new BakimAciklama();
-        public ActionResult BakimDetay()
+        [HttpPost]
+        public ActionResult AciklamaEkle(int id, string commenttext)
         {
-            ba.bakim = db.Bakim.OrderByDescending(x => x.ID)/*.Where(x => x.ID == baciklama.BakimID)*/.ToList();
-           ba.bakimAciklama = db.BakimAciklama.OrderByDescending(x => x.ID)/*.Where(x => x.ID == baciklama.BakimID)*/.ToList();
-            return PartialView(ba);
+            if (ModelState.IsValid)
+            {
+                Bakim bakim = db.Bakim.FirstOrDefault(x => x.ID == id);
+
+                BakimAciklama Aciklama = new BakimAciklama()
+                {
+                    BakimID = bakim.ID,
+                    Tarih = DateTime.Now,
+                    Aciklama = commenttext
+                };
+
+                db.BakimAciklama.Add(Aciklama);
+                db.SaveChanges();
+            }
+
+            return Redirect($"/Bakim/Details/{id}");
         }
 
 

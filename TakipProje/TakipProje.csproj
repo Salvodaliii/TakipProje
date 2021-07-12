@@ -4059,7 +4059,7 @@
     <Content Include="web\fonts\FontAwesome.otf" />
     <Content Include="Views\Guvenlik\GirisYap.cshtml" />
     <Content Include="Views\Guvenlik\Logout.cshtml" />
-    <Content Include="Views\Bakim\BakimDetay.cshtml" />
+    <Content Include="Views\Shared\_BakimAciklamaEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

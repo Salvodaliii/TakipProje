@@ -49,7 +49,28 @@
 </div>
 
 
-@Html.Action("BakimDetay", "Bakim")
+<br />
+<br />
+<br />
+
+@foreach (var aciklama in Model.BakimAciklama)
+{
+<li class="media">
+    <div class="media-left">
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">@aciklama.KullaniciID</h4>
+        <h4 class="media-heading">@aciklama.Tarih</h4>
+        @aciklama.Aciklama
+    </div>
+</li>}
+
+<br />
+<br />
+<br />
+
+@Html.Partial("_BakimAciklamaEkle", Model.ID)
+
 
 
 <div class="col-sm-offset-1 col-md-10">
