@@ -47,6 +47,205 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Periyot, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Periyot, "", new { @class = "text-danger" })
+
+            @*deneme başla*@
+            <br />
+            <br />
+            <br />
+
+            <h6>BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
+            <br />
+
+            <form>
+                <fieldset id="r_periyot">
+
+                    @*<label for="gun">GÜN</label>&nbsp;*@
+                    <input id="btn_gun" class="btn-primary" type="button" onclick="gun_selected()" value="GÜN">&nbsp;
+                    <select name="g_deger" id="g_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="hafta">HAFTA</label>&nbsp;*@
+                    <input id="btn_hafta" class="btn-primary" type="button" onclick="hafta_selected()" value="HAFTA">&nbsp;
+                    <select name="h_deger" id="h_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="ay">AY</label>&nbsp;*@
+                    <input id="btn_ay" class="btn-primary" type="button" onclick="ay_selected()" value="AY">&nbsp;
+                    <select name="a_deger" id="a_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="yil">YIL</label>&nbsp;*@
+                    <input id="btn_yil" class="btn-primary" type="button" onclick="yil_selected()" value="YIL">&nbsp;
+
+                    <select name="y_deger" id="y_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="btn_temizle" class="btn-warning" type="button" onclick="temizle_selected()" value="Seçimi Temizle">&nbsp;
+
+
+                </fieldset>
+                <style>
+                    #btn_gun,#btn_hafta,#btn_ay,#btn_yil,#btn_temizle{
+                        transition: 650ms;
+                    }
+
+                    #btn_gun:focus, #btn_hafta:focus, #btn_ay:focus, #btn_yil:focus {
+                        border: solid white 2px;
+                    }
+                    #btn_temizle:focus{
+                        border:solid black 2px;
+                        color:black;
+                    }
+                </style>
+
+
+
+                <script>
+                    function gun_selected() {
+                        var x = document.getElementById("g_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("a_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("h_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("y_deger")
+                        x.disabled = true
+
+                        //var e = document.getElementById("g_deger");
+                        //var value = e.options[e.selectedIndex].value;
+                        /*var text = e.options[e.selectedIndex].text;*/
+
+                       /* document.write(value); sayısal değer olarak (doğru) alıyor.*/
+                        /* document.write(text); text olarak (doğru) alıyor. */
+                    }
+
+
+
+                    function hafta_selected() {
+
+                        var x = document.getElementById("h_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("g_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("a_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("y_deger")
+                        x.disabled = true
+                    }
+
+
+                    function ay_selected() {
+
+                        var x = document.getElementById("a_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("g_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("h_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("y_deger")
+                        x.disabled = true
+                    }
+
+                    function yil_selected() {
+
+                        var x = document.getElementById("y_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("g_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("h_deger")
+                        x.disabled = true
+
+                        var x = document.getElementById("a_deger")
+                        x.disabled = true
+                    }
+
+                    function temizle_selected() {
+
+                        var x = document.getElementById("g_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("h_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("a_deger")
+                        x.disabled = false
+
+                        var x = document.getElementById("y_deger")
+                        x.disabled = false
+                    }
+
+
+
+
+                    //function gorunuryap() {
+                    //    var x = document.getElementById("g_deger")
+                    //    x.disabled = false
+                    //    var x = document.getElementById("a_deger")
+                    //    x.disabled = false
+                    //    var x = document.getElementById("y_deger")
+                    //    x.disabled = false
+                    //}
+                </script>
+
+
+
+
+
+
+            </form>
+
+            @*deneme bitir*@
+
+
         </div>
     </div>
 

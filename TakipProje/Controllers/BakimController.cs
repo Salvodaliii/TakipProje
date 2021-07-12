@@ -37,7 +37,6 @@ namespace TakipProje.Controllers
         }
 
 
-
         // GET: Bakim
         public ActionResult Index()
         {
