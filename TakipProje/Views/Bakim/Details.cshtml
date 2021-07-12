@@ -46,28 +46,48 @@
         </dd>
 
     </dl>
+    <br />
+    <hr />
+    <br />
 </div>
 
 
-<br />
-<br />
-<br />
-
+<span id="title_aciklamalar">Açıklamalar</span>
 @foreach (var aciklama in Model.BakimAciklama)
 {
-<li class="media">
-    <div class="media-left">
-    </div>
-    <div class="media-body">
-        <h4 class="media-heading">@aciklama.KullaniciID</h4>
-        <h4 class="media-heading">@aciklama.Tarih</h4>
-        @aciklama.Aciklama
-    </div>
-</li>}
+    <li class="media" id="not_list">
+        <div class="media-body">
+            <h6 class="media-heading" style="font-style:italic;">Ekleyen Kullanıcı : @aciklama.KullaniciID</h6>
+            <h6 class="media-heading" style="font-style:italic;">Ekleme Tarihi : @aciklama.Tarih.ToString("dd-MM-yyyy")</h6>
+            <div class="not_aciklama"><br />@aciklama.Aciklama</div>
+        </div>
+    </li>
 
-<br />
-<br />
-<br />
+    <style>
+        #title_aciklamalar {
+            margin-left: 10px;
+            letter-spacing: 1px;
+            font-weight: bolder;
+        }
+
+        #not_list {
+            margin-top: 20px;
+            margin-left: 10px;
+            padding: 10px;
+            width: 750px;
+            border: solid dodgerblue 1px;
+            border-radius: 10px;
+        }
+
+        .not_aciklama {
+            font-size: 20px;
+            font-style: italic;
+        }
+    </style>
+
+
+}
+
 
 @Html.Partial("_BakimAciklamaEkle", Model.ID)
 

@@ -3,17 +3,45 @@
 <form action="/Bakim/AciklamaEkle/@Model" method="post">
     <div class="row control-group">
         <div class="form-group col-xs-10 floating-label-form-group controls">
-            <label>Yorumunuz</label>
-            <textarea type="text" class="form-control" cols="30" rows="2" placeholder="Yorumunuzu buraya giriniz" id="commenttext" name="commenttext" required="" data-validation-required-message="Lütfen bir yorum giriniz." maxlength="150"></textarea>
-            <p class="help-block text-danger"></p>
-        </div>
-        <div class="col-xs-2">
-            <div>
-                <br />
-                <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-send"></span> Gönder
-                </button>
+            <br /><hr />
+            <div id="notekle_text"># Not Ekleme Alanı #</div>
+            <br />
+            <div id="not_ta">
+                <textarea type="text" class="form-control" cols="30" rows="2" placeholder="Notunuzu Giriniz.." id="commenttext" name="commenttext" required="" data-validation-required-message="Lütfen bir yorum giriniz."></textarea>
+                <p class="help-block text-danger"></p>
+                <div class="col-xs-2">
+                    <div>
+                        <button id="btn_notekle" type="submit" class="btn btn-warning">
+                            <span class="glyphicon glyphicon-send"></span> Not Ekle
+                        </button>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </form>
+
+<style>
+
+    #notekle_text{
+        margin-left:30px;
+        letter-spacing:1px;
+        font-weight:bolder;
+        margin-top:40px;
+    }
+
+    #not_ta textarea {
+        border:solid black 1px;
+        width: 750px;
+        height:180px;
+        margin-left: 30px;
+        resize: none;
+    }
+
+    #btn_notekle {
+        margin-left: 30px;
+        margin-bottom: 50px;
+    }
+
+</style>
