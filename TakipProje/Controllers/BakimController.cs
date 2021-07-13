@@ -16,6 +16,7 @@ namespace TakipProje.Controllers
         private takipDbEntities db = new takipDbEntities();
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult AciklamaEkle(int id, string commenttext)
         {
             if (ModelState.IsValid)

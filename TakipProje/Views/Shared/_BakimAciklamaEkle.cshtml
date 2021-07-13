@@ -8,6 +8,9 @@
             <br />
             <div id="not_ta">
                 <textarea type="text" class="form-control" cols="30" rows="2" placeholder="Notunuzu Giriniz.." id="commenttext" name="commenttext" required="" data-validation-required-message="Lütfen bir yorum giriniz."></textarea>
+                <script>
+                    CKEDITOR.replace("commenttext");
+                </script>                
                 <p class="help-block text-danger"></p>
                 <div class="col-xs-2">
                     <div>

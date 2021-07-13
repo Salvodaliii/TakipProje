@@ -59,7 +59,7 @@
         <div class="media-body">
             <h6 class="media-heading" style="font-style:italic;">Ekleyen Kullanıcı : @aciklama.KullaniciID</h6>
             <h6 class="media-heading" style="font-style:italic;">Ekleme Tarihi : @aciklama.Tarih.ToString("dd-MM-yyyy")</h6>
-            <div class="not_aciklama"><br />@aciklama.Aciklama</div>
+            <div class="not_aciklama"><br />@Html.Raw(aciklama.Aciklama)</div>
         </div>
     </li>
 
@@ -90,7 +90,6 @@
 
 
 @Html.Partial("_BakimAciklamaEkle", Model.ID)
-
 
 
 <div class="col-sm-offset-1 col-md-10">
