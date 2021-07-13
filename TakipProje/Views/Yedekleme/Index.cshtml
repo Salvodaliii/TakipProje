@@ -98,7 +98,10 @@
 <button type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Create'" style="transition:900ms;">Yeni Kayıt Oluştur</button>
 <br>
 <br>
-<table id="yed" class="table table-striped table-bordered dt-responsive nowrap">
+
+
+
+<table id="yedekleme" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
             <th>
@@ -144,12 +147,3 @@
         }
     </tbody>
 </table>
-
-<script>
-    $(function () {
-        $("#yed").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#yed_wrapper .col-md-6:eq(0)');
-    });
-</script>
