@@ -25,7 +25,7 @@ namespace TakipProje.Models
         public string BakimAdi { get; set; }
         public System.DateTime BakimTarihi { get; set; }
         public string BakimYapanPersonel { get; set; }
-        public string Periyot { get; set; }
+        public Nullable<int> Periyot { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BakimAciklama> BakimAciklama { get; set; }

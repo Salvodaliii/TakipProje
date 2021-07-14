@@ -1,20 +1,59 @@
 ﻿@model IEnumerable<TakipProje.Models.LisansDetay>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lisans Tarihçe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 @using (Html.BeginForm("Index", "LisansDetay", FormMethod.Get))
 {
-    <p>
-        Aranacak Program: @Html.TextBox("p")
-        <input type="submit" value="Ara" />
-    </p>
+
+    <h2 class="title">Lisans Programlarının Geçmiş Fiyat Bilgileri</h2>
+    <div class="search">
+        @*Program Adı : @Html.TextBox("p")*@
+        <label id="s_title" for="p">Program Adı : </label>
+        <input type="text" name="p" size="80" placeholder="Aranacak Programın Adınızı Giriniz.." />&nbsp;&nbsp;&nbsp;
+        <input class="s_btn" type="submit" value="Ara" />&nbsp;&nbsp;
+        <button class="s_btn" href="~/LisansDetay/Index">Geri Dön</button>
+    </div>
 }
 
-<h2>Index</h2>
+@*#466BD9 LEFTBAR CODE*@
+
+<style>
+    .title {
+        text-align: center;
+        margin: 30px;
+        letter-spacing: 1px;
+        padding: 15px;
+        font-weight: lighter;
+    }
+
+    #s_title {
+        font-weight: bolder;
+        letter-spacing: 0.5px;
+    }
+
+    .search {
+        border: solid gray 2px;
+        margin: 15px;
+        padding: 15px;
+        margin: 10px;
+        text-align: left;
+    }
+
+    .searchbox {
+        width: 250px;
+    }
+
+    .s_btn {
+        width: 100px;
+        padding: 5px;
+        background-color: #466BD9;
+        color: white;
+    }
+</style>
 
 <table id="lisansDetay" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
@@ -34,7 +73,6 @@
                     Alış Fiyatı
                 </p>
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>

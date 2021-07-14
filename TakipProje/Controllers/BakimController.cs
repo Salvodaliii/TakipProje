@@ -96,6 +96,24 @@ namespace TakipProje.Controllers
             return View();
         }
 
+        //
+        public JsonResult TestFunction(Bakim bakim, int PeriyotGun) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        {
+            //bakim.Periyot = PeriyotGun;
+            //db.Bakim.Add(bakim);
+            //db.SaveChanges();
+            //bakim.Periyot = PeriyotGun;
+            bakim.Periyot = PeriyotGun;
+            return Json(new
+            {
+                resut = "OK"
+            });
+        }
+
+
+        //
+
+
         // POST: Bakim/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
