@@ -9,6 +9,35 @@
 <br>
 <center><h2>Bakım Kayıt İşlemi</h2></center>
 
+<head>
+
+
+    <style>
+        #btn_gun, #btn_hafta, #btn_ay, #btn_yil, #btn_temizle {
+            transition: 650ms;
+        }
+
+            #btn_gun:focus, #btn_hafta:focus, #btn_ay:focus, #btn_yil:focus {
+                border: solid white 2px;
+            }
+
+            #btn_temizle:focus {
+                border: solid black 2px;
+                color: black;
+            }
+
+        .create_titles {
+            margin-left: 13px;
+            color: black;
+            font-weight: bolder;
+        }
+
+        #btn_geridon {
+            float: right;
+        }
+    </style>
+
+</head>
 
 @using (Html.BeginForm())
 {
@@ -43,16 +72,14 @@
         </div>
 
         <div class="form-group">
-            <span class="create_titles">Periyot</span>
+            @*<span class="create_titles">Periyot</span>*@
             <div class="col-md-10">
 
 
                 @*deneme başla*@
+                <hr />
                 <br />
-                <br />
-                <br />
-
-                <h6>BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
+                <h6 style="margin-bottom:25px;letter-spacing:1px;">BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
                 <br />
 
                 <form>
@@ -134,24 +161,6 @@
 
 
                     @*<input type="submit" value="Kayıt Oluştur" class="btn btn-info" />*@
-
-                   
-
-                    <style>
-                        #btn_gun, #btn_hafta, #btn_ay, #btn_yil, #btn_temizle {
-                            transition: 650ms;
-                        }
-
-                            #btn_gun:focus, #btn_hafta:focus, #btn_ay:focus, #btn_yil:focus {
-                                border: solid white 2px;
-                            }
-
-                            #btn_temizle:focus {
-                                border: solid black 2px;
-                                color: black;
-                            }
-                    </style>
-
 
 
                     <script>
@@ -383,7 +392,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 @*<input id="btnClick" type="submit" value="Kayıt Oluştur" class="btn btn-success" />*@
-                <input id="btnClick" type="submit" value="Kayıt Oluştur" class="btn btn-info" />
+                <input id="btnClick" type="submit" value="Kayıt Oluştur" class="btn btn-success" />
                 <div id="btn_geridon">
 
                     <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
@@ -407,14 +416,3 @@
 
 }
 
-<style>
-    .create_titles {
-        margin-left: 13px;
-        color: black;
-        font-weight: bolder;
-    }
-
-    #btn_geridon {
-        float: right;
-    }
-</style>
