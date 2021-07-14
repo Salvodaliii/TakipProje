@@ -147,7 +147,7 @@
 
 
                     <script>
-                        function gun_selected() {
+                        function gun_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
                             var x = document.getElementById("g_deger")
                             x.disabled = false
 
@@ -160,7 +160,8 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //var e = document.getElementById("g_deger");
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
+
                             var gun_gun = document.getElementById("g_deger").value;
 
                             var bakimadi = document.getElementById("bakimadi").value;
@@ -189,12 +190,6 @@
                             });
                         });
 
-                            /*var text = e.options[e.selectedIndex].text;*/
-
-                          /*  document.write(pp);*/
-
-
-                            /* document.write(text); text olarak (doğru) alıyor. */
                         }
 
                         function hafta_selected() {
@@ -210,6 +205,38 @@
 
                             var x = document.getElementById("y_deger")
                             x.disabled = true
+
+                              //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _HAFTA
+
+                            var hafta = document.getElementById("h_deger").value; //HAFTA OLARAK ALINDI
+
+                            var hafta_gun= (hafta * 7); //GÜNE ÇEVİRİLDİ
+
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: hafta_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
 
                         }
 
@@ -227,6 +254,38 @@
 
                             var x = document.getElementById("y_deger")
                             x.disabled = true
+
+                                //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _AY
+
+                            var ay = document.getElementById("a_deger").value; //AY OLARAK ALINDI
+
+                            var ay_gun = (ay * 30); //GÜNE ÇEVİRİLDİ
+
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: ay_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
                         }
 
                         function yil_selected() {
@@ -242,6 +301,39 @@
 
                             var x = document.getElementById("a_deger")
                             x.disabled = true
+
+
+                             //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _YIL
+
+                            var yil = document.getElementById("y_deger").value; //YIL OLARAK ALINDI
+
+                            var yil_gun = (yil * 365); //GÜNE ÇEVİRİLDİ
+
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: yil_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
                         }
 
                         function temizle_selected() {
