@@ -32,6 +32,7 @@ namespace TakipProje.Controllers
             }
             else
             {
+                ModelState.AddModelError(nameof(Kullanicilar.KullaniciMail), "Kullanıcı Mail Şifre Hatalı !");
                 return View();
             }
         }

@@ -1,59 +1,172 @@
 ﻿@model TakipProje.Models.Kullanicilar
+
 @{
     Layout = null;
 }
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bağışıklık Takip</title>
+    <title>Giriş Yap</title>
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
 
-    <link href="~/login-form-11/css/style.css" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="~/Content/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <!-- //Meta-Tags -->
+    <!-- css files -->
+    <link href="~/web/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //css files -->
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- //google fonts -->
+
+
+    <style>
+        #iletisim {
+            font-weight: bolder;
+        }
+
+        #twitter {
+            transition: 700ms;
+            color: #1DA1F2;
+            font-size: 35px;
+            margin: 10px;
+        }
+
+            #twitter:hover {
+                font-size: 45px;
+            }
+
+        #facebook {
+            font-size: 35px;
+            transition: 700ms;
+            color: #4267B2;
+            margin: 10px;
+        }
+
+            #facebook:hover {
+                font-size: 45px;
+            }
+
+        #web {
+            font-size: 35px;
+            transition: 700ms;
+            color: orange;
+            margin: 10px;
+        }
+
+            #web:hover {
+                font-size: 45px;
+            }
+
+        #instagram {
+            font-size: 35px;
+            transition: 700ms;
+            color: fuchsia;
+            margin: 10px;
+        }
+
+            #instagram:hover {
+                font-size: 45px;
+            }
+
+        .giris_hatasi {
+            color: red;
+        }
+    </style>
+
+
 
 </head>
 <body>
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row justify-content-center">
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-7 col-lg-5">
-                    <div class="login-wrap p-4 p-md-5">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                            <span class="fa fa-user-o"></span>
-                        </div>
-                        <h3 class="text-center mb-4">Üye Olma</h3>
-                        @using (Html.BeginForm("UyeGiris", "Giris", FormMethod.Post, new { @class = "login-form" }))
-                        {
-                            <div class="form-group">
-                                <input type="text" name="KullaniciMail" class="form-control rounded-left" placeholder="Mail" required>
-                            </div>
-                            <div class="form-group d-flex">
-                                <input type="password" name="KullaniciSifre" class="form-control rounded-left" placeholder="Şifre" required>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary rounded submit px-3">Giris Yap</button>
-                            </div>
-                        }
 
+
+    <div class="signupform">
+        <div class="container">
+            <!-- main content -->
+            <div class="agile_info">
+                <div class="w3l_form">
+                    <div class="left_grid_info">
+                        <h1>Sisteme Giriş Sayfası</h1>
+                        <p>Takip ve e-İmza Sistemi</p>
+                        <br />
+                        <center><img src="~/web/images/altindag_logo_kare.jpg" alt="" style="width:90%;height:90%;" /></center>
                     </div>
                 </div>
+                <div class="w3_info">
+                    <h2>Hesabınıza Giriş Yapın</h2>
+                    <p>Kullanıcı Bilgilerinizi Giriniz</p>
+
+                    @using (Html.BeginForm("UyeGiris", "Giris", FormMethod.Post))
+                    {
+
+                        <label>Kullanıcı Mail Adresi</label>
+                        <div class="input-group">
+                            <span class="fa fa-envelope" aria-hidden="true"></span>
+                            <input type="email" placeholder="Mail" required="" name="KullaniciMail">
+                        </div>
+                        <br />
+                        <label>Kullanıcı Şifresi</label>
+                        <div class="input-group">
+                            <span class="fa fa-lock" aria-hidden="true"></span>
+                            <input type="Password" placeholder="Şifre" required="" name="KullaniciSifre">
+                        </div>
+                        <br />
+                        <div class="giris_hatasi">
+                            @Html.ValidationMessageFor(m => m.KullaniciMail)
+                        </div>
+                        <br />
+                        <br />
+                        <button class="btn btn-danger btn-block" type="submit">Giriş Yap</button>
+                        <br />
+                        <br />
+
+                        <center><i class="fas fa-phone-alt"></i>&nbsp;&nbsp;<span id="iletisim">İletişim : 0312 444 39 19 </span></center>
+                        <br />
+                        <br />
+                        <center><p style="color:black;">Takipte Kalın</p></center>
+                        <center>
+                            <a href="https://www.altindag.bel.tr" id="web" target="_blank"><i class="fas fa-globe"></i></a>
+                            <a href="https://twitter.com/altindagbel?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" id="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="https://tr-tr.facebook.com/altindagbel/" id="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.instagram.com/altindagbel/?hl=tr" id="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </center>
+
+                        <br />
+                    }
+                </div>
             </div>
+            <!-- //main content -->
         </div>
-    </section>
-
-
-    <script src="~/login-form-11/js/bootstrap.min.js"></script>
-    <script src="~/login-form-11/js/jquery.min.js"></script>
-    <script src="~/login-form-11/js/main.js"></script>
-    <script src="~/login-form-11/js/popper.js"></script>
+        <!-- footer -->
+        <div class="footer">
+        </div>
+        <!-- footer -->
+    </div>
 
 </body>
 </html>
-
