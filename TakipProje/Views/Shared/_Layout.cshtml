@@ -192,18 +192,37 @@
             text-decoration: none;
             color: black;
             font-size: 17px;
-            background: orange;
+            background: #F8F9FC;
             letter-spacing: 0.5px;
             transition: 900ms;
-            padding: 2px;
+            padding: 5px;
             text-align: center;
-            border: solid 1.5px black;
+            border: solid 5px #496EDB;
+        }
+        #btn_profile {
+            text-decoration: none;
+            color: black;
+            font-size: 17px;
+            background: #F8F9FC;
+            letter-spacing: 0.5px;
+            transition: 900ms;
+            padding: 5px;
+            text-align: center;
+            border: solid 5px #496EDB;
         }
 
-            #btn_logout:hover {
-                background: darkorange;
-                letter-spacing: 1px;
-            }
+        #btn_logout:hover {
+            background-color: rgba(247, 69, 49,0.7);
+            color: white;
+            letter-spacing: 2px;
+            border: solid 6px white;
+        }
+        #btn_profile:hover {
+            background-color: rgba( 135, 219, 24,0.7);
+            color: white;
+            letter-spacing: 2px;
+            border: solid 6px white;
+        }
     </style>
 
 </head>
@@ -228,7 +247,8 @@
             <br />
             <br />
             <br />
-            <a id="btn_logout" href="~/Giris/Profil">Profil</a>
+            <a id="btn_profile" href="~/Giris/Profil">Profil</a>
+            <br />
             <a id="btn_logout" href="~/Giris/Logout">Çıkış Yap</a>
 
             @*<input type="button" class="btn btn-warning" value="Çıkış Yap" onclick=" gonder_giris()">
