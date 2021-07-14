@@ -32,6 +32,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KullaniciMail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciYetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KullaniciAdSoyad" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -105,6 +107,18 @@
           <Property Name="SonYedeklemeTarihi" Type="date" Nullable="false" />
           <Property Name="KontrolEdenPersonel" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_BakimAciklama_Bakim">
+          <End Role="Bakim" Type="Self.Bakim" Multiplicity="1" />
+          <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakim">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BakimAciklama">
+              <PropertyRef Name="BakimID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_BakimAciklama_Kullanicilar">
           <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="1" />
           <End Role="BakimAciklama" Type="Self.BakimAciklama" Multiplicity="*" />
@@ -170,6 +184,10 @@
           <EntitySet Name="Servis" EntityType="Self.Servis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Yedekleme" EntityType="Self.Yedekleme" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BakimAciklama_Bakim" Association="Self.FK_BakimAciklama_Bakim">
+            <End Role="Bakim" EntitySet="Bakim" />
+            <End Role="BakimAciklama" EntitySet="BakimAciklama" />
+          </AssociationSet>
           <AssociationSet Name="FK_BakimAciklama_Kullanicilar" Association="Self.FK_BakimAciklama_Kullanicilar">
             <End Role="Kullanicilar" EntitySet="Kullanicilar" />
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
@@ -215,6 +233,8 @@
           <Property Name="KullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
+          <Property Name="KullaniciYetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -263,8 +283,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Gsm" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" Nullable="false" />
-          <Property Name="BitisTarihi" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="0" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="0" />
           <Property Name="BakimveAciklamalar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -420,6 +440,8 @@
           <EntitySetMapping Name="Kullanicilar">
             <EntityTypeMapping TypeName="takipDbModel.Kullanicilar">
               <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="KullaniciAdSoyad" ColumnName="KullaniciAdSoyad" />
+                <ScalarProperty Name="KullaniciYetki" ColumnName="KullaniciYetki" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="KullaniciMail" ColumnName="KullaniciMail" />
                 <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
@@ -542,7 +564,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
