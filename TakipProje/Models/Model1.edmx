@@ -32,8 +32,8 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="KullaniciMail" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
-          <Property Name="KullaniciYetki" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="KullaniciAdSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciYetki" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="KullaniciAdSoyad" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>
@@ -81,8 +81,8 @@
           <Property Name="DestekPersonelAdSoyad" Type="nvarchar" MaxLength="50" />
           <Property Name="Gsm" Type="nvarchar" MaxLength="11" />
           <Property Name="Mail" Type="nvarchar" MaxLength="50" />
-          <Property Name="BaslangicTarihi" Type="date" />
-          <Property Name="BitisTarihi" Type="date" />
+          <Property Name="BaslangicTarihi" Type="date" Nullable="false" />
+          <Property Name="BitisTarihi" Type="date" Nullable="false" />
           <Property Name="BakimveAciklamalar" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -218,7 +218,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tarih" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
           <Property Name="BakimID" Type="Int32" Nullable="false" />
           <Property Name="KullaniciID" Type="Int32" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -233,8 +233,8 @@
           <Property Name="KullaniciMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BakimAciklama" Relationship="Self.FK_BakimAciklama_Kullanicilar" FromRole="Kullanicilar" ToRole="BakimAciklama" />
-          <Property Name="KullaniciYetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="KullaniciAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciYetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KullaniciAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Lisans">
           <Key>

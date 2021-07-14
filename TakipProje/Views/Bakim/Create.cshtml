@@ -21,7 +21,7 @@
         <div class="form-group">
             <span class="create_titles">Bakım Adı</span>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BakimAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.BakimAdi, new { htmlAttributes = new { @class = "form-control" , id="bakimadi"} })
                 @Html.ValidationMessageFor(model => model.BakimAdi, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="form-group">
             <span class="create_titles">Bakım Tarihi</span>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BakimTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.EditorFor(model => model.BakimTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" , id="bakimtarihi"} })
                 @Html.ValidationMessageFor(model => model.BakimTarihi, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
             <span class="create_titles">Bakım Yapan Personel</span>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.BakimYapanPersonel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.BakimYapanPersonel, new { htmlAttributes = new { @class = "form-control" , id="personel"} })
                 @Html.ValidationMessageFor(model => model.BakimYapanPersonel, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -125,8 +125,9 @@
 
 
 
-                    <input type="submit" value="Kayıt Oluştur" class="btn btn-info" />
-                    <input id="btnClick" type="submit" value="Kayıt Oluştur2" class="btn btn-info" />
+                    @*<input type="submit" value="Kayıt Oluştur" class="btn btn-info" />*@
+
+                    <a href="~/Views/Bakim/Index"><input id="btnClick" type="submit" value="DENEME" class="btn btn-info" /></a>
 
                     <style>
                         #btn_gun, #btn_hafta, #btn_ay, #btn_yil, #btn_temizle {
@@ -162,20 +163,28 @@
                             //var e = document.getElementById("g_deger");
                             var gun_gun = document.getElementById("g_deger").value;
 
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
+
                            $(document).ready(function () {
                             $("#btnClick").click(function () {
                                 var f = {};
                                 f.url = '@Url.Action("TestFunction", "Bakim")';
                                 f.type = "POST";
                                 f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun : gun_gun });
+                                f.data = JSON.stringify({ PeriyotGun: gun_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
                                 f.contentType = "application/json";
-                                //f.success = function (response) {
-                                //    alert("success");
-                                //};
-                                //f.error = function (response) {
-                                //    alert("failed");
-                                //};
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
                                 $.ajax(f);
                             });
                         });
@@ -283,7 +292,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="btnClick" type="submit" value="Kayıt Oluştur" class="btn btn-success" />
+                @*<input id="btnClick" type="submit" value="Kayıt Oluştur" class="btn btn-success" />*@
                 <div id="btn_geridon">
 
                     <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>

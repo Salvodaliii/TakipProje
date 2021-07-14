@@ -27,7 +27,6 @@ namespace TakipProje.Controllers
                 {
                     BakimID = bakim.ID,
                     Tarih = DateTime.Now,
-                    //KullaniciID = ,
                     Aciklama = commenttext
                 };
 
@@ -96,14 +95,20 @@ namespace TakipProje.Controllers
             return View();
         }
 
+
         //
-        public JsonResult TestFunction(Bakim bakim, int PeriyotGun) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        [HttpPost]
+        public JsonResult TestFunction(Bakim bakim, string BakimAdi,DateTime BakimTarihi,int PeriyotGun,string Personel) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
         {
-            //bakim.Periyot = PeriyotGun;
-            //db.Bakim.Add(bakim);
-            //db.SaveChanges();
-            //bakim.Periyot = PeriyotGun;
+            bakim.BakimAdi = BakimAdi;
             bakim.Periyot = PeriyotGun;
+            bakim.BakimYapanPersonel = Personel;
+            bakim.BakimTarihi = BakimTarihi;
+            db.Bakim.Add(bakim);
+            db.SaveChanges();
+
+
+            RedirectToAction("Index", "Bakim");
             return Json(new
             {
                 resut = "OK"
@@ -121,14 +126,14 @@ namespace TakipProje.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,BakimAdi,BakimTarihi,BakimYapanPersonel,Periyot")] Bakim bakim)
         {
-            if (ModelState.IsValid)
-            {
-                db.Bakim.Add(bakim);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            //if (ModelState.IsValid)
+            //{
+            //    db.Bakim.Add(bakim);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            RedirectToAction("Index", "Bakim");
             return View(bakim);
+            
         }
 
         // GET: Bakim/Edit/5
