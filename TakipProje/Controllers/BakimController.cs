@@ -27,6 +27,7 @@ namespace TakipProje.Controllers
                 {
                     BakimID = bakim.ID,
                     Tarih = DateTime.Now,
+                    //KullaniciID = ,
                     Aciklama = commenttext
                 };
 

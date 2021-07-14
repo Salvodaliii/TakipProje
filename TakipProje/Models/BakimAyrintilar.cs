@@ -9,5 +9,6 @@ namespace TakipProje.Models
     {
         public IEnumerable<Bakim> bakim { get; set; }
         public IEnumerable<BakimAciklama> bakimAciklama { get; set; }
+        public IEnumerable<Kullanicilar> kullanicilar { get; set; }
     }
 }
