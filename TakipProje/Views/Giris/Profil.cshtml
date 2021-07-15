@@ -7,76 +7,113 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href="~/bootstrap-4.0.0/dist/css/bootstrap-style.css" rel="stylesheet" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="emp-profile">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="profile-head">
-                <h5 style="font-size:20px;">
-                    Kullanıcı Bilgileri
-                </h5>
-            </div>
-        </div>
-    </div>
-    <hr />
-    <div class="row">
-        <div class="col-md-8">
-            <div class="tab-content profile-tab" id="myTabContent">
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    @foreach (var x in Model)
-                    {
-                        <div class="row">
 
-                            <div class="col-md-6">
-                                <label># ID</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@x.ID</p>
-                            </div>
+    @foreach (var x in Model)
+    {
+        <div>
+            <h2>Kullanıcı Profili</h2>
+            <hr />
+            <br />
+            <div id="card_div" class="card" style="width: 50%;">
+                <div class="row no-gutters">
+                    <div>
+                        <i class="far fa-user" id="user_icon"></i>
+                    </div>
+                    <div>
+                        <div class="card-body" style="padding: 20px;">
+                            <center><h5 class="card-title" style="letter-spacing:1px;padding-bottom: 5px;">@x.KullaniciAdSoyad</h5></center><hr />
+
+
+                            <p class="card-text" style="padding-bottom:20px;"><span class="altbasliklar"><i class="fas fa-envelope"></i> Mail : &nbsp;&nbsp;</span>@x.KullaniciMail</p>
+
+
+                            <p class="card-text" style="padding-bottom:20px;">
+                                <span class="altbasliklar"><i class="fas fa-key"></i> Şifre :&nbsp;&nbsp;</span>
+
+                                <span class="yildiz">************</span><span class="sifre">@x.KullaniciSifre</span>
+                                    <button class="sifreGoster" style="margin-left:50px;"><i class="fas fa-eye"></i></button>
+                                    <button class="sifreGizle"><i class="fas fa-eye-slash"></i></button>
+                            </p>
+
+
+                            <p class="card-text"><span class="altbasliklar"><i class="fas fa-users-cog"></i> Yetki :&nbsp;&nbsp;</span>@x.KullaniciYetki</p>
                         </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label># Ad Soyad</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@x.KullaniciAdSoyad</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label># Kullanıcı Mail</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@x.KullaniciMail </p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label># Yetki</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@x.KullaniciYetki</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label># Kullanıcı Şifre</label>
-                            </div>
-                            <div class="col-md-6">
-                                <p>@x.KullaniciSifre</p>
-                            </div>
-                        </div>
-                    }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <hr />
-</div>
+    }
+
+<script>
+    (function ($) {
+        $("button.sifreGizle").click(function () {
+            $(this).show();
+            $("span.sifre").hide();
+            $("span.yildiz").show();
+        });
+    })(jQuery);
+
+    (function ($) {
+        $("button.sifreGoster").click(function () {
+            $(this).hide();
+            $("span.sifre").show();
+            $(this).show();
+            $("span.yildiz").hide();
+        });
+    })(jQuery);
+
+
+</script>
+
+
+    <style>
+
+        #card_div {
+            border: solid 2px black;
+            padding:5px;
+        }
+
+        #user_icon {
+            background-color: rgba(255, 143, 0,0.9);
+            border: solid 2px black;
+            color:white;
+            font-size: 150px;
+            padding: 30px;
+            margin: 15px;
+        }
+        .altbasliklar {
+            font-weight: bolder;
+        }
+
+        .sifre{
+            display:none;
+        }
+    </style>
+
+    @*@foreach (var x in Model)
+    {
+        <label># ID</label>
+
+        <p>@x.ID</p>
+
+
+        <label># Ad Soyad</label>
+        <p>@x.KullaniciAdSoyad</p>
+
+
+
+        <label># Kullanıcı Mail</label>
+        <p>@x.KullaniciMail </p>
+
+
+        <label># Yetki</label>
+        <p>@x.KullaniciYetki</p>
+
+
+        <label># Kullanıcı Şifre</label>
+        <p>@x.KullaniciSifre</p>
+    }*@
