@@ -15,7 +15,7 @@ namespace TakipProje.Models
     public partial class BakimAciklama
     {
         public int ID { get; set; }
-        public Nullable<System.DateTime> Tarih { get; set; }
+        public System.DateTime Tarih { get; set; }
         public int BakimID { get; set; }
         public Nullable<int> KullaniciID { get; set; }
         public string Aciklama { get; set; }

@@ -139,53 +139,50 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bakim.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAciklama.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAyrintilar.cs" />
     <Compile Include="Models\Kullanicilar.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lisans.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LisansDetay.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Notlar.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Servis.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\takipDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>takipDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\takipDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>takipDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\takipDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>takipDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Yedekleme.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -3631,15 +3628,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Model1.Context.tt">
+    <Content Include="Models\takipDb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>takipDb.edmx</DependentUpon>
+      <LastGenOutput>takipDb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Model1.tt">
+    <Content Include="Models\takipDb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>takipDb.edmx</DependentUpon>
+      <LastGenOutput>takipDb.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -4178,13 +4175,6 @@
     <Content Include="web\images\tick.png" />
     <Content Include="web\index.html" />
     <Content Include="web\w3layouts-License.txt" />
-    <EntityDeploy Include="Models\Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
     <Content Include="Scripts\ckeditor\README.md" />
@@ -4194,6 +4184,13 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
+    <EntityDeploy Include="Models\takipDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>takipDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\takipDb.edmx.diagram">
+      <DependentUpon>takipDb.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

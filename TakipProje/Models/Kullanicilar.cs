@@ -23,8 +23,8 @@ namespace TakipProje.Models
         public int ID { get; set; }
         public string KullaniciMail { get; set; }
         public string KullaniciSifre { get; set; }
-        public string KullaniciYetki { get; set; }
         public string KullaniciAdSoyad { get; set; }
+        public string KullaniciYetki { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BakimAciklama> BakimAciklama { get; set; }
