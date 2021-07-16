@@ -2,6 +2,10 @@
     ViewBag.Title = "Anasayfa";
 }
 
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 
 <div class="row">
     <div class="col-xl-3 col-md-6 mb-4">
@@ -21,7 +25,7 @@
             </div>
             <center><button id="hometoindex" type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Lisans Takip</button></center>
         </div>
-    </div> 
+    </div>
 
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-success shadow h-100 py-2">
@@ -86,3 +90,37 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+@**@
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Bize Ulaşın</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="alert alert-info">@TempData["Message"]</div>
+
+
+
+
+
+        <input type="file" name="myFiles" />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input class="btn btn-default" type="submit" value="Gönder"  />
+            </div>
+        </div>
+    </div>
+}
+
+
+
