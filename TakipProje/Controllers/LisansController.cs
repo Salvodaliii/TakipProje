@@ -107,31 +107,7 @@ namespace TakipProje.Controllers
             return View(lisans);
         }
 
-        // GET: Lisans/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Lisans lisans = db.Lisans.Find(id);
-            if (lisans == null)
-            {
-                return HttpNotFound();
-            }
-            return View(lisans);
-        }
 
-        // POST: Lisans/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Lisans lisans = db.Lisans.Find(id);
-            db.Lisans.Remove(lisans);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

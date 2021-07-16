@@ -88,10 +88,11 @@
 }
 
 
-@Html.Partial("_BakimAciklamaEkle", Model.ID)
-
 
 <div class="col-sm-offset-1 col-md-10">
+    <div style="margin-left:13px">
+        @Html.Partial("_BakimAciklamaEkle", Model.ID)
+    </div>
     <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
 
 

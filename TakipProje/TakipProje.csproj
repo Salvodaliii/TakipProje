@@ -4220,7 +4220,6 @@
     <Content Include="Views\Lisans\Edit.cshtml" />
     <Content Include="Views\Lisans\Index.cshtml" />
     <Content Include="Views\Bakim\Create.cshtml" />
-    <Content Include="Views\Bakim\Delete.cshtml" />
     <Content Include="Views\Bakim\Details.cshtml" />
     <Content Include="Views\Bakim\Edit.cshtml" />
     <Content Include="Views\Bakim\Index.cshtml" />
