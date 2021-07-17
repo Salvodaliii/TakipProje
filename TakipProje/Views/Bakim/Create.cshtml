@@ -88,7 +88,7 @@
                         @*<label for="gun">GÜN</label>&nbsp;*@
                         @*<input id="btn_gun" class="btn-primary" type="button" onclick="gun_selected()" value="GÜN">&nbsp;*@
                         <label for="r_gun">GÜN</label>
-                        <input type="radio" value="Gun" onchange="gun_selected()" name="r_gun" />&nbsp;
+                        <input type="radio" value="Gun" onchange="gun_selected()" name="rb" id=1 />&nbsp;
                         <select name="g_deger" id="g_deger">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -103,7 +103,7 @@
                         @*<label for="hafta">HAFTA</label>&nbsp;*@
                         @*<input id="btn_hafta" class="btn-primary" type="button" onclick="hafta_selected()" value="HAFTA">&nbsp;*@
                         <label for="r_hafta">HAFTA</label>
-                        <input type="radio" value="Hafta" onchange="hafta_selected()" name="r_hafta" />&nbsp;
+                        <input type="radio" value="Hafta" onchange="hafta_selected()" name="rb" id=2 />&nbsp;
                         <select name="h_deger" id="h_deger">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -117,7 +117,7 @@
                         @*<label for="ay">AY</label>&nbsp;*@
                         @*<input id="btn_ay" class="btn-primary" type="button" onclick="ay_selected()" value="AY">&nbsp;*@
                         <label for="r_ay">AY</label>
-                        <input type="radio" value="Ay" onchange="ay_selected()" name="r_ay" />&nbsp;
+                        <input type="radio" value="Ay" onchange="ay_selected()" name="rb" id=3 />&nbsp;
                         <select name="a_deger" id="a_deger">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -137,7 +137,7 @@
                         @*<label for="yil">YIL</label>&nbsp;*@
                         @*<input id="btn_yil" class="btn-primary" type="button" onclick="yil_selected()" value="YIL">&nbsp;*@
                         <label for="r_yil">YIL</label>
-                        <input type="radio" value="Yil" onchange="yil_selected()" name?="r_yil" />&nbsp;
+                        <input type="radio" value="Yil" onchange="yil_selected()" name?="rb" id=4 />&nbsp;
 
                         <select name="y_deger" id="y_deger">
                             <option value="1">1</option>
@@ -163,7 +163,7 @@
                     @*<input type="submit" value="Kayıt Oluştur" class="btn btn-info" />*@
 
 
-                    <script>
+                <script>
                         function gun_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
                             var x = document.getElementById("g_deger")
                             x.disabled = false
@@ -177,18 +177,12 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
-
-                            var gun_gun = document.getElementById("g_deger").value;
-
-                            var bakimadi = document.getElementById("bakimadi").value;
-
-                            var bakimtarihi = document.getElementById("bakimtarihi").value;
-
-                            var personel = document.getElementById("personel").value;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
 
 
-                           $(document).ready(function () {
+                            $(document).ready(function () {
                             $("#btnClick").click(function () {
                                 var f = {};
                                 f.url = '@Url.Action("TestFunction", "Bakim")';
@@ -207,7 +201,23 @@
                             });
                         });
 
+
+
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
+
+                            var gun_gun = document.getElementById("g_deger").value;
+
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
                         }
+
+
+
 
                         function hafta_selected() {
 
@@ -234,6 +244,10 @@
                             var bakimtarihi = document.getElementById("bakimtarihi").value;
 
                             var personel = document.getElementById("personel").value;
+
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
 
 
                            $(document).ready(function () {
@@ -284,6 +298,10 @@
 
                             var personel = document.getElementById("personel").value;
 
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("4").disabled = true;
+
 
                            $(document).ready(function () {
                             $("#btnClick").click(function () {
@@ -333,6 +351,11 @@
                             var personel = document.getElementById("personel").value;
 
 
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
+
+
                            $(document).ready(function () {
                             $("#btnClick").click(function () {
                                 var f = {};
@@ -366,10 +389,19 @@
 
                             var x = document.getElementById("y_deger")
                             x.disabled = false
+
+                            document.getElementById("1").disabled = false;
+                            $("1").prop("checked", false);
+                            document.getElementById("2").disabled = false;
+                            $("2").prop("checked", false);
+                            document.getElementById("3").disabled = false;
+                            $("3").prop("checked", false);
+                            document.getElementById("4").disabled = false;
+                            $("4").prop("checked", false);
                         }
 
 
-                    </script>
+                </script>
 
 
 
