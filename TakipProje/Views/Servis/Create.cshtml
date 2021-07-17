@@ -353,6 +353,65 @@
 
                         }
 
+                        function yil_selected() { //EĞER YIL SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                            var x = document.getElementById("y_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _YIL
+
+                            var yil_gun = document.getElementById("y_deger").value;
+
+                            yil_gun = (yil_gun * 365) //Yil Değerini Güne Çevir {ileriki adımlar için "artık yıl" hesabı yapılabilir}
+
+                            var isadi = document.getElementById("isadi").value;
+
+                            var firmaadi = document.getElementById("firmaadi").value;
+
+                            var sabittelefon = document.getElementById("sabittelefon").value;
+
+                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
+
+                            var gsm = document.getElementById("gsm").value;
+
+                            var mail = document.getElementById("mail").value;
+
+                            var baslangictarihi = document.getElementById("baslangictarihi").value;
+
+                            var bitistarihi = document.getElementById("bitistarihi").value;
+
+                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
+
+
+
+                           $(document).ready(function () {
+                               $("#btnClickservis").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TFunction", "Servis")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: yil_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+                        }
 
                         function temizle_selected() {
 
