@@ -137,7 +137,7 @@
                         @*<label for="yil">YIL</label>&nbsp;*@
                         @*<input id="btn_yil" class="btn-primary" type="button" onclick="yil_selected()" value="YIL">&nbsp;*@
                         <label for="r_yil">YIL</label>
-                        <input type="radio" value="Yil" onchange="yil_selected()" name="rb" id=4 />&nbsp;
+                        <input type="radio" value="Yil" onchange="yil_selected()" name?="rb" id=4 />&nbsp;
 
                         <select name="y_deger" id="y_deger">
                             <option value="1">1</option>
@@ -180,7 +180,44 @@
                             document.getElementById("2").disabled = true;
                             document.getElementById("3").disabled = true;
                             document.getElementById("4").disabled = true;
+
+
+                            $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: gun_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+
+
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
+
+                            var gun_gun = document.getElementById("g_deger").value;
+
+                            var bakimadi = document.getElementById("bakimadi").value;
+
+                            var bakimtarihi = document.getElementById("bakimtarihi").value;
+
+                            var personel = document.getElementById("personel").value;
+
                         }
+
+
+
 
                         function hafta_selected() {
 
@@ -211,7 +248,29 @@
                             document.getElementById("1").disabled = true;
                             document.getElementById("3").disabled = true;
                             document.getElementById("4").disabled = true;
-                    }
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: hafta_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+
+                        }
+
 
                         function ay_selected() {
 
@@ -242,6 +301,26 @@
                             document.getElementById("1").disabled = true;
                             document.getElementById("2").disabled = true;
                             document.getElementById("4").disabled = true;
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: ay_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
                         }
 
                         function yil_selected() {
@@ -275,6 +354,26 @@
                             document.getElementById("1").disabled = true;
                             document.getElementById("2").disabled = true;
                             document.getElementById("3").disabled = true;
+
+
+                           $(document).ready(function () {
+                            $("#btnClick").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction", "Bakim")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: yil_gun, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
+                                f.contentType = "application/json";
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
                         }
 
                         function temizle_selected() {
@@ -292,69 +391,16 @@
                             x.disabled = false
 
                             document.getElementById("1").disabled = false;
-                            /*$('1').attr("checked", "checked");*/
+                            $("1").prop("checked", false);
                             document.getElementById("2").disabled = false;
-                            /*$('2').attr("checked", "checked");*/
+                            $("2").prop("checked", false);
                             document.getElementById("3").disabled = false;
-                            /*$('3').attr("checked", "checked");*/
+                            $("3").prop("checked", false);
                             document.getElementById("4").disabled = false;
-                            /*$('4').attr("checked", "checked");*/
+                            $("4").prop("checked", false);
                         }
 
 
-
-                    //ajax request başlangıç
-                    var gunperiyot;
-
-                     $(document).ready(function () {
-                         $("#btnClick").click(function () {
-
-                            //Hangi radiobutton seçilmiş kontrol et.
-                             var isChecked_gun = $('#1').prop('checked');
-                             var isChecked_hafta = $('#2').prop('checked');
-                             var isChecked_ay = $('#3').prop('checked');
-                             var isChecked_yil = $('#4').prop('checked');
-
-                             if (isChecked_gun == true) {
-                                 gunperiyot = document.getElementById("g_deger").value; //r_gün seçilmişse gün değerini al
-                             }
-                             if (isChecked_hafta == true) {
-                                 gunperiyot = document.getElementById("h_deger").value; //r_hafta seçilmişse hafta değerini al ve 7 ile çarp
-                             }
-                                 gunperiyot = (gunperiyot * 7);
-                             }
-                             if (isChecked_ay == true) {
-                                 gunperiyot = document.getElementById("a_deger").value; //r_ay seçilmişse ay değerini al ve 30 ile çarp
-                                 gunperiyot = (gunperiyot * 30);
-                             }
-                             if (isChecked_yil == true) {
-                                 gunperiyot = document.getElementById("y_deger").value; //r_yil seçilmiş ise yil değerini al ve 365 ile çarp
-                                 gunperiyot = (gunperiyot * 365);
-                             }
-
-                         //hertürlü controller'a gitmesi gereken değerler (radiobuttonlardan bağımsız)
-                                    var bakimadi = document.getElementById("bakimadi").value;
-                                    var bakimtarihi = document.getElementById("bakimtarihi").value;
-                                    var personel = document.getElementById("personel").value;
-
-                                var f = {};
-                                f.url = '@Url.Action("TestFunction", "Bakim")';
-                                f.type = "POST";
-                             f.dataType = "json";
-                             f.data = JSON.stringify({ PeriyotGun: gunperiyot, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel });
-                                f.contentType = "application/json";
-
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
-                            });
-                        });
-
-                    //bitiş
                 </script>
 
 
