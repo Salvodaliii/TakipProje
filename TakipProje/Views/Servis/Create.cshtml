@@ -233,7 +233,7 @@
 
                         }
 
-                        function hafta_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                        function hafta_selected() { //EĞER HAFTA SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
                             var x = document.getElementById("h_deger")
                             x.disabled = false
 
@@ -292,6 +292,67 @@
                         });
 
                         }
+
+                        function ay_selected() { //EĞER AY SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                            var x = document.getElementById("a_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _AY
+
+                            var ay_gun = document.getElementById("a_deger").value;
+
+                            ay_gun = (ay_gun * 30) //Ay Değerini Güne Çevir {ileriki adımlar için artık yıl hesabı yapılabilir & 31 30 çeken aylar belirlenebilir.}
+
+                            var isadi = document.getElementById("isadi").value;
+
+                            var firmaadi = document.getElementById("firmaadi").value;
+
+                            var sabittelefon = document.getElementById("sabittelefon").value;
+
+                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
+
+                            var gsm = document.getElementById("gsm").value;
+
+                            var mail = document.getElementById("mail").value;
+
+                            var baslangictarihi = document.getElementById("baslangictarihi").value;
+
+                            var bitistarihi = document.getElementById("bitistarihi").value;
+
+                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
+
+
+
+                           $(document).ready(function () {
+                               $("#btnClickservis").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TFunction", "Servis")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: ay_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");  //ARADA BİR HATA VERİYOR , HATA ANLAŞILMADI.
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+                        }
+
 
                         function temizle_selected() {
 
