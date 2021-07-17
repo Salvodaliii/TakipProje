@@ -188,7 +188,7 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _GÜN
 
                             var gun_gun = document.getElementById("g_deger").value;
 
@@ -219,6 +219,66 @@
                                 f.type = "POST";
                                 f.dataType = "json";
                                 f.data = JSON.stringify({ PeriyotGun: gun_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+                        }
+
+                        function hafta_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                            var x = document.getElementById("h_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _HAFTA
+
+                            var hafta_gun = document.getElementById("h_deger").value;
+
+                            hafta_gun = (hafta_gun * 7) //Hafta Değerini Güne Çevir
+
+                            var isadi = document.getElementById("isadi").value;
+
+                            var firmaadi = document.getElementById("firmaadi").value;
+
+                            var sabittelefon = document.getElementById("sabittelefon").value;
+
+                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
+
+                            var gsm = document.getElementById("gsm").value;
+
+                            var mail = document.getElementById("mail").value;
+
+                            var baslangictarihi = document.getElementById("baslangictarihi").value;
+
+                            var bitistarihi = document.getElementById("bitistarihi").value;
+
+                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
+
+
+
+                           $(document).ready(function () {
+                               $("#btnClickservis").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TFunction", "Servis")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: hafta_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
                                 f.contentType = "application/json";
 
                                 f.success = function (response) {
