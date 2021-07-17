@@ -17,26 +17,91 @@
     <h4>Servis Kayıt Bilgileri</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<div class="form-group">
-    <span class="create_titles">İş Adı</span>
-    <div class="col-md-10">
-        @Html.EditorFor(model => model.İsAdi, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.İsAdi, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <span class="create_titles">İş Adı</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.İsAdi, new { htmlAttributes = new { @class = "form-control", id = "isadi" } })
+            @Html.ValidationMessageFor(model => model.İsAdi, "", new { @class = "text-danger" })
+        </div>
     </div>
-</div>
 
     <div class="form-group">
         <span class="create_titles">Bakım Periyodu</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BakimPeriyodu, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BakimPeriyodu, "", new { @class = "text-danger" })
+            @*deneme başla*@
+            <hr />
+            <br />
+            <h6 style="margin-bottom:25px;letter-spacing:1px;">BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
+            <br />
+
+            <form>
+                <fieldset id="r_periyot">
+                    <label for="r_gun">GÜN</label>
+                    <input type="radio" value="Gun" onchange="gun_selected()" name="r_gun" />&nbsp;
+                    <select name="g_deger" id="g_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <label for="r_hafta">HAFTA</label>
+                    <input type="radio" value="Hafta" onchange="hafta_selected()" name="r_hafta" />&nbsp;
+                    <select name="h_deger" id="h_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <label for="r_ay">AY</label>
+                    <input type="radio" value="Ay" onchange="ay_selected()" name="r_ay" />&nbsp;
+                    <select name="a_deger" id="a_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                    <label for="r_yil">YIL</label>
+                    <input type="radio" value="Yil" onchange="yil_selected()" name?="r_yil" />&nbsp;
+                    <select name="y_deger" id="y_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="btn_temizle" class="btn-warning" type="button" onclick="temizle_selected()" value="Seçimi Temizle">&nbsp;
+                </fieldset>
+                <br />
+                <br />
+                <br />
+            </form>
+
+            @*deneme bitir*@
         </div>
     </div>
 
     <div class="form-group">
         <span class="create_titles">Firma Adı</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control", id = "firmaadi" } })
             @Html.ValidationMessageFor(model => model.FirmaAdi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -44,7 +109,7 @@
     <div class="form-group">
         <span class="create_titles">Sabit Telefon</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control", id = "sabittelefon" } })
             @Html.ValidationMessageFor(model => model.SabitTelefon, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -52,7 +117,7 @@
     <div class="form-group">
         <span class="create_titles">Destek Personeli</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.DestekPersonelAdSoyad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.DestekPersonelAdSoyad, new { htmlAttributes = new { @class = "form-control", id = "destekpersoneladsoyad" } })
             @Html.ValidationMessageFor(model => model.DestekPersonelAdSoyad, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -60,7 +125,7 @@
     <div class="form-group">
         <span class="create_titles">GSM</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control", id = "gsm" } })
             @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -68,7 +133,7 @@
     <div class="form-group">
         <span class="create_titles">Mail</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" , @type="email" } })
+            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", @type = "email", id = "mail" } })
             @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -76,7 +141,7 @@
     <div class="form-group">
         <span class="create_titles">Başlangıç Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date", id = "baslangictarihi" } })
             @Html.ValidationMessageFor(model => model.BaslangicTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -84,7 +149,7 @@
     <div class="form-group">
         <span class="create_titles">Bitiş Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date", id = "bitistarihi" } })
             @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -92,14 +157,15 @@
     <div class="form-group">
         <span class="create_titles">Bakım ve Açıklamalar</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BakimveAciklamalar, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.BakimveAciklamalar, new { htmlAttributes = new { @class = "form-control", id = "bakimveaciklamalar" } })
             @Html.ValidationMessageFor(model => model.BakimveAciklamalar, "", new { @class = "text-danger" })
         </div>
     </div>
 
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Kayıt Oluştur" class="btn btn-success" />
+            <input id="btnClickservis" type="submit" value="Kayıt Oluştur" class="btn btn-success" />
             <div id="btn_geridon">
 
                 <button type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
@@ -108,6 +174,83 @@
         </div>
 
     </div>
+    <script>
+                        function gun_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                            var x = document.getElementById("g_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (BAKIM CONTROLLER'A) _GÜN
+
+                            var gun_gun = document.getElementById("g_deger").value;
+
+                            var isadi = document.getElementById("isadi").value;
+
+                            var firmaadi = document.getElementById("firmaadi").value;
+
+                            var sabittelefon = document.getElementById("sabittelefon").value;
+
+                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
+
+                            var gsm = document.getElementById("gsm").value;
+
+                            var mail = document.getElementById("mail").value;
+
+                            var baslangictarihi = document.getElementById("baslangictarihi").value;
+
+                            var bitistarihi = document.getElementById("bitistarihi").value;
+
+                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
+
+
+
+                           $(document).ready(function () {
+                               $("#btnClickservis").click(function () {
+                                var f = {};
+                                f.url = '@Url.Action("TFunction", "Servis")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: gun_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+                        }
+
+                        function temizle_selected() {
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = false
+                        }
+
+
+    </script>
+
 </div>
 }
 
@@ -115,6 +258,10 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+
+
 
 
 <style>

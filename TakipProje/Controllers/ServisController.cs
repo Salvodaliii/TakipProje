@@ -76,6 +76,36 @@ namespace TakipProje.Controllers
             return View();
         }
 
+
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public JsonResult TFunction(Servis servis,int PeriyotGun, string isAdi, string FirmaAdi, string SabitTelefon, string DestekPersonelAdSoyad,string Gsm,string Mail,DateTime BaslangicTarihi,DateTime BitisTarihi,string BakimVeAciklamalar) //Servis/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        {
+            servis.İsAdi = isAdi;
+            servis.FirmaAdi = FirmaAdi;
+            servis.SabitTelefon = SabitTelefon;
+            servis.DestekPersonelAdSoyad = DestekPersonelAdSoyad;
+            servis.Gsm = Gsm;
+            servis.Mail = Mail;
+            servis.BaslangicTarihi = BaslangicTarihi;
+            servis.BitisTarihi = BitisTarihi;
+            servis.BakimveAciklamalar = BakimVeAciklamalar;
+
+            servis.BakimPeriyodu = PeriyotGun;
+
+            db.Servis.Add(servis);
+            db.SaveChanges();
+
+
+            RedirectToAction("Index", "Servis");
+            return Json(new
+            {
+                resut = "OK"
+            });
+        }
+
+
         // POST: Servis/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -83,14 +113,16 @@ namespace TakipProje.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,İsAdi,BakimPeriyodu,FirmaAdi,SabitTelefon,DestekPersonelAdSoyad,Gsm,Mail,BaslangicTarihi,BitisTarihi,BakimveAciklamalar")] Servis servis)
         {
-            if (ModelState.IsValid)
-            {
-                db.Servis.Add(servis);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+            //if (ModelState.IsValid)
+            //{
+            //    db.Servis.Add(servis);
+            //    db.SaveChanges();
+                
+            RedirectToAction("Index");
             return View(servis);
+            //}
+
+
         }
 
         // GET: Servis/Edit/5

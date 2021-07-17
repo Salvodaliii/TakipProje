@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="takipDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bakim">
           <Key>
             <PropertyRef Name="ID" />
@@ -66,7 +66,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="İsAdi" Type="nvarchar" MaxLength="50" />
-          <Property Name="BakimPeriyodu" Type="nvarchar" MaxLength="50" />
+          <Property Name="BakimPeriyodu" Type="int" />
           <Property Name="FirmaAdi" Type="nvarchar" MaxLength="100" />
           <Property Name="SabitTelefon" Type="nvarchar" MaxLength="11" />
           <Property Name="DestekPersonelAdSoyad" Type="nvarchar" MaxLength="50" />
@@ -171,8 +171,7 @@
             <End Role="BakimAciklama" EntitySet="BakimAciklama" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="takipDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -241,7 +240,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="İsAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BakimPeriyodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BakimPeriyodu" Type="Int32" />
           <Property Name="FirmaAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SabitTelefon" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="DestekPersonelAdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

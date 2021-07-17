@@ -16,7 +16,7 @@ namespace TakipProje.Models
     {
         public int ID { get; set; }
         public string İsAdi { get; set; }
-        public string BakimPeriyodu { get; set; }
+        public Nullable<int> BakimPeriyodu { get; set; }
         public string FirmaAdi { get; set; }
         public string SabitTelefon { get; set; }
         public string DestekPersonelAdSoyad { get; set; }
