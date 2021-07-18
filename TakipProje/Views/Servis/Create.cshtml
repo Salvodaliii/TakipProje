@@ -37,7 +37,7 @@
             <form>
                 <fieldset id="r_periyot">
                     <label for="r_gun">GÜN</label>
-                    <input type="radio" value="Gun" onchange="gun_selected()" name="r_gun" />&nbsp;
+                    <input type="radio" value="Gun" onchange="gun_selected()" name="rb" id=1  />&nbsp;
                     <select name="g_deger" id="g_deger">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -48,7 +48,7 @@
                     </select>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <label for="r_hafta">HAFTA</label>
-                    <input type="radio" value="Hafta" onchange="hafta_selected()" name="r_hafta" />&nbsp;
+                    <input type="radio" value="Hafta" onchange="hafta_selected()" name="rb" id=2  />&nbsp;
                     <select name="h_deger" id="h_deger">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -57,7 +57,7 @@
                     </select>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <label for="r_ay">AY</label>
-                    <input type="radio" value="Ay" onchange="ay_selected()" name="r_ay" />&nbsp;
+                    <input type="radio" value="Ay" onchange="ay_selected()" name="rb" id=3 />&nbsp;
                     <select name="a_deger" id="a_deger">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -73,7 +73,7 @@
                     </select>
                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                     <label for="r_yil">YIL</label>
-                    <input type="radio" value="Yil" onchange="yil_selected()" name?="r_yil" />&nbsp;
+                    <input type="radio" value="Yil" onchange="yil_selected()" name="rb" id=4 />&nbsp;
                     <select name="y_deger" id="y_deger">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -174,6 +174,7 @@
         </div>
 
     </div>
+
     <script>
                         function gun_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
                             var x = document.getElementById("g_deger")
@@ -188,48 +189,9 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _GÜN
-
-                            var gun_gun = document.getElementById("g_deger").value;
-
-                            var isadi = document.getElementById("isadi").value;
-
-                            var firmaadi = document.getElementById("firmaadi").value;
-
-                            var sabittelefon = document.getElementById("sabittelefon").value;
-
-                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
-
-                            var gsm = document.getElementById("gsm").value;
-
-                            var mail = document.getElementById("mail").value;
-
-                            var baslangictarihi = document.getElementById("baslangictarihi").value;
-
-                            var bitistarihi = document.getElementById("bitistarihi").value;
-
-                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
-
-
-
-                           $(document).ready(function () {
-                               $("#btnClickservis").click(function () {
-                                var f = {};
-                                f.url = '@Url.Action("TFunction", "Servis")';
-                                f.type = "POST";
-                                f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun: gun_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
-                                f.contentType = "application/json";
-
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
-                            });
-                        });
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
 
                         }
 
@@ -246,50 +208,9 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _HAFTA
-
-                            var hafta_gun = document.getElementById("h_deger").value;
-
-                            hafta_gun = (hafta_gun * 7) //Hafta Değerini Güne Çevir
-
-                            var isadi = document.getElementById("isadi").value;
-
-                            var firmaadi = document.getElementById("firmaadi").value;
-
-                            var sabittelefon = document.getElementById("sabittelefon").value;
-
-                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
-
-                            var gsm = document.getElementById("gsm").value;
-
-                            var mail = document.getElementById("mail").value;
-
-                            var baslangictarihi = document.getElementById("baslangictarihi").value;
-
-                            var bitistarihi = document.getElementById("bitistarihi").value;
-
-                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
-
-
-
-                           $(document).ready(function () {
-                               $("#btnClickservis").click(function () {
-                                var f = {};
-                                f.url = '@Url.Action("TFunction", "Servis")';
-                                f.type = "POST";
-                                f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun: hafta_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
-                                f.contentType = "application/json";
-
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
-                            });
-                        });
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
 
                         }
 
@@ -306,51 +227,9 @@
                             var x = document.getElementById("y_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _AY
-
-                            var ay_gun = document.getElementById("a_deger").value;
-
-                            ay_gun = (ay_gun * 30) //Ay Değerini Güne Çevir {ileriki adımlar için artık yıl hesabı yapılabilir & 31 30 çeken aylar belirlenebilir.}
-
-                            var isadi = document.getElementById("isadi").value;
-
-                            var firmaadi = document.getElementById("firmaadi").value;
-
-                            var sabittelefon = document.getElementById("sabittelefon").value;
-
-                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
-
-                            var gsm = document.getElementById("gsm").value;
-
-                            var mail = document.getElementById("mail").value;
-
-                            var baslangictarihi = document.getElementById("baslangictarihi").value;
-
-                            var bitistarihi = document.getElementById("bitistarihi").value;
-
-                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
-
-
-
-                           $(document).ready(function () {
-                               $("#btnClickservis").click(function () {
-                                var f = {};
-                                f.url = '@Url.Action("TFunction", "Servis")';
-                                f.type = "POST";
-                                f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun: ay_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
-                                f.contentType = "application/json";
-
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");  //ARADA BİR HATA VERİYOR , HATA ANLAŞILMADI.
-                                };
-                                $.ajax(f);
-                            });
-                        });
-
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("4").disabled = true;
                         }
 
                         function yil_selected() { //EĞER YIL SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
@@ -366,50 +245,9 @@
                             var x = document.getElementById("a_deger")
                             x.disabled = true
 
-                            //VERİLERİN ALINMASI VE AJAX POST İŞLEMİ (SERVİS CONTROLLER'A) _YIL
-
-                            var yil_gun = document.getElementById("y_deger").value;
-
-                            yil_gun = (yil_gun * 365) //Yil Değerini Güne Çevir {ileriki adımlar için "artık yıl" hesabı yapılabilir}
-
-                            var isadi = document.getElementById("isadi").value;
-
-                            var firmaadi = document.getElementById("firmaadi").value;
-
-                            var sabittelefon = document.getElementById("sabittelefon").value;
-
-                            var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
-
-                            var gsm = document.getElementById("gsm").value;
-
-                            var mail = document.getElementById("mail").value;
-
-                            var baslangictarihi = document.getElementById("baslangictarihi").value;
-
-                            var bitistarihi = document.getElementById("bitistarihi").value;
-
-                            var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
-
-
-
-                           $(document).ready(function () {
-                               $("#btnClickservis").click(function () {
-                                var f = {};
-                                f.url = '@Url.Action("TFunction", "Servis")';
-                                f.type = "POST";
-                                f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun: yil_gun, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
-                                f.contentType = "application/json";
-
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
-                            });
-                        });
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
 
                         }
 
@@ -426,9 +264,78 @@
 
                             var x = document.getElementById("y_deger")
                             x.disabled = false
+
+
+                            document.getElementById("1").disabled = false;
+                            document.getElementById("2").disabled = false;
+                            document.getElementById("3").disabled = false;
+                            document.getElementById("4").disabled = false;
                         }
 
+                        //ajax request başlangıç
+                        var gunperiyot;
 
+                             $(document).ready(function () {
+                                 $("#btnClickservis").click(function () {
+
+                                   //Hangi radiobutton seçilmiş kontrol et.
+                                     var isChecked_gun_servis = $('#1').prop('checked');
+                                     var isChecked_hafta_servis = $('#2').prop('checked');
+                                     var isChecked_ay_servis = $('#3').prop('checked');
+                                     var isChecked_yil_servis = $('#4').prop('checked');
+
+                                     if (isChecked_gun_servis == true) {
+                                         gunperiyot = document.getElementById("g_deger").value; //r_gün seçilmişse gün değerini al
+                                     }
+                                     if (isChecked_hafta_servis == true) {
+                                         gunperiyot = document.getElementById("h_deger").value; //r_hafta seçilmişse hafta değerini al ve 7 ile çarp
+                                         gunperiyot = (gunperiyot * 7);
+                                     }
+
+                                     if (isChecked_ay_servis == true) {
+                                         gunperiyot = document.getElementById("a_deger").value; //r_ay seçilmişse ay değerini al ve 30 ile çarp
+                                         gunperiyot = (gunperiyot * 30);
+                                     }
+                                     if (isChecked_yil_servis == true) {
+                                         gunperiyot = document.getElementById("y_deger").value; //r_yil seçilmiş ise yil değerini al ve 365 ile çarp
+                                         gunperiyot = (gunperiyot * 365);
+                                     }
+
+                                   var isadi = document.getElementById("isadi").value;
+
+                                   var firmaadi = document.getElementById("firmaadi").value;
+
+                                   var sabittelefon = document.getElementById("sabittelefon").value;
+
+                                   var destekpersoneladsoyad = document.getElementById("destekpersoneladsoyad").value;
+
+                                   var gsm = document.getElementById("gsm").value;
+
+                                   var mail = document.getElementById("mail").value;
+
+                                   var baslangictarihi = document.getElementById("baslangictarihi").value;
+
+                                   var bitistarihi = document.getElementById("bitistarihi").value;
+
+                                   var bakimveaciklamalar = document.getElementById("bakimveaciklamalar").value;
+
+                                   //
+                                var f = {};
+                                f.url = '@Url.Action("TFunction", "Servis")';
+                                f.type = "POST";
+                                f.dataType = "json";
+                                f.data = JSON.stringify({ PeriyotGun: gunperiyot, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
     </script>
 
 </div>
