@@ -15,7 +15,7 @@ namespace TakipProje.Models
     public partial class Yedekleme
     {
         public int ID { get; set; }
-        public string YedeklemePeriyodu { get; set; }
+        public Nullable<int> YedeklemePeriyodu { get; set; }
         public string YedeklemePlaniAdi { get; set; }
         public string Durum { get; set; }
         public System.DateTime OlusturmaTarihi { get; set; }

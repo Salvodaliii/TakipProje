@@ -91,8 +91,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="YedeklemePeriyodu" Type="nvarchar" MaxLength="50" />
-          <Property Name="YedeklemePlaniAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="YedeklemePeriyodu" Type="int" />
+          <Property Name="YedeklemePlaniAdi" Type="varchar" MaxLength="50" />
           <Property Name="Durum" Type="nvarchar" MaxLength="50" />
           <Property Name="OlusturmaTarihi" Type="date" Nullable="false" />
           <Property Name="SonYedeklemeTarihi" Type="date" Nullable="false" />
@@ -265,8 +265,8 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="YedeklemePeriyodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="YedeklemePlaniAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="YedeklemePeriyodu" Type="Int32" Nullable="true" />
+          <Property Name="YedeklemePlaniAdi" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Durum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OlusturmaTarihi" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="SonYedeklemeTarihi" Type="DateTime" Nullable="false" Precision="0" />

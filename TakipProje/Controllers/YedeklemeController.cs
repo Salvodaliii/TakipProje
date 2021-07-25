@@ -70,6 +70,29 @@ namespace TakipProje.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult TestFunction(Yedekleme yedekleme, int PeriyotGun, string YedeklemePlanAdi, string Durum, DateTime OlusturmaTarihi,DateTime SonYedeklemeTarihi, string KontrolEdenPersonel)
+        {
+
+            yedekleme.YedeklemePeriyodu = PeriyotGun;
+            yedekleme.YedeklemePlaniAdi = YedeklemePlanAdi;
+            yedekleme.Durum = Durum;
+            yedekleme.OlusturmaTarihi = OlusturmaTarihi;
+            yedekleme.SonYedeklemeTarihi = SonYedeklemeTarihi;
+            yedekleme.KontrolEdenPersonel = KontrolEdenPersonel;
+
+            db.Yedekleme.Add(yedekleme);
+            db.SaveChanges();
+
+            RedirectToAction("Index", "Yedekleme");
+            return Json(new
+            {
+                resut = "OK"
+            });
+        }
+
+
+
         // POST: Yedekleme/Create
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -77,12 +100,12 @@ namespace TakipProje.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,YedeklemePeriyodu,YedeklemePlaniAdi,Durum,OlusturmaTarihi,SonYedeklemeTarihi,KontrolEdenPersonel")] Yedekleme yedekleme)
         {
-            if (ModelState.IsValid)
-            {
-                db.Yedekleme.Add(yedekleme);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if (ModelState.IsValid)
+            //{
+            //    db.Yedekleme.Add(yedekleme);
+            //    db.SaveChanges();
+             RedirectToAction("Index");
+            //}
 
             return View(yedekleme);
         }
