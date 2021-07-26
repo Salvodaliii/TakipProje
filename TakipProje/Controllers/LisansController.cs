@@ -109,6 +109,43 @@ namespace TakipProje.Controllers
 
 
 
+        // GET: Lisans/Edit/5
+        public ActionResult TarihDuzenle(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Lisans lisans = db.Lisans.Find(id);
+            if (lisans == null)
+            {
+                return HttpNotFound();
+            }
+            return View(lisans);
+        }
+
+        // POST: Lisans/Edit/5
+        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
+        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TarihDuzenle([Bind(Include = "ID,BitisTarihi,YenilemeTarihi")] Lisans lisans)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(lisans).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(lisans);
+        }
+
+
+
+
+
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

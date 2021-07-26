@@ -4242,6 +4242,8 @@
     <Content Include="Views\Giris\Logout.cshtml" />
     <Content Include="Views\Giris\Profil.cshtml" />
     <Content Include="Views\Lisans\Index.cshtml" />
+    <Content Include="Views\Lisans\TarihDuzenle.cshtml" />
+    <Content Include="Views\Lisans\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
