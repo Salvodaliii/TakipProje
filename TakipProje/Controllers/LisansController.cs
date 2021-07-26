@@ -91,9 +91,6 @@ namespace TakipProje.Controllers
             return View(lisans);
         }
 
-        // POST: Lisans/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ProgramAdi,Adet,FirmaAdi,SabitTelefon,Gsm,Mail,AlimTarihi,BitisTarihi,YenilemeTarihi,AlisFiyati")] Lisans lisans)
@@ -124,12 +121,10 @@ namespace TakipProje.Controllers
             return View(lisans);
         }
 
-        // POST: Lisans/Edit/5
-        // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
-        // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TarihDuzenle([Bind(Include = "ID,BitisTarihi,YenilemeTarihi")] Lisans lisans)
+        public ActionResult TarihDuzenle(Lisans lisans)
         {
             if (ModelState.IsValid)
             {

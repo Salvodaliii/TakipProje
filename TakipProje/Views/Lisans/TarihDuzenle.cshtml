@@ -1,8 +1,83 @@
-﻿
+﻿@model TakipProje.Models.Lisans
+
 @{
-    ViewBag.Title = "TarihDuzenle";
+    ViewBag.Title = "Lisans Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>TarihDuzenle</h2>
+<br>
+<br>
+<center><h2>Tarih Güncelleme İşlemi</h2></center>
 
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Lisans Kayıt Bilgileri</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <dt>
+                <span class="details_title">Program Adı : </span> &nbsp;&nbsp;&nbsp;  @Html.DisplayFor(model => model.ProgramAdi)
+            </dt>
+        </div>
+    </div>
+    
+
+
+    <div class="form-group">
+        <span class="create_titles">Bitiş Tarihi</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type="date" } })
+            @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Yenileme Tarihi</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.ValidationMessageFor(model => model.YenilemeTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Güncelle" class="btn btn-success" />
+            <div id="btn_geridon">
+
+                <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .create_titles {
+        margin-left: 13px;
+        /*        margin-top:5px !important;*/
+        color: black;
+        font-weight: bolder;
+    }
+
+    #btn_geridon {
+        float: right;
+    }
+</style>
