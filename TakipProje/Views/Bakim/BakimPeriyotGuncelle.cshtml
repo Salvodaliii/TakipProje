@@ -1,0 +1,362 @@
+﻿@model TakipProje.Models.Bakim
+
+@{
+    ViewBag.Title = "Periyot Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br>
+<center><h2>Periyot Güncelleme İşlemi</h2></center>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Bakım Kayıt Bilgileri</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div style="visibility:hidden">
+    @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "id" } })
+</div>
+
+
+
+
+    <div class="form-group">
+        <span class="create_titles">Bakım Adı</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BakimAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bakimadi" } })
+            @Html.ValidationMessageFor(model => model.BakimAdi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Bakım Tarihi</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BakimTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bakimtarihi" } })
+            @Html.ValidationMessageFor(model => model.BakimTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Bakım Yapan Personel</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BakimYapanPersonel, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "personel" } })
+            @Html.ValidationMessageFor(model => model.BakimYapanPersonel, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Bakım Periyodu (Gün)</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Periyot, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "periyot" } })
+            @Html.ValidationMessageFor(model => model.Periyot, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        @*<span class="create_titles">Periyot</span>*@
+        <div class="col-md-10">
+
+
+            @*deneme başla*@
+            <hr />
+            <br />
+            <h6 style="margin-bottom:25px;letter-spacing:1px;">BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
+            <br />
+
+            <form>
+                <fieldset id="r_periyot">
+
+                    @*<label for="gun">GÜN</label>&nbsp;*@
+                    @*<input id="btn_gun" class="btn-primary" type="button" onclick="gun_selected()" value="GÜN">&nbsp;*@
+                    <label for="r_gun">GÜN</label>
+                    <input type="radio" value="Gun" onchange="gun_selected()" name="rb" id=1 />&nbsp;
+                    <select name="g_deger" id="g_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="hafta">HAFTA</label>&nbsp;*@
+                    @*<input id="btn_hafta" class="btn-primary" type="button" onclick="hafta_selected()" value="HAFTA">&nbsp;*@
+                    <label for="r_hafta">HAFTA</label>
+                    <input type="radio" value="Hafta" onchange="hafta_selected()" name="rb" id=2 />&nbsp;
+                    <select name="h_deger" id="h_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="ay">AY</label>&nbsp;*@
+                    @*<input id="btn_ay" class="btn-primary" type="button" onclick="ay_selected()" value="AY">&nbsp;*@
+                    <label for="r_ay">AY</label>
+                    <input type="radio" value="Ay" onchange="ay_selected()" name="rb" id=3 />&nbsp;
+                    <select name="a_deger" id="a_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+                    @*<label for="yil">YIL</label>&nbsp;*@
+                    @*<input id="btn_yil" class="btn-primary" type="button" onclick="yil_selected()" value="YIL">&nbsp;*@
+                    <label for="r_yil">YIL</label>
+                    <input type="radio" value="Yil" onchange="yil_selected()" name="rb" id=4 />&nbsp;
+
+                    <select name="y_deger" id="y_deger">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="btn_temizle" class="btn-warning" type="button" onclick="temizle_selected()" value="Seçimi Temizle">&nbsp;
+                </fieldset>
+                <br />
+                <br />
+                <br />
+
+                <script>
+                        function gun_selected() { //EĞER GÜN SEÇİLDİYSE DİĞER COMBOBOXLARI PASİF HALE GETİR VE DEVAM ET ...
+                            var x = document.getElementById("g_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
+                        }
+
+                        function hafta_selected() {
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("3").disabled = true;
+                            document.getElementById("4").disabled = true;
+                    }
+
+                        function ay_selected() {
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = true
+
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("4").disabled = true;
+                        }
+
+                        function yil_selected() {
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = true
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = true
+
+                            document.getElementById("1").disabled = true;
+                            document.getElementById("2").disabled = true;
+                            document.getElementById("3").disabled = true;
+                        }
+
+                        function temizle_selected() {
+
+                            var x = document.getElementById("g_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("h_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("a_deger")
+                            x.disabled = false
+
+                            var x = document.getElementById("y_deger")
+                            x.disabled = false
+
+                            //işlem yapılması gerekiyor !
+
+                            document.getElementById("1").disabled = false;
+                            document.getElementById("2").disabled = false;
+                            document.getElementById("3").disabled = false;
+                            document.getElementById("4").disabled = false;
+                        }
+
+                    //ajax request başlangıç
+                    var gunperiyot;
+
+                     $(document).ready(function () {
+                         $("#btnClick").click(function () {
+
+                            //Hangi radiobutton seçilmiş kontrol et.
+                             var isChecked_gun = $('#1').prop('checked');
+                             var isChecked_hafta = $('#2').prop('checked');
+                             var isChecked_ay = $('#3').prop('checked');
+                             var isChecked_yil = $('#4').prop('checked');
+
+                             if (isChecked_gun == true) {
+                                 gunperiyot = document.getElementById("g_deger").value; //r_gün seçilmişse gün değerini al
+                             }
+                             if (isChecked_hafta == true) {
+                                 gunperiyot = document.getElementById("h_deger").value; //r_hafta seçilmişse hafta değerini al ve 7 ile çarp
+                                 gunperiyot = (gunperiyot * 7);
+                             }
+
+                             if (isChecked_ay == true) {
+                                 gunperiyot = document.getElementById("a_deger").value; //r_ay seçilmişse ay değerini al ve 30 ile çarp
+                                 gunperiyot = (gunperiyot * 30);
+                             }
+                             if (isChecked_yil == true) {
+                                 gunperiyot = document.getElementById("y_deger").value; //r_yil seçilmiş ise yil değerini al ve 365 ile çarp
+                                 gunperiyot = (gunperiyot * 365);
+                             }
+
+                         //hertürlü controller'a gitmesi gereken değerler (radiobuttonlardan bağımsız)
+                             var bakimadi = document.getElementById("bakimadi").value;
+                             var bakimtarihi = document.getElementById("bakimtarihi").value;
+                             var personel = document.getElementById("personel").value;
+                             var ID2 = document.getElementById("id").value;
+
+                                var f = {};
+                                f.url = '@Url.Action("TestFunction2", "Bakim")';
+                                f.type = "POST";
+                             f.dataType = "json";
+                             f.data = JSON.stringify({ PeriyotGun: gunperiyot, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel, ID: ID2});
+                                f.contentType = "application/json";
+
+                                f.success = function (response) {
+                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                };
+                                f.error = function (response) {
+                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                };
+                                $.ajax(f);
+                            });
+                        });
+
+                    //bitiş
+                </script>
+            </form>
+
+            @*deneme bitir*@
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input id="btnClick" type="submit" value="Periyot Güncelle" class="btn btn-success" />
+            <div id="btn_geridon">
+
+                <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<style>
+    .create_titles {
+        margin-left: 13px;
+        color: black;
+        font-weight: bolder;
+    }
+
+    #btn_geridon {
+        float: right;
+    }
+</style>

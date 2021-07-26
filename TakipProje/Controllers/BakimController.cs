@@ -37,6 +37,69 @@ namespace TakipProje.Controllers
             return Redirect($"/Bakim/Details/{id}");
         }
 
+        public ActionResult BakimPeriyotGuncelle(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Bakim bakim = db.Bakim.Find(id);
+            if (bakim == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(bakim);
+        }
+
+
+
+        [HttpGet]
+        public JsonResult TestFunction2(int? ID) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        {
+
+            Bakim bakim = db.Bakim.Find(ID);
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        [HttpPost]
+        public JsonResult TestFunction2(Bakim bakim, int ID, string BakimAdi, DateTime BakimTarihi, int PeriyotGun, string Personel) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        {
+            bakim.BakimAdi = BakimAdi;
+            bakim.Periyot = PeriyotGun;
+            bakim.BakimYapanPersonel = Personel;
+            bakim.BakimTarihi = BakimTarihi;
+
+            db.Entry(bakim).State = EntityState.Modified;
+            db.SaveChanges();
+            RedirectToAction("Index", "Bakim");
+
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+
+
 
 
         // GET: Bakim
@@ -106,13 +169,14 @@ namespace TakipProje.Controllers
             bakim.BakimTarihi = BakimTarihi;
             db.Bakim.Add(bakim);
             db.SaveChanges();
-
-
             RedirectToAction("Index", "Bakim");
+
+
             return Json(new
             {
                 resut = "OK"
             });
+
         }
 
 
@@ -162,7 +226,7 @@ namespace TakipProje.Controllers
             {
                 db.Entry(bakim).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("Index");
             }
             return View(bakim);
         }

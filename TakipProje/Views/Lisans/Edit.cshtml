@@ -68,35 +68,34 @@
         </div>
     </div>
 
+
+
     <div class="form-group">
-        <span class="create_titles">Alım Tarihi</span>
+        <span class="create_titles">Alış Fiyatı ₺</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.AlimTarihi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.AlisFiyati, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.AlisFiyati, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.AlimTarihi, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.AlimTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <span class="create_titles">Bitiş Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <span class="create_titles">Yenileme Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.YenilemeTarihi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <span class="create_titles">Alış Fiyatı</span>
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.AlisFiyati, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AlisFiyati, "", new { @class = "text-danger" })
         </div>
     </div>
 

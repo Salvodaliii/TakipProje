@@ -7,7 +7,7 @@
 
 <br>
 <br>
-<center><h2>Tarih Güncelleme İşlemi</h2></center>
+<center><h2>Lisans Güncelleme İşlemi</h2></center>
 
 
 @using (Html.BeginForm())
@@ -21,29 +21,37 @@
     @Html.HiddenFor(model => model.ID)
 
 
-    <div class="form-group">
-        <div class="col-md-10">
-            <dt>
-                <span class="details_title">Program Adı : </span> &nbsp;&nbsp;&nbsp;  @Html.DisplayFor(model => model.ProgramAdi)
-            </dt>
-        </div>
-    </div>
-    
+    <span class="create_titles">Program Adı :</span> <span> </span> @Model.ProgramAdi
+    <br />
+    <br />
+    <br />
+
+
+
+
 
 
     <div class="form-group">
         <span class="create_titles">Bitiş Tarihi</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type="date" } })
+            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
             @Html.ValidationMessageFor(model => model.BitisTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
+
 
     <div class="form-group">
         <span class="create_titles">Yenileme Tarihi</span>
         <div class="col-md-10">
             @Html.EditorFor(model => model.YenilemeTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
             @Html.ValidationMessageFor(model => model.YenilemeTarihi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.AlimTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+            @Html.ValidationMessageFor(model => model.AlimTarihi, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -64,7 +72,54 @@
 </div>
 }
 
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.AlisFiyati, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.AlisFiyati, "", new { @class = "text-danger" })
+    </div>
+</div>
 
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.ProgramAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.ProgramAdi, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.Adet, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.Adet, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.FirmaAdi, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.SabitTelefon, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.Gsm, "", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        @Html.HiddenFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+    </div>
+</div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

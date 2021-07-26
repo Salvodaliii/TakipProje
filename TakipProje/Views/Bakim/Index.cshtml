@@ -104,7 +104,7 @@
                 <span>Bakım Adı</span>
             </th>
             <th>
-                <span>Bakım Tarihi</span>
+                <span>İlk Bakım Tarihi</span>
             </th>
             <th>
                 <span>Bakım Yapan Personel</span>
@@ -134,8 +134,9 @@
                     @Html.DisplayFor(modelItem => item.Periyot) Günde Bir
                 </td>
                 <td>
-                    @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn_duzenle" }) |
-                    @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn_ayrintilar" })
+                    @Html.ActionLink("Periyot Güncelle", "BakimPeriyotGuncelle", new { id = item.ID }, new { @class = "btn btn-warning" }) |
+                    @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
+                    @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn btn-primary" })
                 </td>
             </tr>
 

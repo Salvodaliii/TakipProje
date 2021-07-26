@@ -4244,6 +4244,7 @@
     <Content Include="Views\Lisans\Index.cshtml" />
     <Content Include="Views\Lisans\TarihDuzenle.cshtml" />
     <Content Include="Views\Lisans\Edit.cshtml" />
+    <Content Include="Views\Bakim\BakimPeriyotGuncelle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

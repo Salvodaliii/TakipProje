@@ -4,18 +4,21 @@
     <div class="row control-group">
         <div class="form-group col-xs-10 floating-label-form-group controls">
             <br /><hr />
-            <div id="notekle_text"># Not Ekleme Alanı #</div>
+            <center><div id="notekle_text"># Yapılan Bakıma Ait Açıklama #</div></center>
             <br />
             <div id="not_ta">
                 <textarea type="text" class="form-control" cols="30" rows="2" placeholder="Notunuzu Giriniz.." id="commenttext" name="commenttext" required="" data-validation-required-message="Lütfen bir yorum giriniz."></textarea>
                 <script>
-                    CKEDITOR.replace("commenttext");
+                    CKEDITOR.replace('commenttext',{
+                        width: 1500,
+                            height: 400
+                    });
                 </script>                
                 <p class="help-block text-danger"></p>
                 <div class="col-xs-2">
                     <div>
                         <button id="btn_notekle" type="submit" class="btn btn-warning">
-                            <span class="glyphicon glyphicon-send"></span> Not Ekle
+                            <span class="glyphicon glyphicon-send"></span> Bakım Açıklama Ekle
                         </button>
 
                     </div>

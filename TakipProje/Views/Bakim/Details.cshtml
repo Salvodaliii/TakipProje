@@ -22,7 +22,7 @@
         </dd>
 
         <dt>
-            <span class="details_title">Bakım Tarihi</span>
+            <span class="details_title">İlk Bakım Tarihi</span>
         </dt>
 
         <dd>
@@ -42,22 +42,21 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Periyot)
+            @Html.DisplayFor(model => model.Periyot) Günde Bir
         </dd>
 
     </dl>
     <br />
-    <hr />
+
     <br />
 </div>
 
 
-<span id="title_aciklamalar">Açıklamalar</span>
 @foreach (var aciklama in Model.BakimAciklama)
 {
     <li class="media" id="not_list">
         <div class="media-body">
-            <h6 class="media-heading" style="font-style:italic;">Ekleme Tarihi : @aciklama.Tarih.ToString("dd-MM-yyyy")</h6>
+            <h6 class="media-heading" style="font-style:italic;"> Bakım Tarihi : @aciklama.Tarih.ToString("dd-MM-yyyy")</h6>
             <div class="not_aciklama"><br />@Html.Raw(aciklama.Aciklama)</div>
         </div>
     </li>
@@ -73,7 +72,7 @@
             margin-top: 20px;
             margin-left: 10px;
             padding: 10px;
-            width: 750px;
+            width: 1500px;
             border: solid dodgerblue 1px;
             border-radius: 10px;
         }
@@ -100,6 +99,9 @@
         <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
     </div>
 </div>
+<br />
+<br /><br />
+<br />
 
 <style>
     .details_title {
