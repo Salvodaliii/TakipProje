@@ -11,7 +11,8 @@ namespace TakipProje.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Bakim
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,7 +23,10 @@ namespace TakipProje.Models
     
         public int ID { get; set; }
         public string BakimAdi { get; set; }
+
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BakimTarihi { get; set; }
+        
         public string BakimYapanPersonel { get; set; }
         public Nullable<int> Periyot { get; set; }
     
