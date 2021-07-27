@@ -26,6 +26,7 @@ namespace TakipProje.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime SonYedeklemeTarihi { get; set; }
 
+
         public string KontrolEdenPersonel { get; set; }
     }
 }

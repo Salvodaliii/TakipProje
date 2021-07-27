@@ -97,47 +97,18 @@
 <p>
     
 
+    
 
+    
     <div class="col-sm-offset-1 col-md-10">
-        <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
+        <span style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" })</span>
         &nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-info" onClick="location.href='/LisansDetay/Index'" style="transition:900ms;">Tarihçe</button>
 
 
 
-        <div id="btn_geridon">
+        <div id="btn btn-primary" style="float:right">
             <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
         </div>
     </div>
 </p>
 
-<style>
-    .details_title{
-        color:black;
-        font-weight:bolder;
-    }
-    #btn_geridon {
-        float: right;
-    }
-
-        .btn_duzenle_txt {
-            transition: 900ms;
-            background-color: #FFC107;
-            font-size: 15px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-            padding-left: 13px;
-            padding-right: 13px;
-            border-radius: 5px;
-            color: white;
-            text-decoration: none;
-            font-weight: inherit;
-            letter-spacing: 0.7px;
-            background-color: rgba(28,200,138,1);
-        }
-        .btn_duzenle_txt:hover {
-            text-decoration: none;
-            background-color: rgba(22,160,110,1);
-            color: white;
-        }
-
-</style>

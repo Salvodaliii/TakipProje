@@ -24,7 +24,6 @@ namespace TakipProje.Models
         [MinLength(11)]
         public string SabitTelefon { get; set; }
 
-
         public string DestekPersonelAdSoyad { get; set; }
 
         [MaxLength(11)]
@@ -38,6 +37,7 @@ namespace TakipProje.Models
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BitisTarihi { get; set; }
+
 
         public string BakimveAciklamalar { get; set; }
     }

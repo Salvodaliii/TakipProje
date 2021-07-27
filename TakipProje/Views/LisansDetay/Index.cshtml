@@ -14,8 +14,8 @@
         @*Program Adı : @Html.TextBox("p")*@
         <label id="s_title" for="p">Program Adı : </label>
         <input type="text" name="p" size="80" placeholder="Aranacak Programın Adınızı Giriniz.." />&nbsp;&nbsp;&nbsp;
-        <input class="s_btn" type="submit" value="Ara" />&nbsp;&nbsp;
-        <button class="s_btn" href="~/LisansDetay/Index">Geri Dön</button>
+        <input class="btn btn-outline-success" type="submit" value="Ara" />&nbsp;&nbsp;
+        <button class="btn btn-primary" href="~/LisansDetay/Index">Geri Dön</button>
     </div>
 }
 
@@ -47,12 +47,7 @@
         width: 250px;
     }
 
-    .s_btn {
-        width: 100px;
-        padding: 5px;
-        background-color: #466BD9;
-        color: white;
-    }
+
 </style>
 
 <table id="lisansDetay" class="table table-striped table-bordered dt-responsive nowrap">

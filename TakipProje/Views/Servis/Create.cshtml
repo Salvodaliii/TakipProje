@@ -109,7 +109,7 @@
     <div class="form-group">
         <span class="create_titles">Sabit Telefon</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control", id = "sabittelefon" } })
+            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control", id = "sabittelefon",@type="number" } })
             @Html.ValidationMessageFor(model => model.SabitTelefon, "", new { @class = "text-danger" })
         </div>
     </div>

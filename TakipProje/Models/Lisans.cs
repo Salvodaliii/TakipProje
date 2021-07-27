@@ -24,10 +24,12 @@ namespace TakipProje.Models
         [MinLength(11)]
         public string SabitTelefon { get; set; }
 
+
         [MaxLength(11)]
         [MinLength(11)]
         public string Gsm { get; set; }
-        
+
+
         public string Mail { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
@@ -38,6 +40,7 @@ namespace TakipProje.Models
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime YenilemeTarihi { get; set; }
+
 
         public Nullable<decimal> AlisFiyati { get; set; }
     }

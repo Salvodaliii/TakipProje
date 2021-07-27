@@ -64,11 +64,9 @@
 </div>
 <p>
     <div class="col-sm-offset-1 col-md-10">
-        <span class="btn_duzenle" style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn_duzenle_txt" })</span>
+        <span style="float:left;">@Html.ActionLink("Güncelle", "Edit", new { id = Model.ID }, new { @class = "btn btn-success" })</span>
 
 
-        <div id="btn_geridon">
-            <button type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
-        </div>
+            <button style="float:right" type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
     </div>
 </p>

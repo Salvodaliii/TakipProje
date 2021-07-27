@@ -26,7 +26,7 @@ namespace TakipProje.Models
 
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BakimTarihi { get; set; }
-        
+
         public string BakimYapanPersonel { get; set; }
         public Nullable<int> Periyot { get; set; }
     
