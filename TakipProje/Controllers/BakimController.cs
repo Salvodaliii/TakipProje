@@ -68,15 +68,6 @@ namespace TakipProje.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
         [HttpPost]
         public JsonResult TestFunction2(Bakim bakim, int ID, string BakimAdi, DateTime BakimTarihi, int PeriyotGun, string Personel) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
         {

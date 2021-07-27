@@ -51,6 +51,70 @@ namespace TakipProje.Controllers
             ViewBag.YedeklemeKayitSayisi = db.Yedekleme.Count();
         }
 
+        // 
+
+        public ActionResult ServisPeriyotGuncelle(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Servis servis = db.Servis.Find(id);
+            if (servis == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(servis);
+        }
+
+
+
+        [HttpGet]
+        public JsonResult TestFunction3(int? ID)
+        {
+
+            Servis servis = db.Servis.Find(ID);
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+        [HttpPost]
+        public JsonResult TestFunction3(Servis servis, int ID, int PeriyotGun, string isadi, string firmaadi, string sabittelefon, string destekpersonel,string gsm, string mail,DateTime baslangictarihi, DateTime bitistarihi,string bakimveaciklamalar) //Bakım/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
+        {
+
+            servis.İsAdi = isadi;
+            servis.FirmaAdi = firmaadi;
+            servis.SabitTelefon = sabittelefon;
+            servis.DestekPersonelAdSoyad = destekpersonel;
+            servis.Gsm = gsm;
+            servis.Mail = mail;
+            servis.BaslangicTarihi = baslangictarihi;
+            servis.BitisTarihi = bitistarihi;
+            servis.BakimveAciklamalar = bakimveaciklamalar;
+
+            servis.BakimPeriyodu = PeriyotGun;
+
+            db.Entry(servis).State = EntityState.Modified;
+            db.SaveChanges();
+            RedirectToAction("Index", "Servis");
+
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+        //
+
 
 
 

@@ -1,63 +1,102 @@
-﻿@model TakipProje.Models.Bakim
+﻿@model TakipProje.Models.Servis
 
 @{
-    ViewBag.Title = "Periyot Güncelle";
+    ViewBag.Title = "ServisPeriyotGuncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <br>
 <br>
-<center><h2>Periyot Güncelleme İşlemi</h2></center>
+<center><h2>Servis Periyot Güncelleme İşlemi</h2></center>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
-    <h4>Bakım Kayıt Bilgileri</h4>
+    <h4>Servis Kayıt Bilgileri</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<div style="visibility:hidden">
-    @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "id" } })
-</div>
-
-
+    <span style="visibility:"> @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "id" } })</span>
+    
 
 
     <div class="form-group">
-        <span class="create_titles">Bakım Adı</span>
+        <span class="create_titles">İş Adı</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BakimAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bakimadi" } })
+            @Html.EditorFor(model => model.İsAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "isadis" } })
 
         </div>
     </div>
 
     <div class="form-group">
-        <span class="create_titles">Bakım Tarihi</span>
+        <span class="create_titles">Bakım Periyodu</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BakimTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bakimtarihi" } })
-
+            @Html.EditorFor(model => model.BakimPeriyodu, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } }) 
         </div>
     </div>
 
     <div class="form-group">
-        <span class="create_titles">Bakım Yapan Personel</span>
+        <span class="create_titles">Firma Adı</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.BakimYapanPersonel, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "personel" } })
-
+            @Html.EditorFor(model => model.FirmaAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "firmaadis" } })
         </div>
     </div>
 
     <div class="form-group">
-        <span class="create_titles">Bakım Periyodu (Gün)</span>
+        <span class="create_titles">Sabit Telefon</span>
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Periyot, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
-
+            @Html.EditorFor(model => model.SabitTelefon, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "sabittelefons" } })
         </div>
     </div>
 
     <div class="form-group">
+        <span class="create_titles">Destek Personel Ad Soyad</span>
         <div class="col-md-10">
+            @Html.EditorFor(model => model.DestekPersonelAdSoyad, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "destekpersonels" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Gsm</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Gsm, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "gsms" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Mail</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "mails" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Başlangıç Tarihi</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "baslangictarihis" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Bitiş Tarihi</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bitistarihis" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <span class="create_titles">Bakım ve Açıklamalar</span>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BakimveAciklamalar, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "bakimveaciklamalars" } })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @*<span class="create_titles">Periyot</span>*@
+        <div class="col-md-10">
+
+
+            @*deneme başla*@
             <hr />
             <br />
             <h6 style="margin-bottom:25px;letter-spacing:1px;">BİR PERİYOT SIKLIĞI SEÇİNİZ</h6>
@@ -267,16 +306,22 @@
                              }
 
                          //hertürlü controller'a gitmesi gereken değerler (radiobuttonlardan bağımsız)
-                             var bakimadi = document.getElementById("bakimadi").value;
-                             var bakimtarihi = document.getElementById("bakimtarihi").value;
-                             var personel = document.getElementById("personel").value;
+                             var isadis = document.getElementById("isadis").value;
+                             var firmaadis = document.getElementById("firmaadis").value;
+                             var sabittelefons = document.getElementById("sabittelefons").value;
+                             var destekpersonels = document.getElementById("destekpersonels").value;
+                             var gsms = document.getElementById("gsms").value;
+                             var mails = document.getElementById("mails").value;
+                             var baslangictarihis = document.getElementById("baslangictarihis").value;
+                             var bitistarihis = document.getElementById("bitistarihis").value;
+                             var bakimveaciklamalars = document.getElementById("bakimveaciklamalars").value;
                              var ID2 = document.getElementById("id").value;
 
                                 var f = {};
-                                f.url = '@Url.Action("TestFunction2", "Bakim")';
+                                f.url = '@Url.Action("TestFunction3", "Servis")';
                                 f.type = "POST";
                              f.dataType = "json";
-                             f.data = JSON.stringify({ PeriyotGun: gunperiyot, BakimAdi: bakimadi, BakimTarihi: bakimtarihi, Personel: personel, ID: ID2});
+                             f.data = JSON.stringify({ PeriyotGun: gunperiyot, isadi: isadis, firmaadi: firmaadis, sabittelefon: sabittelefons, destekpersonel: destekpersonels, gsm: gsms, mail: mails, baslangictarihi: baslangictarihis, bitistarihi: bitistarihis, bakimveaciklamalar: bakimveaciklamalars, ID: ID2 });
                                 f.contentType = "application/json";
 
                                 f.success = function (response) {
@@ -288,24 +333,30 @@
                                 $.ajax(f);
                             });
                         });
+
+                    //bitiş
                 </script>
             </form>
+
+            @*deneme bitir*@
+
+
+
         </div>
+
+
+
     </div>
 
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input id="btnClick" type="submit" value="Periyot Güncelle" class="btn btn-success" />
-
-                <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
-
         </div>
     </div>
 </div>
 }
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div>
+    <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
+</div>

@@ -136,6 +136,7 @@
                     @item.SonYedeklemeTarihi.ToString("yyyy.MM.dd")
                 </td>
                 <td>
+                    @Html.ActionLink("Periyot Güncelle", "YedeklemePeriyotGuncelle", new { id = item.ID }, new { @class = "btn btn-warning" }) |
                     @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
                     @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn btn-primary" }) |
                     @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })

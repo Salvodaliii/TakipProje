@@ -49,6 +49,65 @@ namespace TakipProje.Controllers
         }
 
 
+
+
+
+        public ActionResult YedeklemePeriyotGuncelle(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Yedekleme yedekleme = db.Yedekleme.Find(id);
+            if (yedekleme == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(yedekleme);
+        }
+
+
+
+        [HttpGet]
+        public JsonResult TestFunction4(int? ID)
+        {
+            Yedekleme yedekleme = db.Yedekleme.Find(ID);
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+        [HttpPost]
+        public JsonResult TestFunction4(Yedekleme yedekleme, int PeriyotGun, int ID, string Adi, string Durum, DateTime OlusturmaTarihi, DateTime SonYedeklemeTarihi, String KontrolEdenPersonel)
+        {
+            yedekleme.YedeklemePlaniAdi = Adi;
+            yedekleme.Durum = Durum;
+            yedekleme.OlusturmaTarihi = OlusturmaTarihi;
+            yedekleme.SonYedeklemeTarihi = SonYedeklemeTarihi;
+            yedekleme.KontrolEdenPersonel = KontrolEdenPersonel;
+            yedekleme.YedeklemePeriyodu = PeriyotGun;
+
+            db.Entry(yedekleme).State = EntityState.Modified;
+            db.SaveChanges();
+            RedirectToAction("Index", "Yedekleme");
+
+
+            return Json(new
+            {
+                resut = "OK"
+            });
+
+        }
+
+
+
+
+
         // GET: Yedekleme/Details/5
         public ActionResult Details(int? id)
         {
