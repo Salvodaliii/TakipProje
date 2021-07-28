@@ -99,14 +99,12 @@ namespace TakipProje.Controllers
             {
                 db.Entry(lisans).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit");
+                return RedirectToAction("Index");
             }
             return View(lisans);
         }
 
 
-
-        // GET: Lisans/Edit/5
         public ActionResult TarihDuzenle(int? id)
         {
             if (id == null)
@@ -124,7 +122,7 @@ namespace TakipProje.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult TarihDuzenle(Lisans lisans)
+        public ActionResult TarihDuzenle([Bind(Include = "ID,ProgramAdi,Adet,FirmaAdi,SabitTelefon,Gsm,Mail,AlimTarihi,BitisTarihi,YenilemeTarihi,AlisFiyati")] Lisans lisans)
         {
             if (ModelState.IsValid)
             {
