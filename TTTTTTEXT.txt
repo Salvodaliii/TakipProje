@@ -1,0 +1,88 @@
+using Quartz;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
+using System.Threading.Tasks;
+using System.Web;
+
+namespace TakipProje.Models.OtomatikMail
+{
+    public class EmailJob : IJob
+    {
+        takipDbEntities db = new takipDbEntities();
+
+        public void Execute(IJobExecutionContext context)
+        {
+
+            DateTime bugunTarihi = DateTime.UtcNow;
+            var lisansTablosu = db.Lisans.ToList();
+
+            int kayitsayisi = db.Lisans.Count();
+
+            string[] adkayit = new string [kayitsayisi];
+            DateTime[] tarihkayit = new DateTime[kayitsayisi];
+
+            string ad;
+            DateTime tarih;
+            int a = 0;
+
+
+
+            //foreach içindeki for aynı adı 2 kere yazıyor , o sorun düzeltilirse toplu mail gönderme başarılı olabilir.
+            //foreach döngüsünü for'a çevirme
+
+            foreach (var m in lisansTablosu)
+            {
+                ad = m.ProgramAdi;
+                tarih = m.BitisTarihi;
+
+                TimeSpan dif = bugunTarihi - tarih;
+
+                a= Convert.ToInt32(dif.TotalDays);
+                a *= (-1);
+
+                for(int i = 0; i < kayitsayisi; i++)
+                {
+                    adkayit[i] = ad;
+                    tarihkayit[i] = tarih;
+                }
+               
+            }
+            if (a <= 10)
+            {
+                using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "yaz1100@outlook.com"))
+                {
+
+                    message.Subject = "Lisans Süresi Hatırlatıcısı";
+
+                    for (int k = 0; k < kayitsayisi; k++)
+                    {
+                        message.Body += adkayit[k] + " Adlı Lisans " + tarihkayit[k].ToString("dd-MM-yyyy") + "tarihinde bitiyor" + "<br/>";
+                    }
+
+                    using (SmtpClient client = new SmtpClient
+                    {
+                        EnableSsl = true,
+                        Host = "smtp-mail.outlook.com",
+                        Port = 587,
+                        Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
+                    })
+                    {
+                        client.Send(message);
+                    }
+
+
+
+
+
+
+                }
+            }
+
+        }
+
+
+    }
+}
