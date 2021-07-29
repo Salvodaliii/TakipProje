@@ -30,17 +30,16 @@ namespace TakipProje.Models.OtomatikMail
 
             string ad = null;
             DateTime tarih = lisans.AlimTarihi; //başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
-
             int kalangun = 0;
             TimeSpan dif;
 
 
 
-            string ad2 = null;
+            //string ad2 = null;
             DateTime tarih2 = lisans.AlimTarihi;//başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
 
 
-            int[] fordegerleri = new int[60];
+            //int[] fordegerleri = new int[60];
 
 
             //indisler için atamalar ;
@@ -61,20 +60,20 @@ namespace TakipProje.Models.OtomatikMail
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if(kalangun <= 10)
+                if(kalangun <= 10)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 
                     tarihkayit[r] = tarih;
-                    r++;
+                    r++; //tarih sayısı kadar indis oluşturmak için r değeri kullanıldı ve her tarih değeri geldiğinde 1 arttı.
 
                     adkayit[j] = ad;
                     j++;
 
                     kalangunkayit[f] = kalangun;
-                    f++;
+                    f++;  //kalangün sayısı kadar indis oluşturmak için f değeri kullanıldı ve her kalangün değeri hesaplandığında 1 arttı.
 
-                    mailatilacak = true;
+                    mailatilacak = true;  //eğer kalangün<=10 ise en az 1 lisansa ait mail atılacağından , mailatilacak değeri true olarak ayarlandı.
                 }
 
                 
@@ -99,16 +98,16 @@ namespace TakipProje.Models.OtomatikMail
 
 
 
-                if (mailatilacak == true)
+                if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
                 {
                     using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
                     {
 
-                    message.Subject = w + " Adet Lisansın Süresi Bitmek Üzere!!!!!!";
+                    message.Subject = w + " Adet Lisansın Süresi Bitmek Üzere";
 
                     for (int k = 0; k < w; k++)
                     {
-                        message.Body += "# " + adkayit[k] +" Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                        message.Body += "# " + adkayit[k] + " Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
                         }
 
                         using (SmtpClient client = new SmtpClient
