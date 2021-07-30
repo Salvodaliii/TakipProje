@@ -90,13 +90,13 @@ namespace TakipProje.Models.OtomatikMail
                     {
                         if (kalangunkayit[k] <= 0) //Eğer lisans süresi bitmiş ise;
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Son Yedekleme Tarihi Üzerinden " + (kalangunkayit[k] * -1) + " GÜN GEÇTİ ! " + " Son Yedekleme Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Son Yedekleme Tarihi Üzerinden " + (kalangunkayit[k] * -1) + " GÜN GEÇTİ ! " + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
 
                         }
 
                         else
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Yedekleme Vaktine " + kalangunkayit[k] + " Gün Kaldı. " + " Son Yedekleme Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Yedekleme Vaktine " + kalangunkayit[k] + " Gün Kaldı. " + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
 
                         }
                     }
