@@ -91,36 +91,3 @@
     </div>
 </div>
 
-
-
-
-
-@**@
-
-@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Bize Ulaşın</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-        <div class="alert alert-info">@TempData["Message"]</div>
-
-
-
-
-
-        <input type="file" name="myFiles" />
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input class="btn btn-default" type="submit" value="Gönder"  />
-            </div>
-        </div>
-    </div>
-}
-
-
-

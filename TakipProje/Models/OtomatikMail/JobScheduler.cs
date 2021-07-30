@@ -26,7 +26,7 @@ namespace TakipProje.Models.OtomatikMail
 
             //scheduler.ScheduleJob(job, trigger);
             //scheduler.ScheduleJob(jobbakim, trigger);
-            scheduler.ScheduleJob(jobyedekleme, trigger);
+            //scheduler.ScheduleJob(jobyedekleme, trigger);
         }
     }
 }

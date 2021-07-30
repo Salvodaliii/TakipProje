@@ -15,62 +15,8 @@ namespace WebApplication1.Controllers
     {
         private takipDbEntities db = new takipDbEntities();
 
-        //
-
-        [HttpPost]
-        public ActionResult Index(Email model, HttpPostedFileBase myFiles)
-        {
-            MailMessage mailim = new MailMessage();
-            mailim.To.Add("yaz1100@outlook.com"); //Mesajın Gönderileceği Mail Adresi
-            mailim.From = new MailAddress("lisansBitisTarihi@outlook.com"); //Hangi Mail Adresinden Gönderilecek ?
 
 
-
-            string bbaslik = model.Baslik;
-            bbaslik = "Başlık";
-
-            string aadsoyad = model.AdSoyad;
-            aadsoyad = "Uyarı Maili";
-
-            string iicerik = model.Icerik;
-            iicerik = "ŞUKADAR GÜN KALDI LİSANSIN BİTMESİNE !";
-
-
-            mailim.Subject = "Bize Ulaşın Sayfasından Mesajınız Var. " + bbaslik; //başlık değerinin içine atama yap
-            mailim.Body = "Sayın yetkili, " + aadsoyad + " kişisinden gelen mesajın içeriği aşağıdaki gibidir. <br>" + iicerik;
-            mailim.IsBodyHtml = true;
-
-            if (myFiles != null)
-            {
-                mailim.Attachments.Add(new Attachment(myFiles.InputStream, myFiles.FileName));
-            }
-
-            SmtpClient smtp = new SmtpClient();
-            smtp.Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00");
-            smtp.Port = 587;
-            smtp.Host = "smtp-mail.outlook.com";
-            smtp.EnableSsl = true;
-
-            try
-            {
-                smtp.Send(mailim);
-                TempData["Message"] = "Mesajınız iletilmiştir. En kısa zamanda size geri dönüş sağlanacaktır.";
-            }
-            catch (Exception ex)
-            {
-                TempData["Message"] = "Mesaj gönderilemedi.Hata nedeni:" + ex.Message;
-            }
-
-            return View();
-
-        }
-
-
-
-
-
-
-        //
         public ActionResult Index()
         {
             LisanssIdCount();

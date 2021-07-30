@@ -151,7 +151,6 @@
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAyrintilar.cs" />
-    <Compile Include="Models\Email.cs" />
     <Compile Include="Models\Kullanicilar.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
