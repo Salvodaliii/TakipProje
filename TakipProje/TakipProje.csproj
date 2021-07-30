@@ -161,8 +161,10 @@
     <Compile Include="Models\LisansDetay.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OtomatikMail\BakimEmailJob.cs" />
     <Compile Include="Models\OtomatikMail\EmailJob.cs" />
     <Compile Include="Models\OtomatikMail\JobScheduler.cs" />
+    <Compile Include="Models\OtomatikMail\YedeklemeEmailJob.cs" />
     <Compile Include="Models\Servis.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>

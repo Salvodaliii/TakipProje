@@ -9,27 +9,31 @@ using System.Web;
 
 namespace TakipProje.Models.OtomatikMail
 {
-    public class EmailJob : IJob
+    public class YedeklemeEmailJob : IJob
     {
+
         takipDbEntities db = new takipDbEntities();
 
-        
         public void Execute(IJobExecutionContext context)
-        {        
+        {
 
-            Lisans lisans = new Lisans();
+            Yedekleme yedekleme = new Yedekleme();
 
             DateTime bugunTarihi = DateTime.UtcNow;
-            var lisansTablosu = db.Lisans.ToList();
+            var yedeklemeTablosu = db.Yedekleme.ToList();
 
-            int kayitsayisi = db.Lisans.Count(); // lisans tablosunda kaç kayıt var ?
+            int kayitsayisi = db.Yedekleme.Count();
 
             string[] adkayit = new string[kayitsayisi];
             DateTime[] tarihkayit = new DateTime[kayitsayisi];
             int[] kalangunkayit = new int[kayitsayisi];
 
             string ad = null;
-            DateTime tarih = lisans.AlimTarihi; //başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
+
+            int? periyot = 0;
+            DateTime periyotartibugun = yedekleme.OlusturmaTarihi;
+
+            DateTime tarih = yedekleme.OlusturmaTarihi; //başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
             int kalangun = 0;
             TimeSpan dif;
 
@@ -41,17 +45,23 @@ namespace TakipProje.Models.OtomatikMail
 
             bool mailatilacak = false; //en az bir lisans <=10 ise bu değer 1 olacak (true)
 
-            foreach (var m in lisansTablosu)
+            foreach (var m in yedeklemeTablosu)
             {
-                ad = m.ProgramAdi;
-                tarih = m.BitisTarihi;
-                
+                ad = m.YedeklemePlaniAdi;
+                periyot = m.YedeklemePeriyodu;
+                periyotartibugun = DateTime.UtcNow;
+                periyotartibugun = m.SonYedeklemeTarihi.AddDays(Convert.ToDouble(periyot));
+
+                //periyot değerini al bugüne ekle gün olarak , onu bir tarih yap ve tarih =m.. gönder
+
+                tarih = periyotartibugun;
+
 
                 dif = bugunTarihi - tarih;
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if(kalangun <= 10)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
+                if (kalangun <= 10)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 
@@ -70,45 +80,44 @@ namespace TakipProje.Models.OtomatikMail
 
 
             if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
-                {
+            {
                 using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
-                    {
+                {
 
-                    message.Subject = w + " Adet Lisansın Süresi Bitmek Üzere";
+                    message.Subject = w + " Adet Yedeklemenin Vakti Geldi !";
 
                     for (int k = 0; k < w; k++)
                     {
                         if (kalangunkayit[k] <= 0) //Eğer lisans süresi bitmiş ise;
                         {
-                           message.Body += "# " + adkayit[k] + " Adlı Lisansın Süresi " + (kalangunkayit[k]*-1) + " GÜN ÖNCE BİTTİ ! " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Son Yedekleme Tarihi Üzerinden " + (kalangunkayit[k] * -1) + " GÜN GEÇTİ ! " + " Son Yedekleme Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
 
                         }
 
                         else
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Yedekleme Vaktine " + kalangunkayit[k] + " Gün Kaldı. " + " Son Yedekleme Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
 
                         }
                     }
 
-                        using (SmtpClient client = new SmtpClient
-                        {
-                            EnableSsl = true,
-                            Host = "smtp-mail.outlook.com",
-                            Port = 587,
-                            Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
-                        })
+                    using (SmtpClient client = new SmtpClient
+                    {
+                        EnableSsl = true,
+                        Host = "smtp-mail.outlook.com",
+                        Port = 587,
+                        Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
+                    })
 
-                        {
-                            client.Send(message);
-                        }
-
+                    {
+                        client.Send(message);
                     }
+
                 }
+            }
 
 
         }
-
 
     }
 }
