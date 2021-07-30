@@ -33,15 +33,6 @@ namespace TakipProje.Models.OtomatikMail
             int kalangun = 0;
             TimeSpan dif;
 
-
-
-            //string ad2 = null;
-            DateTime tarih2 = lisans.AlimTarihi;//başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
-
-
-            //int[] fordegerleri = new int[60];
-
-
             //indisler için atamalar ;
             int j = 0; //adların sayısı
             int r = 0; //tarihlerin sayısı
@@ -75,40 +66,30 @@ namespace TakipProje.Models.OtomatikMail
 
                     mailatilacak = true;  //eğer kalangün<=10 ise en az 1 lisansa ait mail atılacağından , mailatilacak değeri true olarak ayarlandı.
                 }
-
-                
-
-
-                //for (int i = 0; i < 60; i++)
-                //{
-
-                //    if (adkayit[i] != ad) //BURAYA HERTÜRLÜ GİRİYOR, NEDEN ?
-                //    {
-                //        fordegerleri[i] = i;
-
-                //        adkayit[i] = ad;
-                //    }
-                //    else
-                //    {
-                //        i++;
-                //    }
-
-                //}
             }
 
 
-
-                if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
+            if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
                 {
-                    using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
+                using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
                     {
 
                     message.Subject = w + " Adet Lisansın Süresi Bitmek Üzere";
 
                     for (int k = 0; k < w; k++)
                     {
-                        message.Body += "# " + adkayit[k] + " Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                        if (kalangunkayit[k] <= 0)
+                        {
+                           message.Body += "# " + adkayit[k] + " Adlı Lisansın Süresi " + (kalangunkayit[k]*-1) + " GÜN ÖNCE BİTTİ ! " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+
                         }
+
+                        else
+                        {
+                            message.Body += "# " + adkayit[k] + " Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+
+                        }
+                    }
 
                         using (SmtpClient client = new SmtpClient
                         {

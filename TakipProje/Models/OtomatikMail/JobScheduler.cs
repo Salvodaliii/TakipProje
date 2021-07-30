@@ -16,9 +16,9 @@ namespace TakipProje.Models.OtomatikMail
             ITrigger trigger = TriggerBuilder.Create()
                 .WithDailyTimeIntervalSchedule
                   (s =>
-                     s.WithIntervalInSeconds(15) //15 saniyede bir
-                   //.OnEveryDay()   //her gün
-                   //.StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
+                     s.WithIntervalInSeconds(15)
+                   .OnEveryDay()   //her gün
+                   .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
                   )
                 .Build();
 
