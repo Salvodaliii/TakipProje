@@ -43,7 +43,7 @@ namespace TakipProje.Models.OtomatikMail
             int f = 0; //kalangünlerin sayısı
             int w = 0; //<=10 günü kalan lisanslar
 
-            bool mailatilacak = false; //en az bir lisans <=10 ise bu değer 1 olacak (true)
+            bool mailatilacak = false; //en az bir bakım <=10 ise bu değer 1 olacak (true)
 
             foreach (var m in bakimTablosu)
             {
@@ -52,8 +52,7 @@ namespace TakipProje.Models.OtomatikMail
                 periyotartibugun = DateTime.UtcNow;
                 periyotartibugun = m.BakimTarihi.AddDays(Convert.ToDouble(periyot));
 
-                //periyot değerini al bugüne ekle gün olarak , onu bir tarih yap ve tarih =m.. gönder
-
+                
                 tarih = periyotartibugun;
 
 
@@ -74,30 +73,36 @@ namespace TakipProje.Models.OtomatikMail
                     kalangunkayit[f] = kalangun;
                     f++;  //kalangün sayısı kadar indis oluşturmak için f değeri kullanıldı ve her kalangün değeri hesaplandığında 1 arttı.
 
-                    mailatilacak = true;  //eğer kalangün<=10 ise en az 1 lisansa ait mail atılacağından , mailatilacak değeri true olarak ayarlandı.
+                    mailatilacak = true;  //eğer kalangün<=10 ise en az 1 bakıma ait mail atılacağından , mailatilacak değeri true olarak ayarlandı.
                 }
             }
 
 
-            if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
+            if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 bakımın maili atılacak)
             {
                 using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
                 {
+                    message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
                     message.Subject = w + " Adet Bakımın Bakım Vakti Geldi !";
 
                     for (int k = 0; k < w; k++)
                     {
-                        if (kalangunkayit[k] <= 0) //Eğer lisans süresi bitmiş ise;
+                        if (kalangunkayit[k] < 0) //Eğer bakım süresi bitmiş ise;
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Bakımın Vakti " + (kalangunkayit[k] * -1) + " GÜN ÖNCE GEÇTİ ! " + " Bakım Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Bakımın Vakti "+ "<font color='crimson'>*" + (kalangunkayit[k] * -1)+ "GÜN ÖNCE GEÇTİ !* </font>" + " Bakım Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
 
                         }
 
-                        else
+                        if (kalangunkayit[k] == 0) //Eğer bakım süresi bugün bitiyorsa ise;
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Bakımın Vaktine " + kalangunkayit[k] + " Gün Kaldı. " + " Bakım Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Bakımın Vakti <font color='crimson'>*BUGÜN BİTTİ !*</font>" + " Bakım Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
 
+                        }
+
+                        if (kalangunkayit[k] > 0) //Eğer bakım süresi bitmemiş ise kaç gün kalmış ?
+                        {
+                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Bakımın Vaktine " + "<font color='darkorange'>*" + kalangunkayit[k]+ " Gün Kaldı.*</font>" + " Bakım Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
                         }
                     }
 

@@ -83,22 +83,31 @@ namespace TakipProje.Models.OtomatikMail
             {
                 using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
                 {
+                    message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
                     message.Subject = w + " Adet Yedeklemenin Vakti Geldi !";
 
                     for (int k = 0; k < w; k++)
                     {
-                        if (kalangunkayit[k] <= 0) //Eğer lisans süresi bitmiş ise;
+                        if (kalangunkayit[k] < 0) //Eğer lisans süresi bitmiş ise;
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Son Yedekleme Tarihi Üzerinden " + (kalangunkayit[k] * -1) + " GÜN GEÇTİ ! " + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Yedeğin Son Yedekleme Tarihi Üzerinden " + "<font color='crimson'>*" + (kalangunkayit[k] * -1)+ " GÜN GEÇTİ ! * </font>" + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
 
                         }
 
-                        else
+                        if (kalangunkayit[k] == 0)
                         {
-                            message.Body += "# " + adkayit[k] + " Adlı Yedeğin Yedekleme Vaktine " + kalangunkayit[k] + " Gün Kaldı. " + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Yedeğin Yedekleme Vakti <font color='crimson'>*BUGÜN BİTTİ !*</font>" + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
 
                         }
+
+                        if (kalangunkayit[k] > 0)
+                        {
+                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Yedeğin Yedekleme Vaktine " + "<font color='darkorange'>*" + kalangunkayit[k]+ "Gün Kaldı !*</font>" + " Yedekleme Yapılması Gereken Tarih : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
+
+                        }
+
+                       
                     }
 
                     using (SmtpClient client = new SmtpClient

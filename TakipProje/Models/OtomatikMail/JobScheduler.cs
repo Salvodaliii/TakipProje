@@ -8,19 +8,31 @@ namespace TakipProje.Models.OtomatikMail
     {
         public static void Start()
         {
-            IScheduler scheduler = StdSchedulerFactory.GetDefaultScheduler();
-            scheduler.Start();
+            IScheduler lisansbildiri = StdSchedulerFactory.GetDefaultScheduler();
+            lisansbildiri.Start(); //Lisans bildiri maili göndermek için ilk tanımlama yapılıyor.
 
-            IJobDetail job = JobBuilder.Create<EmailJob>().Build();
-            IJobDetail jobbakim = JobBuilder.Create<BakimEmailJob>().Build();
-            IJobDetail jobyedekleme = JobBuilder.Create<YedeklemeEmailJob>().Build();
+            IScheduler bakimbildiri = StdSchedulerFactory.GetDefaultScheduler();
+            bakimbildiri.Start(); //Bakım bildiri maili göndermek için ilk tanımlama yapılıyor.
 
-            ITrigger trigger = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
-            (s =>s.WithIntervalInMinutes(1).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();
+            IScheduler yedeklemebildiri = StdSchedulerFactory.GetDefaultScheduler();
+            yedeklemebildiri.Start(); //Yedekleme bildiri maili göndermek için ilk tanımlama yapılıyor.
 
-            //scheduler.ScheduleJob(job, trigger);
-            //scheduler.ScheduleJob(jobbakim, trigger);
-            //scheduler.ScheduleJob(jobyedekleme, trigger);
+            IJobDetail job = JobBuilder.Create<EmailJob>().Build(); //EmailJob-> Lisans mail gönderme kodlarını içeren sınıfına bağlanıyor.
+            IJobDetail jobbakim = JobBuilder.Create<BakimEmailJob>().Build(); //Bakım mail gönderme kodlarını içeren sınıfa bağlanıyor.
+            IJobDetail jobyedekleme = JobBuilder.Create<YedeklemeEmailJob>().Build();//Yedekleme mail gönderme kodlarını içeren sınıfa bağlanıyor.
+
+            ITrigger lisanstetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
+            (L =>L.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(19, 23))).Build(); //Lisans mail gönderimini belirlenen süre ile tetikle.
+
+            ITrigger bakimtetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
+            (B => B.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(19, 23))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
+
+            ITrigger yedeklemetetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
+            (Y => Y.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(19, 23))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
+
+            lisansbildiri.ScheduleJob(job, lisanstetikle); //lisans bildiri mailini göndermek için lisansjob'u tetikle.
+            bakimbildiri.ScheduleJob(jobbakim, bakimtetikle);//bakım bildiri mailini göndermek için bakımjob'u tetikle.
+            yedeklemebildiri.ScheduleJob(jobyedekleme, yedeklemetetikle);//yedekleme bildiri mailini yedeklemejob için lisansjob'u tetikle.
         }
     }
 }
