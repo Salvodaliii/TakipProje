@@ -82,18 +82,18 @@ namespace TakipProje.Models.OtomatikMail
                         if (kalangunkayit[k] < 0) //Eğer lisans süresi bitmiş ise;
                         {
                            
-                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Süresi "+ "<font color='crimson'>*" + (kalangunkayit[k]*-1)+ " GÜN ÖNCE BİTTİ !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Süresi "+ "<font color='crimson'>* " + (kalangunkayit[k]*-1)+ " GÜN ÖNCE BİTTİ !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
 
                         }
 
                         if (kalangunkayit[k] == 0) //Eğer lisans süresi bugün bitiyorsa ise;
                         {
-                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansı <font color='crimson'>*BUGÜN BİTTİ !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+"<b> ]</b>"+"<br/><br/>";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansı <font color='crimson'>*BUGÜN BİTTİ !* </font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+"<b> ]</b>"+"<br/><br/>";
                         }
 
                         if (kalangunkayit[k] > 0) //eğer lisans süresi bitmemiş fakat yaklaşıyor ise;
                         {
-                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Bitmesine " + "<font color='darkorange'>*" + kalangunkayit[k]+ " Gün Kaldı !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
+                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Bitmesine " + "<font color='darkorange'>* " + kalangunkayit[k]+ " Gün Kaldı !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
                         }
                     }
 
