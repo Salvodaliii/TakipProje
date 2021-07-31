@@ -15,14 +15,8 @@ namespace TakipProje.Models.OtomatikMail
             IJobDetail jobbakim = JobBuilder.Create<BakimEmailJob>().Build();
             IJobDetail jobyedekleme = JobBuilder.Create<YedeklemeEmailJob>().Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithDailyTimeIntervalSchedule
-                  (s =>
-                     s.WithIntervalInSeconds(15)
-                   .OnEveryDay()   //her gün
-                   .StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))
-                  )
-                .Build();
+            ITrigger trigger = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
+            (s =>s.WithIntervalInMinutes(1).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();
 
             //scheduler.ScheduleJob(job, trigger);
             //scheduler.ScheduleJob(jobbakim, trigger);

@@ -13,9 +13,10 @@
     <div class="search">
         @*Program Adı : @Html.TextBox("p")*@
         <label id="s_title" for="p">Program Adı : </label>
-        <input type="text" name="p" size="80" placeholder="Aranacak Programın Adınızı Giriniz.." />&nbsp;&nbsp;&nbsp;
-        <input class="btn btn-outline-success" type="submit" value="Ara" />&nbsp;&nbsp;
-        <button class="btn btn-primary" href="~/LisansDetay/Index">Geri Dön</button>
+        <input type="text" name="p" size="80" placeholder="Aranacak Program Adını Giriniz . ." />&nbsp;&nbsp;&nbsp;
+        <input style="transition:600ms" class="btn btn-outline-success" type="submit" value="Ara" />&nbsp;&nbsp;
+        <button style="transition:600ms" class="btn btn-outline-primary" href="~/LisansDetay/Index">Aramayı Temizle</button>
+        <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Listeye Geri Dön</button>
     </div>
 }
 

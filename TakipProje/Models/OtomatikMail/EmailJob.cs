@@ -84,7 +84,7 @@ namespace TakipProje.Models.OtomatikMail
 
                         }
 
-                        else
+                        else //eğer lisans süresi bitmemiş fakat yaklaşıyor ise;
                         {
                             message.Body += "# " + adkayit[k] + " Adlı Lisansın Bitmesine " + kalangunkayit[k] + " Gün Kaldı. " + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + " \n \r";
 
