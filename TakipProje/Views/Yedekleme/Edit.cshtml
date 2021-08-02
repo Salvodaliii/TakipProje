@@ -21,9 +21,9 @@
     @Html.HiddenFor(model => model.ID)
 
 <div class="form-group">
-    <span class="create_titles">Yedekleme Periyodu</span>
+    @*<span class="create_titles">Yedekleme Periyodu</span>*@
     <div class="col-md-10">
-        @Html.EditorFor(model => model.YedeklemePeriyodu, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.YedeklemePeriyodu, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.YedeklemePeriyodu, "", new { @class = "text-danger" })
     </div>
 </div>

@@ -16,7 +16,7 @@
     <h4>Servis Kayıt Bilgileri</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <span style="visibility:"> @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "id" } })</span>
+    <span style="visibility:hidden"> @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control", disabled = "disabled", id = "id" } })</span>
     
 
 
