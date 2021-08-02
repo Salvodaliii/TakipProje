@@ -85,7 +85,7 @@ namespace TakipProje.Models.OtomatikMail
                 {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
-                    message.Subject = w + " Adet Yedeklemenin Vakti Geldi !";
+                    message.Subject = " [Uyarı!] " + w + " Adet Yedekleme İle İlgili İşlem Yapılması Gerekiyor.";
 
                     for (int k = 0; k < w; k++)
                     {

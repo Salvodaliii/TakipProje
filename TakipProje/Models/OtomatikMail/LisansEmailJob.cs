@@ -9,13 +9,15 @@ using System.Web;
 
 namespace TakipProje.Models.OtomatikMail
 {
-    public class EmailJob : IJob
+    public class LisansEmailJob : IJob
     {
         takipDbEntities db = new takipDbEntities();
 
-        
+        public int sj = 10;
+
         public void Execute(IJobExecutionContext context)
-        {        
+        {
+
 
             Lisans lisans = new Lisans();
 
@@ -51,7 +53,7 @@ namespace TakipProje.Models.OtomatikMail
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if(kalangun <= 10)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
+                if(kalangun <= sj)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 
@@ -75,7 +77,7 @@ namespace TakipProje.Models.OtomatikMail
                     {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
-                    message.Subject = w + " Adet Lisansın Süresi Bitmek Üzere";
+                    message.Subject =" [Uyarı!] "+ w + " Adet Lisans İle İlgili İşlem Yapılması Gerekiyor.";
 
                     for (int k = 0; k < w; k++)
                     {
