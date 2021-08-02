@@ -160,13 +160,12 @@ namespace TakipProje.Controllers
 
             db.Servis.Add(servis);
             db.SaveChanges();
-
-
             RedirectToAction("Index", "Servis");
             return Json(new
             {
                 resut = "OK"
             });
+
         }
 
 

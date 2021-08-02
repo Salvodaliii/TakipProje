@@ -66,11 +66,18 @@ namespace TakipProje.Controllers
                 lisansDetay.ProgramAd = lisans.ProgramAdi;
                 lisansDetay.ProgramTarih = lisans.AlimTarihi;
                 lisansDetay.ProgramFiyat = lisans.AlisFiyati;
-                db.LisansDetay.Add(lisansDetay);
-
-                db.Lisans.Add(lisans);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                
+                if(lisans.AlimTarihi < lisans.BitisTarihi)
+                {
+                    db.LisansDetay.Add(lisansDetay);
+                    db.Lisans.Add(lisans);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(Lisans.BitisTarihi), "Bitiş Tarihi Alım Tarihinden Önce Olamaz !");
+                }
             }
 
             return View(lisans);

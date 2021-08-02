@@ -322,17 +322,30 @@
                                 var f = {};
                                 f.url = '@Url.Action("TFunction", "Servis")';
                                 f.type = "POST";
-                                f.dataType = "json";
-                                f.data = JSON.stringify({ PeriyotGun: gunperiyot, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
-                                f.contentType = "application/json";
+                                     f.dataType = "json";
 
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
+                                     if (bitistarihi > baslangictarihi) {
+                                         f.data = JSON.stringify({ PeriyotGun: gunperiyot, isAdi: isadi, FirmaAdi: firmaadi, SabitTelefon: sabittelefon, DestekPersonelAdSoyad: destekpersoneladsoyad, Gsm: gsm, Mail: mail, BaslangicTarihi: baslangictarihi, BitisTarihi: bitistarihi, BakimVeAciklamalar: bakimveaciklamalar });
+                                         f.contentType = "application/json";
+                                         if (gunperiyot == null) {
+                                             window.alert("UYARI! Periyot Bilgisi Girilmedi!")
+                                         }
+
+                                         f.success = function (response) {
+                                             alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                         };
+                                         f.error = function (response) {
+                                             alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                         };
+                                         $.ajax(f);
+                                     }
+                                     else {
+                                         window.alert("UYARI! Bitiş Tarihi Başlangıç Tarihinden Önce Olamaz!")
+                                     }
+
+                                     
+                                     //periyot boş geçildiğinde periyot hatası ver
+                              
                             });
                         });
     </script>

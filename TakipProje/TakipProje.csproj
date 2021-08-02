@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
     <Compile Include="Controllers\LisansDetayController.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ServisController.cs" />
     <Compile Include="Controllers\YedeklemeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -4249,7 +4250,6 @@
     <Content Include="web\fonts\fontawesome-webfont.woff" />
     <Content Include="web\fonts\fontawesome-webfont.woff2" />
     <Content Include="web\fonts\FontAwesome.otf" />
-    <Content Include="Views\Shared\_BakimAciklamaEkle.cshtml" />
     <Content Include="Views\Giris\UyeGiris.cshtml" />
     <Content Include="Views\Giris\Logout.cshtml" />
     <Content Include="Views\Giris\Profil.cshtml" />
@@ -4259,6 +4259,8 @@
     <Content Include="Views\Bakim\BakimPeriyotGuncelle.cshtml" />
     <Content Include="Views\Servis\ServisPeriyotGuncelle.cshtml" />
     <Content Include="Views\Yedekleme\YedeklemePeriyotGuncelle.cshtml" />
+    <Content Include="Views\Mail\LisansMail.cshtml" />
+    <Content Include="Views\Mail\BakimMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

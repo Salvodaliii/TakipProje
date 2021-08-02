@@ -11,6 +11,7 @@ namespace TakipProje.Models.OtomatikMail
 {
     public class YedeklemeEmailJob : IJob
     {
+        public int yedeklemeMailAtmaGunu = 10;
 
         takipDbEntities db = new takipDbEntities();
 
@@ -61,7 +62,7 @@ namespace TakipProje.Models.OtomatikMail
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if (kalangun <= 10)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
+                if (kalangun <= yedeklemeMailAtmaGunu)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 

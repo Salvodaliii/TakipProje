@@ -12,41 +12,46 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-    @foreach (var x in Model)
-    {
-        <div>
-            <h2>Kullanıcı Profili</h2>
-            <hr />
-            <br />
-            <div id="card_div" class="card" style="width: 50%;">
-                <div class="row no-gutters">
-                    <div>
-                        <i class="far fa-user" id="user_icon"></i>
-                    </div>
-                    <div>
-                        <div class="card-body" style="padding: 20px;">
-                            <center><h5 class="card-title" style="letter-spacing:1px;padding-bottom: 5px;">@x.KullaniciAdSoyad</h5></center><hr />
+@foreach (var x in Model)
+{
+    <div>
+        <h2>Kullanıcı Profili</h2>
+        <hr />
+        <br />
+        <div id="card_div" class="card" style="width: 50%;">
+            <div class="row no-gutters">
+                <div>
+                    <i class="far fa-user" id="user_icon"></i>
+                </div>
+                <div>
+                    <div class="card-body" style="padding: 20px;">
+                        <center><h5 class="card-title" style="letter-spacing:1px;padding-bottom: 5px;">@x.KullaniciAdSoyad</h5></center><hr />
 
 
-                            <p class="card-text" style="padding-bottom:20px;"><span class="altbasliklar"><i class="fas fa-envelope"></i> Mail : &nbsp;&nbsp;</span>@x.KullaniciMail</p>
+                        <p class="card-text" style="padding-bottom:20px;"><span class="altbasliklar"><i class="fas fa-envelope"></i> Mail : &nbsp;&nbsp;</span>@x.KullaniciMail</p>
 
 
-                            <p class="card-text" style="padding-bottom:20px;">
-                                <span class="altbasliklar"><i class="fas fa-key"></i> Şifre :&nbsp;&nbsp;</span>
+                        <p class="card-text" style="padding-bottom:20px;">
+                            <span class="altbasliklar"><i class="fas fa-key"></i> Şifre :&nbsp;&nbsp;</span>
 
-                                <span class="yildiz">************</span><span class="sifre">@x.KullaniciSifre</span>
-                                    <button class="sifreGoster" style="margin-left:50px;"><i class="fas fa-eye"></i></button>
-                                    <button class="sifreGizle"><i class="fas fa-eye-slash"></i></button>
-                            </p>
+                            <span class="yildiz">************</span><span class="sifre">@x.KullaniciSifre</span>
+                            <button class="sifreGoster" style="margin-left:50px;"><i class="fas fa-eye"></i></button>
+                            <button class="sifreGizle"><i class="fas fa-eye-slash"></i></button>
+                        </p>
 
 
-                            <p style="visibility:hidden" class="card-text"><span class="altbasliklar"><i class="fas fa-users-cog"></i> Yetki :&nbsp;&nbsp;</span>@x.KullaniciYetki</p>
-                        </div>
+                        <p style="visibility:hidden" class="card-text"><span class="altbasliklar"><i class="fas fa-users-cog"></i> Yetki :&nbsp;&nbsp;</span>@x.KullaniciYetki</p>
                     </div>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
+
+
+
+
+
 
 <script>
     (function ($) {
@@ -70,31 +75,32 @@
 </script>
 
 
-    <style>
+<style>
 
-        #card_div {
-            border: solid 2px black;
-            padding:5px;
-        }
+    #card_div {
+        border: solid 2px black;
+        padding: 5px;
+    }
 
-        #user_icon {
-            background-color: rgba(255, 143, 0,0.9);
-            border: solid 2px black;
-            color:white;
-            font-size: 150px;
-            padding: 30px;
-            margin: 15px;
-        }
-        .altbasliklar {
-            font-weight: bolder;
-        }
+    #user_icon {
+        background-color: rgba(255, 143, 0,0.9);
+        border: solid 2px black;
+        color: white;
+        font-size: 150px;
+        padding: 30px;
+        margin: 15px;
+    }
 
-        .sifre{
-            display:none;
-        }
-    </style>
+    .altbasliklar {
+        font-weight: bolder;
+    }
 
-    @*@foreach (var x in Model)
+    .sifre {
+        display: none;
+    }
+</style>
+
+@*@foreach (var x in Model)
     {
         <label># ID</label>
 

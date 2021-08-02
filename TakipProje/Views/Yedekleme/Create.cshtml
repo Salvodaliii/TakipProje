@@ -221,16 +221,25 @@
                                 f.url = '@Url.Action("TestFunction", "Yedekleme")';
                                 f.type = "POST";
                              f.dataType = "json";
-                             f.data = JSON.stringify({ PeriyotGun: gunperiyot, YedeklemePlanAdi: yedeklemeplanadi, Durum: durum, OlusturmaTarihi: olusturmatarihi, SonYedeklemeTarihi: sonyedeklemetarihi, KontrolEdenPersonel: kontroledenpersonel});
-                                f.contentType = "application/json";
 
-                                f.success = function (response) {
-                                    alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
-                                };
-                                f.error = function (response) {
-                                    alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
-                                };
-                                $.ajax(f);
+                             if (sonyedeklemetarihi > olusturmatarihi) {
+                                 f.data = JSON.stringify({ PeriyotGun: gunperiyot, YedeklemePlanAdi: yedeklemeplanadi, Durum: durum, OlusturmaTarihi: olusturmatarihi, SonYedeklemeTarihi: sonyedeklemetarihi, KontrolEdenPersonel: kontroledenpersonel });
+                                 f.contentType = "application/json";
+                                 if (gunperiyot == null) {
+                                     window.alert("UYARI! Periyot Bilgisi Girilmedi!")
+                                 }
+
+                                 f.success = function (response) {
+                                     alert("Kayıt Oluşturma İşlemi Başarıyla Tamamlandı !");
+                                 };
+                                 f.error = function (response) {
+                                     alert("Kayıt Oluşturma Sırasında Bir Hata Meydana Geldi !");
+                                 };
+                                 $.ajax(f);
+                             }
+                             else {
+                                 window.alert("UYARI! Son Yedekleme Tarihi Oluşturma Tarihinden Önce Olamaz!")
+                             }        
                             });
                         });
                 </script>
