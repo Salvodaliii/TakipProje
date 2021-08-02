@@ -1,0 +1,26 @@
+﻿@model TakipProje.Models.OtomatikMail.YedeklemeEmailJob
+
+@{
+    ViewBag.Title = "LisansMail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("YedeklemeMail", "Mail", FormMethod.Post))
+{
+
+    <label>Kullanıcı Şifresi</label>
+    <div class="input-group">
+        <span class="fa fa-lock"></span>
+        <input type="number" placeholder="Şifre" required="" name="SmailGun">
+    </div>
+
+
+    <br />
+
+    <button class="btn btn-danger btn-block" type="submit">Giriş Yap</button>
+    <br />
+
+
+    <br />
+}
