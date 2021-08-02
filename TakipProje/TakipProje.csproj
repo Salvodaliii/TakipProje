@@ -152,6 +152,9 @@
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAyrintilar.cs" />
+    <Compile Include="Models\BakimMailPeriyodu.cs">
+      <DependentUpon>takipDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Kullanicilar.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
@@ -161,17 +164,14 @@
     <Compile Include="Models\LisansDetay.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LisansMailPeriyodu.cs">
+      <DependentUpon>takipDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\OtomatikMail\BakimEmailJob.cs" />
     <Compile Include="Models\OtomatikMail\LisansEmailJob.cs" />
     <Compile Include="Models\OtomatikMail\JobScheduler.cs" />
     <Compile Include="Models\OtomatikMail\YedeklemeEmailJob.cs" />
     <Compile Include="Models\Servis.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
@@ -193,6 +193,9 @@
       <DependentUpon>takipDb.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Yedekleme.cs">
+      <DependentUpon>takipDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\YedeklemeMailPeriyodu.cs">
       <DependentUpon>takipDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4195,6 +4198,9 @@
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
     <Content Include="Scripts\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
     <Content Include="Scripts\ckeditor\skins\moono-lisa\readme.md" />
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Models\takipDb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>takipDb.Designer.cs</LastGenOutput>
@@ -4202,9 +4208,6 @@
     <Content Include="Models\takipDb.edmx.diagram">
       <DependentUpon>takipDb.edmx</DependentUpon>
     </Content>
-    <None Include="job_scheduling_data_2_0.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

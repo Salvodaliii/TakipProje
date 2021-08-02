@@ -3,22 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TakipProje.Models;
 using TakipProje.Models.OtomatikMail;
 
 namespace TakipProje.Controllers
 {
     public class MailController : Controller
     {
+        private takipDbEntities db = new takipDbEntities();
+
         public ActionResult LisansMail()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult LisansMail(LisansEmailJob lJob, int LmailGun)
+        public ActionResult LisansMail([Bind(Include = "ID,LisansMail")] LisansMailPeriyodu lp, int LmailGun)
         {
-            lJob.lisansMailAtmaGunu = LmailGun;
-            return View(lJob);
+            if (ModelState.IsValid)
+            {
+                lp.LisansMail = LmailGun;
+                db.LisansMailPeriyodu.Add(lp);
+                db.SaveChanges();
+                return RedirectToAction("LisansMail");
+            }
+            return View(lp);
         }
 
 
@@ -31,10 +40,16 @@ namespace TakipProje.Controllers
         }
 
         [HttpPost]
-        public ActionResult BakimMail(BakimEmailJob lJob, int BmailGun)
+        public ActionResult BakimMail([Bind(Include = "ID,BakimMail")] BakimMailPeriyodu mp, int BmailGun)
         {
-            lJob.bakimMailAtmaGunu = BmailGun;
-            return View(lJob);
+            if (ModelState.IsValid)
+            {
+                mp.BakimMail = BmailGun;
+                db.BakimMailPeriyodu.Add(mp);
+                db.SaveChanges();
+                return RedirectToAction("BakimMail");
+            }
+            return View(mp);
         }
 
 
@@ -47,10 +62,16 @@ namespace TakipProje.Controllers
         }
 
         [HttpPost]
-        public ActionResult YedeklemeMail(YedeklemeEmailJob lJob, int YmailGun)
+        public ActionResult YedeklemeMail([Bind(Include = "ID,YedeklemeMail")] YedeklemeMailPeriyodu yp, int YmailGun)
         {
-            lJob.yedeklemeMailAtmaGunu = YmailGun;
-            return View(lJob);
+            if (ModelState.IsValid)
+            {
+                yp.YedeklemeMail = YmailGun;
+                db.YedeklemeMailPeriyodu.Add(yp);
+                db.SaveChanges();
+                return RedirectToAction("BakimMail");
+            }
+            return View(yp);
         }
 
 

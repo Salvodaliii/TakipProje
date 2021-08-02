@@ -61,12 +61,17 @@
             </th>
             <th>
                 <p>
+                    Alış Fiyatı
+                </p>
+            </th>
+            <th>
+                <p>
                     Alış Tarihi
                 </p>
             </th>
             <th>
                 <p>
-                    Alış Fiyatı
+                    Bitiş Tarihi Fiyatı
                 </p>
             </th>
         </tr>
@@ -75,18 +80,21 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProgramAd)
-                </td>
-                <td>
-                    @item.ProgramTarih.ToString("yyyy.MM.dd")
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProgramFiyat) ₺
-                </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProgramFiyat) ₺
+            </td>
+            <td>
+                @item.ProgramTarih.ToString("yyyy.MM.dd")
+            </td>
+            <td>
+                @item.ProgramBitisTarihi.ToString("yyyy.MM.dd")
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

@@ -17,6 +17,13 @@ namespace TakipProje.Models.OtomatikMail
 
         public void Execute(IJobExecutionContext context)
         {
+            var mailP = db.YedeklemeMailPeriyodu.ToList();
+
+            int? yedeklemeMailPeriyodu = 0;
+            foreach (var l in mailP)
+            {
+                yedeklemeMailPeriyodu = l.YedeklemeMail;
+            }
 
             Yedekleme yedekleme = new Yedekleme();
 

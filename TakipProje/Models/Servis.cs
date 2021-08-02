@@ -38,7 +38,6 @@ namespace TakipProje.Models
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BitisTarihi { get; set; }
 
-
         public string BakimveAciklamalar { get; set; }
     }
 }

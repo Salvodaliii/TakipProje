@@ -17,6 +17,13 @@ namespace TakipProje.Models.OtomatikMail
 
         public void Execute(IJobExecutionContext context)
         {
+            var mailP = db.BakimMailPeriyodu.ToList();
+
+            int? bakimMailPeriyodu = 0;
+            foreach (var l in mailP)
+            {
+                bakimMailPeriyodu = l.BakimMail;
+            }
 
             Bakim bakim = new Bakim();
 
@@ -61,7 +68,7 @@ namespace TakipProje.Models.OtomatikMail
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if (kalangun <= bakimMailAtmaGunu)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
+                if (kalangun <= bakimMailPeriyodu)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 

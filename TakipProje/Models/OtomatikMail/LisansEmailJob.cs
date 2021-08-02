@@ -17,7 +17,13 @@ namespace TakipProje.Models.OtomatikMail
 
         public void Execute(IJobExecutionContext context)
         {
+            var mailP = db.LisansMailPeriyodu.ToList();
 
+            int? lisansMailPeriyodu = 0;
+            foreach (var l in mailP)
+            {
+                lisansMailPeriyodu = l.LisansMail;
+            }
 
             Lisans lisans = new Lisans();
 
@@ -47,13 +53,13 @@ namespace TakipProje.Models.OtomatikMail
             {
                 ad = m.ProgramAdi;
                 tarih = m.BitisTarihi;
-                
+
 
                 dif = bugunTarihi - tarih;
                 kalangun = Convert.ToInt32(dif.TotalDays);
                 kalangun *= (-1);
 
-                if(kalangun <= lisansMailAtmaGunu)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
+                if (kalangun <= lisansMailPeriyodu)  //10 yerine kullanıcıdan bir sayı alınacak ve o kontrol edilecek. !önemli!
                 {
                     w++; // kaç tane <=10 kayıt var ?
 
@@ -72,47 +78,47 @@ namespace TakipProje.Models.OtomatikMail
 
 
             if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
-                {
+            {
                 using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
-                    {
+                {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
-                    message.Subject =" [Uyarı!] "+ w + " Adet Lisans İle İlgili İşlem Yapılması Gerekiyor.";
+                    message.Subject = " [Uyarı!] " + w + " Adet Lisans İle İlgili İşlem Yapılması Gerekiyor.";
 
                     for (int k = 0; k < w; k++)
                     {
                         if (kalangunkayit[k] < 0) //Eğer lisans süresi bitmiş ise;
                         {
-                           
-                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Süresi "+ "<font color='crimson'>* " + (kalangunkayit[k]*-1)+ " GÜN ÖNCE BİTTİ !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
+
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Süresi " + "<font color='crimson'>* " + (kalangunkayit[k] * -1) + " GÜN ÖNCE BİTTİ !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
 
                         }
 
                         if (kalangunkayit[k] == 0) //Eğer lisans süresi bugün bitiyorsa ise;
                         {
-                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansı <font color='crimson'>*BUGÜN BİTTİ !* </font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+"<b> ]</b>"+"<br/><br/>";
+                            message.Body += "<b><font color='crimson'># [BİTTİ] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansı <font color='crimson'>*BUGÜN BİTTİ !* </font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
                         }
 
                         if (kalangunkayit[k] > 0) //eğer lisans süresi bitmemiş fakat yaklaşıyor ise;
                         {
-                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Bitmesine " + "<font color='darkorange'>* " + kalangunkayit[k]+ " Gün Kaldı !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy")+ "<b> ]</b>" + "<br/><br/>";
+                            message.Body += "<b><font color='darkorange'># [YAKLAŞIYOR] # </font></b> <b>[</b> " + adkayit[k] + " Adlı Lisansın Bitmesine " + "<font color='darkorange'>* " + kalangunkayit[k] + " Gün Kaldı !*</font>" + " Lisans Bitiş Tarihi : " + tarihkayit[k].ToString("dd-MM-yyyy") + "<b> ]</b>" + "<br/><br/>";
                         }
                     }
 
-                        using (SmtpClient client = new SmtpClient
-                        {
-                            EnableSsl = true,
-                            Host = "smtp-mail.outlook.com",
-                            Port = 587,
-                            Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
-                        })
+                    using (SmtpClient client = new SmtpClient
+                    {
+                        EnableSsl = true,
+                        Host = "smtp-mail.outlook.com",
+                        Port = 587,
+                        Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
+                    })
 
-                        {
-                            client.Send(message);
-                        }
-
+                    {
+                        client.Send(message);
                     }
+
                 }
+            }
 
 
         }

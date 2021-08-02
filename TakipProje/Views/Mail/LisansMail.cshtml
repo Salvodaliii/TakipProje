@@ -1,4 +1,4 @@
-﻿@model TakipProje.Models.OtomatikMail.LisansEmailJob
+﻿@model TakipProje.Models.LisansMailPeriyodu
 
 @{
     ViewBag.Title = "LisansMail";
@@ -9,31 +9,30 @@
 @using (Html.BeginForm("LisansMail", "Mail", FormMethod.Post))
 {
 
-<center><h5>Lisans Bildiri Maili Belirleme Sayfası</h5></center>
-<hr />
-<div style="border:solid black 1px;padding:15px;">
+    <center><h5>Lisans Bildiri Maili Belirleme Sayfası</h5></center>
+    <hr />
+    <div style="border:solid black 1px;padding:15px;">
 
 
 
-    <div>
-        <span style="font-weight:bolder">
-            Atanan Bildirim Gün Değeri :
-            @Html.DisplayFor(model => model.lisansMailAtmaGunu)
-        </span> <span style="font-style:italic"> || [Manuel Olarak Gün Değeri Atanmaz İse Bildirim Maili 10 Gün Kala Atılır.]</span><br /><br />
+        <div>
+            <span style="font-weight:bolder">
+                Atanan Bildirim Gün Değeri :
+            </span> <span style="font-style:italic"> || [Manuel Olarak Gün Değeri Atanmaz İse Bildirim Maili 10 Gün Kala Atılır.]</span><br /><br />
+        </div>
+
+        <div class="input-group" style="border:solid black 1px;padding:15px;">
+            <span>Lisans Bitiş Sürelerine</span> &nbsp;<input type="number" placeholder="Gün" required="" name="LmailGun">&nbsp; <span>Kala Mail Bildirimi Yapılsın.</span>
+        </div>
+
+
+
+        <br />
+        <div>
+            <button class="btn btn-warning" type="submit">Kaydet</button>
+            <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
+        </div>
     </div>
-
-    <div class="input-group" style="border:solid black 1px;padding:15px;">
-        <span>Lisans Bitiş Sürelerine</span> &nbsp;<input type="number" placeholder="Gün" required="" name="LmailGun">&nbsp; <span>Kala Mail Bildirimi Yapılsın.</span>
-    </div>
-
-
-
-    <br />
-    <div>
-        <button class="btn btn-warning" type="submit">Kaydet</button>
-        <button type="button" class="btn btn-primary" onClick="location.href='/Lisans/Index'">Geri Dön</button>
-    </div>
-</div>
     <br />
     <br />
 }

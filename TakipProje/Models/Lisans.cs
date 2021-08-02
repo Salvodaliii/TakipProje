@@ -24,7 +24,6 @@ namespace TakipProje.Models
         [MinLength(11)]
         public string SabitTelefon { get; set; }
 
-
         [MaxLength(11)]
         [MinLength(11)]
         public string Gsm { get; set; }

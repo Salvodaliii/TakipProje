@@ -66,6 +66,7 @@ namespace TakipProje.Controllers
                 lisansDetay.ProgramAd = lisans.ProgramAdi;
                 lisansDetay.ProgramTarih = lisans.AlimTarihi;
                 lisansDetay.ProgramFiyat = lisans.AlisFiyati;
+                lisansDetay.ProgramBitisTarihi = lisans.BitisTarihi;
                 
                 if(lisans.AlimTarihi < lisans.BitisTarihi)
                 {

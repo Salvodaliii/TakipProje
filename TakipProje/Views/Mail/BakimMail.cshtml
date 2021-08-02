@@ -1,4 +1,4 @@
-﻿@model TakipProje.Models.OtomatikMail.BakimEmailJob
+﻿@model TakipProje.Models.BakimMailPeriyodu
 
 @{
     ViewBag.Title = "LisansMail";
@@ -9,18 +9,30 @@
 @using (Html.BeginForm("BakimMail", "Mail", FormMethod.Post))
 {
 
-    <label>Kullanıcı Şifresi</label>
-    <div class="input-group">
-        <span class="fa fa-lock"></span>
-        <input type="number" placeholder="Şifre" required="" name="BmailGun">
+    <center><h5>Bakım Bildiri Maili Belirleme Sayfası</h5></center>
+    <hr />
+    <div style="border:solid black 1px;padding:15px;">
+
+
+
+        <div>
+            <span style="font-weight:bolder">
+                Atanan Bildirim Gün Değeri :
+            </span> <span style="font-style:italic"> || [Manuel Olarak Gün Değeri Atanmaz İse Bildirim Maili 10 Gün Kala Atılır.]</span><br /><br />
+        </div>
+
+        <div class="input-group" style="border:solid black 1px;padding:15px;">
+            <span>Lisans Bitiş Sürelerine</span> &nbsp;<input type="number" placeholder="Gün" required="" name="BmailGun">&nbsp; <span>Kala Mail Bildirimi Yapılsın.</span>
+        </div>
+
+
+
+        <br />
+        <div>
+            <button class="btn btn-warning" type="submit">Kaydet</button>
+            <button type="button" class="btn btn-primary" onClick="location.href='/Bakim/Index'">Geri Dön</button>
+        </div>
     </div>
-
-
     <br />
-
-    <button class="btn btn-danger btn-block" type="submit">Giriş Yap</button>
-    <br />
-
-
     <br />
 }

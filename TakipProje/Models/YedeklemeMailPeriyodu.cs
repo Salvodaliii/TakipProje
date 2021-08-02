@@ -11,21 +11,10 @@ namespace TakipProje.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Yedekleme
+    
+    public partial class YedeklemeMailPeriyodu
     {
         public int ID { get; set; }
-        public Nullable<int> YedeklemePeriyodu { get; set; }
-        public string YedeklemePlaniAdi { get; set; }
-        public string Durum { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
-        public System.DateTime OlusturmaTarihi { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
-        public System.DateTime SonYedeklemeTarihi { get; set; }
-
-        public string KontrolEdenPersonel { get; set; }
+        public Nullable<int> YedeklemeMail { get; set; }
     }
 }
