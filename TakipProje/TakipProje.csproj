@@ -2361,6 +2361,7 @@
     <Content Include="Views\Mail\LisansMail.cshtml" />
     <Content Include="Views\Mail\BakimMail.cshtml" />
     <Content Include="Views\Mail\YedeklemeMail.cshtml" />
+    <Content Include="Views\Shared\_BakimAciklamaEkle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
