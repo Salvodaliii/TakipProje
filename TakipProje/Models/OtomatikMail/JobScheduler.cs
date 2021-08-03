@@ -22,17 +22,17 @@ namespace TakipProje.Models.OtomatikMail
             IJobDetail jobyedekleme = JobBuilder.Create<YedeklemeEmailJob>().Build();//Yedekleme mail gönderme kodlarını içeren sınıfa bağlanıyor.
 
             ITrigger lisanstetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
-            (L =>L.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build(); //Lisans mail gönderimini belirlenen süre ile tetikle.
+            (L =>L.WithIntervalInMinutes(1).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build(); //Lisans mail gönderimini belirlenen süre ile tetikle.
 
             ITrigger bakimtetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
-            (B => B.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
+            (B => B.WithIntervalInMinutes(1).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
 
             ITrigger yedeklemetetikle = TriggerBuilder.Create().WithDailyTimeIntervalSchedule
-            (Y => Y.WithIntervalInHours(24).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
+            (Y => Y.WithIntervalInMinutes(1).OnEveryDay().StartingDailyAt(TimeOfDay.HourAndMinuteOfDay(0, 0))).Build();//Bakım mail gönderimini belirlenen süre ile tetikle.
 
-            lisansbildiri.ScheduleJob(joblisans, lisanstetikle); //lisans bildiri mailini göndermek için lisansjob'u tetikle.
-            bakimbildiri.ScheduleJob(jobbakim, bakimtetikle);//bakım bildiri mailini göndermek için bakımjob'u tetikle.
-            yedeklemebildiri.ScheduleJob(jobyedekleme, yedeklemetetikle);//yedekleme bildiri mailini yedeklemejob için lisansjob'u tetikle.
+            //lisansbildiri.ScheduleJob(joblisans, lisanstetikle); //lisans bildiri mailini göndermek için lisansjob'u tetikle.
+            //bakimbildiri.ScheduleJob(jobbakim, bakimtetikle);//bakım bildiri mailini göndermek için bakımjob'u tetikle.
+            //yedeklemebildiri.ScheduleJob(jobyedekleme, yedeklemetetikle);//yedekleme bildiri mailini yedeklemejob için lisansjob'u tetikle.
         }
     }
 }

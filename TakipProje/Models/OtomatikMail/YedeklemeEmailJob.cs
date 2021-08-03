@@ -89,7 +89,7 @@ namespace TakipProje.Models.OtomatikMail
 
             if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
             {
-                using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
+                using (var message = new MailMessage("yedeklemeBitisTarihi@outlook.com", "takipproje@outlook.com"))
                 {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
@@ -123,7 +123,7 @@ namespace TakipProje.Models.OtomatikMail
                         EnableSsl = true,
                         Host = "smtp-mail.outlook.com",
                         Port = 587,
-                        Credentials = new NetworkCredential("lisansBitisTarihi@outlook.com", "BitisTarihi00")
+                        Credentials = new NetworkCredential("yedeklemeBitisTarihi@outlook.com", "BitisTarihi00")
                     })
 
                     {

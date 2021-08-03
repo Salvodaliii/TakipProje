@@ -47,7 +47,7 @@
 <div class="form-group">
     <span class="create_titles">Oluşturma Tarihi</span>
     <div class="col-md-10">
-        @Html.EditorFor(model => model.OlusturmaTarihi, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+        @Html.EditorFor(model => model.OlusturmaTarihi, new { htmlAttributes = new { @class = "form-control", type="date"} })
         @Html.ValidationMessageFor(model => model.OlusturmaTarihi, "", new { @class = "text-danger" })
         <div style="font-style:italic"> Atanan Oluşturma Tarihi :
             @Html.DisplayFor(model => model.OlusturmaTarihi)
