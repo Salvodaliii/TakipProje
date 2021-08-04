@@ -1,7 +1,7 @@
 ﻿@model TakipProje.Models.Servis
 
 @{
-    ViewBag.Title = "ServisPeriyotGuncelle";
+    ViewBag.Title = "Servis Periyot Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <br>
@@ -352,11 +352,9 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input id="btnClick" type="submit" value="Periyot Güncelle" class="btn btn-success" />
+            <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
         </div>
     </div>
 </div>
 }
 
-<div>
-    <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Servis/Index'">Geri Dön</button>
-</div>

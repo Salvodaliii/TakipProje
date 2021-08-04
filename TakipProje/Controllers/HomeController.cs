@@ -10,14 +10,14 @@ using System.Net;
 
 namespace WebApplication1.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class HomeController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
 
 
 
-        public ActionResult Index()
+        public ActionResult Anasayfa()
         {
             LisanssIdCount();
             BakimIdCount();

@@ -1,7 +1,7 @@
 ﻿@model TakipProje.Models.Yedekleme
 
 @{
-    ViewBag.Title = "YedeklemePeriyotGuncelle";
+    ViewBag.Title = "Yedekleme Periyot Güncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -318,11 +318,9 @@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" id="btnClick" value="Güncelle" class="btn btn-success" />
+            <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
         </div>
     </div>
 </div>
 }
 
-<div>
-    <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/Yedekleme/Index'">Geri Dön</button>
-</div>

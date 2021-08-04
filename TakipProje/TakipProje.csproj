@@ -135,7 +135,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BakimController.cs" />
-    <Compile Include="Controllers\GirisController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
     <Compile Include="Controllers\LisansDetayController.cs" />
@@ -2304,6 +2303,8 @@
     <Content Include="Models\takipDb.edmx.diagram">
       <DependentUpon>takipDb.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2326,7 +2327,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Anasayfa.cshtml" />
     <Content Include="Views\Lisans\Create.cshtml" />
     <Content Include="Views\Lisans\Details.cshtml" />
     <Content Include="Views\Bakim\Create.cshtml" />
@@ -2349,9 +2350,6 @@
     <Content Include="web\fonts\fontawesome-webfont.woff" />
     <Content Include="web\fonts\fontawesome-webfont.woff2" />
     <Content Include="web\fonts\FontAwesome.otf" />
-    <Content Include="Views\Giris\UyeGiris.cshtml" />
-    <Content Include="Views\Giris\Logout.cshtml" />
-    <Content Include="Views\Giris\Profil.cshtml" />
     <Content Include="Views\Lisans\Index.cshtml" />
     <Content Include="Views\Lisans\TarihDuzenle.cshtml" />
     <Content Include="Views\Lisans\Edit.cshtml" />

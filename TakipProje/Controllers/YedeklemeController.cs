@@ -10,7 +10,7 @@ using TakipProje.Models;
 
 namespace TakipProje.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class YedeklemeController : Controller
     {
         private takipDbEntities db = new takipDbEntities();

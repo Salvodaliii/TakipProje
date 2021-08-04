@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace TakipProje.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class LisansController : Controller
     {
         private takipDbEntities db = new takipDbEntities();
