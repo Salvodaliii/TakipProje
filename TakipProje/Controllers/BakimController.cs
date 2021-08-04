@@ -178,7 +178,6 @@ namespace TakipProje.Controllers
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,BakimAdi,BakimTarihi,BakimYapanPersonel,Periyot")] Bakim bakim)
         {
             //if (ModelState.IsValid)
@@ -210,7 +209,6 @@ namespace TakipProje.Controllers
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,BakimAdi,BakimTarihi,BakimYapanPersonel,Periyot")] Bakim bakim)
         {
             if (ModelState.IsValid)
@@ -239,7 +237,6 @@ namespace TakipProje.Controllers
 
         // POST: Bakim/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Bakim bakim = db.Bakim.Find(id);

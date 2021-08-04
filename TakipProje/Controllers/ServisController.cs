@@ -143,7 +143,6 @@ namespace TakipProje.Controllers
 
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
         public JsonResult TFunction(Servis servis,int PeriyotGun, string isAdi, string FirmaAdi, string SabitTelefon, string DestekPersonelAdSoyad,string Gsm,string Mail,DateTime BaslangicTarihi,DateTime BitisTarihi,string BakimVeAciklamalar) //Servis/Create sayfasındaki combobox değerini ajax ile getiriyor ve PeriyotGun değişkenine atıyor.
         {
             servis.İsAdi = isAdi;
@@ -173,7 +172,6 @@ namespace TakipProje.Controllers
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,İsAdi,BakimPeriyodu,FirmaAdi,SabitTelefon,DestekPersonelAdSoyad,Gsm,Mail,BaslangicTarihi,BitisTarihi,BakimveAciklamalar")] Servis servis)
         {
             //if (ModelState.IsValid)
@@ -207,7 +205,6 @@ namespace TakipProje.Controllers
         // Aşırı gönderim saldırılarından korunmak için bağlamak istediğiniz belirli özellikleri etkinleştirin. 
         // Daha fazla bilgi için bkz. https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,İsAdi,BakimPeriyodu,FirmaAdi,SabitTelefon,DestekPersonelAdSoyad,Gsm,Mail,BaslangicTarihi,BitisTarihi,BakimveAciklamalar")] Servis servis)
         {
             if (ModelState.IsValid)
@@ -236,7 +233,6 @@ namespace TakipProje.Controllers
 
         // POST: Servis/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Servis servis = db.Servis.Find(id);
