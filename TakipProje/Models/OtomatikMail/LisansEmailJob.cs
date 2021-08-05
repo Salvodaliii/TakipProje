@@ -79,6 +79,7 @@ namespace TakipProje.Models.OtomatikMail
 
             if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
             {
+
                 using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
                 {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.

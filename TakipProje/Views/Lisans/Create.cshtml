@@ -20,7 +20,7 @@
         <div class="form-group">
             <span class="create_titles">Program Adı</span>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProgramAdi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ProgramAdi, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.ProgramAdi, "", new { @class = "text-danger" })
             </div>
             <br>

@@ -11,19 +11,13 @@ namespace TakipProje.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class LisansDetay
     {
         public int ID { get; set; }
         public string ProgramAd { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime ProgramTarih { get; set; }
-
         public Nullable<decimal> ProgramFiyat { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
-        public System.DateTime ProgramBitisTarihi { get; set; }
+        public Nullable<System.DateTime> ProgramBitisTarihi { get; set; }
     }
 }

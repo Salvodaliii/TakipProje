@@ -10,16 +10,10 @@
 namespace TakipProje.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Yedekleme
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int ID { get; set; }
-        public Nullable<int> YedeklemePeriyodu { get; set; }
-        public string YedeklemePlaniAdi { get; set; }
-        public string Durum { get; set; }
-        public System.DateTime OlusturmaTarihi { get; set; }
-        public System.DateTime SonYedeklemeTarihi { get; set; }
-        public string KontrolEdenPersonel { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

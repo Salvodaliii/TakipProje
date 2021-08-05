@@ -138,6 +138,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LisansController.cs" />
     <Compile Include="Controllers\LisansDetayController.cs" />
+    <Compile Include="Controllers\LisansMailAlicisController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\ServisController.cs" />
     <Compile Include="Controllers\YedeklemeController.cs" />
@@ -145,57 +146,66 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bakim.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAciklama.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BakimAyrintilar.cs" />
     <Compile Include="Models\BakimMailPeriyodu.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kullanicilar.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Lisans.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LisansDetay.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LisansMailAlici.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LisansMailPeriyodu.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\OtomatikMail\BakimEmailJob.cs" />
     <Compile Include="Models\OtomatikMail\LisansEmailJob.cs" />
     <Compile Include="Models\OtomatikMail\JobScheduler.cs" />
     <Compile Include="Models\OtomatikMail\YedeklemeEmailJob.cs" />
     <Compile Include="Models\Servis.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\takipDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>takipDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\takipDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>takipDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\takipDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>takipDb.edmx</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Yedekleme.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\YedeklemeMailPeriyodu.cs">
-      <DependentUpon>takipDb.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1923,15 +1933,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\takipDb.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>takipDb.edmx</DependentUpon>
-      <LastGenOutput>takipDb.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\takipDb.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>takipDb.edmx</DependentUpon>
-      <LastGenOutput>takipDb.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2296,12 +2306,12 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Models\takipDb.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>takipDb.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\takipDb.edmx.diagram">
-      <DependentUpon>takipDb.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
@@ -2360,6 +2370,11 @@
     <Content Include="Views\Mail\BakimMail.cshtml" />
     <Content Include="Views\Mail\YedeklemeMail.cshtml" />
     <Content Include="Views\Shared\_BakimAciklamaEkle.cshtml" />
+    <Content Include="Views\LisansMailAlicis\Create.cshtml" />
+    <Content Include="Views\LisansMailAlicis\Delete.cshtml" />
+    <Content Include="Views\LisansMailAlicis\Details.cshtml" />
+    <Content Include="Views\LisansMailAlicis\Edit.cshtml" />
+    <Content Include="Views\LisansMailAlicis\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

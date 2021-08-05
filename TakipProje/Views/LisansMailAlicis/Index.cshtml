@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TakipProje.Models.LisansMailAlici>
+
+@{
+    ViewBag.Title = "Lisans Mail Alıcılar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br>
+<center><h2>Lisans Alıcı Mail Kayıt İşlemleri</h2></center>
+
+<br>
+<button type="button" class="btn btn-primary" onClick="location.href='/LisansMailAlicis/Create'" style="transition:900ms;">Yeni Alıcı Ekle</button>
+<br />
+<br>
+<table id="yedekleme" class="table table-striped table-bordered dt-responsive nowrap">
+    <thead>
+        <tr>
+            <th>
+                <span>Alıcı Mail Adresi</span>
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AliciMailAdresi)
+                </td>
+
+                <td>    
+                        @Html.ActionLink("Güncelle", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) |
+                        @Html.ActionLink("Ayrıntılar", "Details", new { id = item.ID }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Sil", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" }) 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

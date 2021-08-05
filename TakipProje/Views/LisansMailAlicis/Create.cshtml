@@ -1,0 +1,36 @@
+﻿@model TakipProje.Models.LisansMailAlici
+
+@{
+    ViewBag.Title = "Lisans Alıcı Mail Kayıt";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br>
+<center><h2>Lisans Alıcı Mail Kayıt İşlemi</h2></center>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>Alıcı Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <span class="create_titles">Alıcı Mail Adresi</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AliciMailAdresi, new { htmlAttributes = new { @class = "form-control" , @type="email" , id="alici"} })
+                @Html.ValidationMessageFor(model => model.AliciMailAdresi, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Alıcı Ekle" class="btn btn-success" />
+                <button style="float: right;" type="button" class="btn btn-primary" onClick="location.href='/LisansMailAlicis/Index'">Geri Dön</button>
+
+            </div>
+        </div>
+    </div>
+}
+

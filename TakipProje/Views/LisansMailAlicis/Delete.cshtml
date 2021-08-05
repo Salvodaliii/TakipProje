@@ -1,0 +1,39 @@
+﻿@model TakipProje.Models.LisansMailAlici
+
+@{
+    ViewBag.Title = "Lisans Mail Alici Sil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<br>
+<center><h2>Lisans Mail Alıcı Silme İşlemi</h2></center>
+<br>
+<center><h3 style="color:red;background-color:rgba(1,1,1,0.1);">Uyarı ! : Bu Silmek İstediğinize Emin Misiniz ?</h3></center>
+<div>
+    <h4>Alıcı Sil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span class="delete_title">Alıcı Mail Adresi</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AliciMailAdresi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Sil" class="btn btn-danger" />
+
+        <button style="float:right" type="button" class="btn btn-primary" onClick="location.href='/LisansMailAlicis/Index'">Geri Dön</button>
+
+    </div>
+</div>
+    }
+</div>

@@ -12,18 +12,9 @@ namespace TakipProje.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Lisans
+    public partial class LisansMailAlici
     {
         public int ID { get; set; }
-        public string ProgramAdi { get; set; }
-        public Nullable<int> Adet { get; set; }
-        public string FirmaAdi { get; set; }
-        public string SabitTelefon { get; set; }
-        public string Gsm { get; set; }
-        public string Mail { get; set; }
-        public System.DateTime AlimTarihi { get; set; }
-        public System.DateTime BitisTarihi { get; set; }
-        public System.DateTime YenilemeTarihi { get; set; }
-        public Nullable<decimal> AlisFiyati { get; set; }
+        public string AliciMailAdresi { get; set; }
     }
 }

@@ -11,33 +11,19 @@ namespace TakipProje.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Servis
     {
         public int ID { get; set; }
         public string İsAdi { get; set; }
         public Nullable<int> BakimPeriyodu { get; set; }
         public string FirmaAdi { get; set; }
-
-        [MaxLength(11)]
-        [MinLength(11)]
         public string SabitTelefon { get; set; }
-
         public string DestekPersonelAdSoyad { get; set; }
-
-        [MaxLength(11)]
-        [MinLength(11)]
         public string Gsm { get; set; }
-
         public string Mail { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BaslangicTarihi { get; set; }
-
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}")]
         public System.DateTime BitisTarihi { get; set; }
-
         public string BakimveAciklamalar { get; set; }
     }
 }
