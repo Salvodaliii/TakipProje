@@ -36,6 +36,36 @@ namespace TakipProje.Models.OtomatikMail
             DateTime[] tarihkayit = new DateTime[kayitsayisi];
             int[] kalangunkayit = new int[kayitsayisi];
 
+            //BİLDİRİ MAİLLERİNİN GÖNDERİLECEĞİ ALICI MAİL ADRESLERİNİN BELİRLENMESİ [BAŞLA]
+
+            var alicitablosu = db.LisansMailAlici.ToList(); //Alıcıları Getir
+            var alicisayisi = db.LisansMailAlici.Count(); //Alıcı Sayısını Belirle
+            string[] alicilar = new string[alicisayisi]; //Belirlenen alıcı sayısı uzunluğunda bir dizi oluştur
+
+            string aliciadresi = null; //alıcı mail adreslerini tutmak için bir değişken belirle ve başlangıç değeri olarak null ayarla
+
+            int alicisay = 0; //alıcıları diziye atmak -dizi indislerini belirlemek- amacıyla tanımlanmış sayısal bir değer
+
+            foreach(var lalici in alicitablosu ) //alıcıların olduğu tablo verilerini lalici adında getir
+            {
+                aliciadresi = lalici.AliciMailAdresi; //tablodaki mail adresini aliciadresi değişkenine ata
+
+                if(aliciadresi != null) //eğer gelen değer null değil ise;
+                {
+                    alicilar[alicisay] = aliciadresi; //veriyi diziye at
+                    alicisay++; //indis sayımını bir arttır (başlangıç : 0 , sonra +1)
+                }
+            }
+
+            //if (aliciadresi == null)
+            //{
+            //    throw new NullReferenceException("Alıcı Kaydı Bulunamadı !");
+
+            //}
+
+            //BİLDİRİ MAİLLERİNİN GÖNDERİLECEĞİ ALICI MAİL ADRESLERİNİN BELİRLENMESİ [BİTİR]
+
+
             string ad = null;
             DateTime tarih = lisans.AlimTarihi; //başlangıç değeri olması amacıyla eklendi , bir işlevi yok.
             int kalangun = 0;
@@ -79,8 +109,9 @@ namespace TakipProje.Models.OtomatikMail
 
             if (mailatilacak == true) //kalangün <=10 koşulu sağlandı (en az 1 lisansın maili atılacak)
             {
+                for(int aliciyaz=0; aliciyaz < alicisay; aliciyaz++) { //alicilar dizisindeki verileri sırasıyla gönderilecek mail alanına yazmak için açılmış bir döngü
 
-                using (var message = new MailMessage("lisansBitisTarihi@outlook.com", "takipproje@outlook.com"))
+                using (var message = new MailMessage("lisansBitisTarihi@outlook.com", alicilar[aliciyaz])) //dizideki mail adreslerine bildirim maili gönder
                 {
                     message.IsBodyHtml = true; //HTML TAGLARINI KULLANMA İMKANI SAĞLAR.
 
@@ -119,7 +150,9 @@ namespace TakipProje.Models.OtomatikMail
                     }
 
                 }
-            }
+             } //alici yaz for bitiş
+
+            } //mail atılacak == true if bitiş
 
 
         }
